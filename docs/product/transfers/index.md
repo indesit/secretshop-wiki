@@ -11,8 +11,12 @@ subdomain: transfers
 scope: all-stores
 tags:
   - product
+  - transfers
 summary: Огляд підрозділу "Переміщення між магазинами".
-related_documents: []
+related_documents:
+  - /product/transfers/reg-transfer-between-stores
+  - /product/transfers/reg-subsort-transfer-between-stores
+  - /product/transfers/sop-live-transfer
 source_of_truth: manual
 ai_generated: false
 approval_required: false
@@ -21,6 +25,15 @@ approval_required: false
 # Переміщення між магазинами
 
 > [!NOTE]
-> Цей розділ знаходиться в стадії наповнення. Документи будуть додані за пріоритетом.
+> У цьому розділі зібрані регламенти та SOP щодо переміщення товару між магазинами мережі.
 
-<!-- TODO: add document list table -->
+## Документи розділу
+
+### Регламенти
+
+- [Регламент переміщення товару між магазинами](/product/transfers/reg-transfer-between-stores)
+- [Регламент переміщення товару між магазинами в рамках підсорту](/product/transfers/reg-subsort-transfer-between-stores)
+
+### SOP
+
+- [SOP: LIVE-переміщення між магазинами](/product/transfers/sop-live-transfer)
