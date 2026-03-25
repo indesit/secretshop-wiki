@@ -1,0 +1,21 @@
+{
+  "name": "company-wiki",
+  "version": "1.0.0",
+  "description": "Corporate Wiki built with VitePress + Markdown + Git",
+  "type": "module",
+  "scripts": {
+    "dev": "./node_modules/.bin/vitepress dev docs",
+    "build": "./node_modules/.bin/vitepress build docs",
+    "preview": "./node_modules/.bin/vitepress preview docs",
+    "validate": "node scripts/validate-frontmatter.mjs",
+    "generate-sidebar": "node scripts/generate-sidebar.mjs",
+    "new-doc": "node scripts/new-doc.mjs"
+  },
+  "devDependencies": {
+    "vitepress": "^1.6.4"
+  },
+  "dependencies": {
+    "glob": "^11.1.0",
+    "gray-matter": "^4.0.3"
+  }
+}

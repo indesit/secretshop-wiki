@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "baseUrl": ".",
+    "paths": {
+      "vitepress": ["./node_modules/vitepress"],
+      "vitepress/theme": ["./node_modules/vitepress/dist/client/theme-default/index.js"]
+    }
+  },
+  "include": ["docs/.vitepress/**/*.ts"]
+}

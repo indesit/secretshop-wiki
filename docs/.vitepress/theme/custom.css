@@ -1,0 +1,16 @@
+:root {
+  --vp-c-brand-1: #3b82f6;
+  --vp-c-brand-2: #2563eb;
+  --vp-c-brand-3: #1d4ed8;
+  --vp-c-brand-soft: rgba(59, 130, 246, 0.1);
+}
+
+.vp-doc h1 {
+  border-bottom: 2px solid var(--vp-c-brand-1);
+  padding-bottom: 0.5rem;
+}
+
+/* Status badge styling */
+.status-draft    { color: #f59e0b; font-weight: 600; }
+.status-approved { color: #10b981; font-weight: 600; }
+.status-archived { color: #6b7280; font-weight: 600; }

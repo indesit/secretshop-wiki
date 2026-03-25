@@ -1,0 +1,33 @@
+name: Validate Wiki
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+    branches: ['main']
+
+jobs:
+  validate:
+    name: Validate Frontmatter & Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate frontmatter
+        run: node scripts/validate-frontmatter.mjs
+
+      - name: Build VitePress (verify no broken links/config)
+        run: npm run build
+        env:
+          NODE_OPTIONS: '--max_old_space_size=4096'

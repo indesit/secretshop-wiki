@@ -1,0 +1,49 @@
+---
+title: Company Wiki
+layout: home
+hero:
+  name: Company Wiki
+  text: Корпоративна база знань
+  tagline: Створено людьми та AI-агентами. Затверджено редактором. Актуально завжди.
+  actions:
+    - theme: brand
+      text: Магазини
+      link: /stores/
+    - theme: alt
+      text: Товар
+      link: /product/
+
+features:
+  - icon: 🏢
+    title: Компанія
+    details: Місія, принципи, оргструктура, ролі та матриця ескалації.
+    link: /company/
+  - icon: 🏪
+    title: Магазини
+    details: Операційна робота магазину — відкриття, закриття, безпека, нестандартні ситуації.
+    link: /stores/
+  - icon: 📦
+    title: Товар
+    details: Приймання, переміщення, брак, пошкодження, недостача, списання.
+    link: /product/
+  - icon: 🔄
+    title: Повернення та гарантія
+    details: Повернення, обмін, гарантійне обслуговування, експертиза, претензії.
+    link: /returns-and-warranty/
+  - icon: 💼
+    title: Продажі
+    details: Консультація, заперечення, допродаж, резерви, замовлення.
+    link: /sales/
+  - icon: 💳
+    title: Каса
+    details: Касова дисципліна, оплати, чеки, закриття зміни, касові інциденти.
+    link: /cash/
+  - icon: 👥
+    title: HR
+    details: Підбір, адаптація, навчання, стандарти, мотивація.
+    link: /hr/
+  - icon: 📋
+    title: Шаблони
+    details: Єдині шаблони документів для людей та AI-агентів.
+    link: /templates/
+---
