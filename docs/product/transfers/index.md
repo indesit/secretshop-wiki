@@ -16,7 +16,9 @@ summary: Огляд підрозділу "Переміщення між мага
 related_documents:
   - /product/transfers/reg-transfer-between-stores
   - /product/transfers/reg-subsort-transfer-between-stores
+  - /product/transfers/reg-live-transfer-between-stores
   - /product/transfers/sop-live-transfer
+  - /product/transfers/checklist-live-transfer-chat-rules
 source_of_truth: manual
 ai_generated: false
 approval_required: false
@@ -25,7 +27,7 @@ approval_required: false
 # Переміщення між магазинами
 
 > [!NOTE]
-> У цьому розділі зібрані регламенти та SOP щодо переміщення товару між магазинами мережі.
+> У цьому розділі зібрані регламенти, SOP та короткі операційні матеріали щодо переміщення товару між магазинами мережі.
 
 ## Документи розділу
 
@@ -33,7 +35,12 @@ approval_required: false
 
 - [Регламент переміщення товару між магазинами](/product/transfers/reg-transfer-between-stores)
 - [Регламент переміщення товару між магазинами в рамках підсорту](/product/transfers/reg-subsort-transfer-between-stores)
+- [Регламент LIVE-переміщення між магазинами](/product/transfers/reg-live-transfer-between-stores)
 
 ### SOP
 
 - [SOP: LIVE-переміщення між магазинами](/product/transfers/sop-live-transfer)
+
+### Короткі пам'ятки та чеклісти
+
+- [Чекліст комунікації для LIVE-переміщення](/product/transfers/checklist-live-transfer-chat-rules)
