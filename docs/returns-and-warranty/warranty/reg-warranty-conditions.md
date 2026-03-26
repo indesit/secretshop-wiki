@@ -32,7 +32,7 @@ approval_required: true
   type="regulation"
   status="draft"
   owner="Anton"
-  :review-cycle-days="365"
+  review-cycle-days="365"
   effective-from="2026-03-26"
   last-reviewed="2026-03-26"
 />
