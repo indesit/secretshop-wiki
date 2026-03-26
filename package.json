@@ -11,7 +11,8 @@
     "generate-sidebar": "node scripts/generate-sidebar.mjs",
     "generate-indexes": "node scripts/generate-indexes.mjs",
     "new-doc": "node scripts/new-doc.mjs",
-    "sync-docs": "npm run generate-sidebar && npm run generate-indexes && npm run validate"
+    "sync-docs": "npm run generate-sidebar && npm run generate-indexes && npm run validate",
+    "docs:all": "npm run sync-docs && npm run build"
   },
   "devDependencies": {
     "@iconify-json/lucide": "^1.2.98",
