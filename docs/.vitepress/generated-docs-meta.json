@@ -134,8 +134,38 @@
     "type": "regulation",
     "icon": "📘"
   },
+  "/cash/cash-discipline/policy-cash-discipline": {
+    "title": "Політика касової дисципліни",
+    "type": "policy",
+    "icon": "🛡️"
+  },
+  "/cash/cash-discipline/reg-forbidden-actions-at-cashdesk": {
+    "title": "Регламент заборонених дій на касі",
+    "type": "regulation",
+    "icon": "📘"
+  },
+  "/cash/cash-discipline/reg-goods-movement-only-through-1c": {
+    "title": "Регламент руху товару тільки через 1С",
+    "type": "regulation",
+    "icon": "📘"
+  },
+  "/cash/cash-discipline/reg-receipt-item-must-match-actual-goods": {
+    "title": "Регламент відповідності товару в чеку фактичному товару",
+    "type": "regulation",
+    "icon": "📘"
+  },
   "/cash/cash-discipline/sop-cash-discipline": {
     "title": "Касова дисципліна",
+    "type": "sop",
+    "icon": "🧭"
+  },
+  "/cash/cash-discipline/sop-price-tags-at-cashdesk": {
+    "title": "Робота з цінниками в прикасовій зоні",
+    "type": "sop",
+    "icon": "🧭"
+  },
+  "/cash/cash-discipline/sop-stock-shortage-error-during-sale": {
+    "title": "Дії при помилці нестачі товару в 1С",
     "type": "sop",
     "icon": "🧭"
   },

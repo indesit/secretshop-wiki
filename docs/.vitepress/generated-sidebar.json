@@ -290,8 +290,32 @@
           "collapsed": false,
           "items": [
             {
+              "text": "🧭 Дії при помилці нестачі товару в 1С",
+              "link": "/cash/cash-discipline/sop-stock-shortage-error-during-sale"
+            },
+            {
               "text": "🧭 Касова дисципліна",
               "link": "/cash/cash-discipline/sop-cash-discipline"
+            },
+            {
+              "text": "🧭 Робота з цінниками в прикасовій зоні",
+              "link": "/cash/cash-discipline/sop-price-tags-at-cashdesk"
+            },
+            {
+              "text": "📘 Регламент відповідності товару в чеку фактичному товару",
+              "link": "/cash/cash-discipline/reg-receipt-item-must-match-actual-goods"
+            },
+            {
+              "text": "📘 Регламент заборонених дій на касі",
+              "link": "/cash/cash-discipline/reg-forbidden-actions-at-cashdesk"
+            },
+            {
+              "text": "📘 Регламент руху товару тільки через 1С",
+              "link": "/cash/cash-discipline/reg-goods-movement-only-through-1c"
+            },
+            {
+              "text": "🛡️ Політика касової дисципліни",
+              "link": "/cash/cash-discipline/policy-cash-discipline"
             }
           ]
         },
