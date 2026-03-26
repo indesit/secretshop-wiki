@@ -139,6 +139,11 @@
     "type": "policy",
     "icon": "🛡️"
   },
+  "/cash/cash-discipline/reg-employee-purchases-via-payroll-deduction": {
+    "title": "Регламент внутрішнього придбання товарів працівниками в рахунок заробітної плати",
+    "type": "regulation",
+    "icon": "📘"
+  },
   "/cash/cash-discipline/reg-forbidden-actions-at-cashdesk": {
     "title": "Регламент заборонених дій на касі",
     "type": "regulation",

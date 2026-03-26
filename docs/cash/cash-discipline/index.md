@@ -46,6 +46,7 @@ approval_required: false
 - <IconLucideTags style="vertical-align: text-bottom; margin-right: 6px;" /> **Прикасова зона:** окремий SOP по роботі з цінниками
 - <IconLucideBoxes style="vertical-align: text-bottom; margin-right: 6px;" /> **Рух товару:** вибуття товару лише через 1С
 - <IconLucideReceiptText style="vertical-align: text-bottom; margin-right: 6px;" /> **Точність чека:** у чеку тільки фактичний товар
+- <IconLucideBadgeDollarSign style="vertical-align: text-bottom; margin-right: 6px;" /> **Внутрішні придбання:** отримання товару працівниками в рахунок заробітної плати
 - <IconLucideTriangleAlert style="vertical-align: text-bottom; margin-right: 6px;" /> **Аварійний сценарій:** дії при помилці нестачі в 1С
 
 ## Блок-схема касової дисципліни
@@ -106,3 +107,4 @@ flowchart TD
 - [Регламент заборонених дій на касі](/cash/cash-discipline/reg-forbidden-actions-at-cashdesk)
 - [Регламент руху товару тільки через 1С](/cash/cash-discipline/reg-goods-movement-only-through-1c)
 - [Регламент відповідності товару в чеку фактичному товару](/cash/cash-discipline/reg-receipt-item-must-match-actual-goods)
+- [Регламент внутрішнього придбання товарів працівниками в рахунок заробітної плати](/cash/cash-discipline/reg-employee-purchases-via-payroll-deduction)
