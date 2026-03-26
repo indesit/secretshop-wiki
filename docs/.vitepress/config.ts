@@ -120,19 +120,29 @@ export default withMermaid(defineConfig({
           items: [
             { text: 'Огляд', link: '/returns-and-warranty/' },
             {
-              text: 'Повернення / Обмін',
+              text: 'Повернення',
               collapsed: false,
               items: [
                 { text: 'Огляд', link: '/returns-and-warranty/returns/' },
+                { text: 'Чекліст для продавця', link: '/returns-and-warranty/returns/checklist-seller-returns-exchange-warranty' },
                 { text: 'SOP: Повернення та обмін', link: '/returns-and-warranty/returns/sop-return-exchange' },
+                { text: 'Інструкція: Білизна / піжами / купальники', link: '/returns-and-warranty/returns/instruction-underwear-returns-and-exchange' },
               ],
             },
-            { text: 'Обмін', link: '/returns-and-warranty/exchange/' },
+            {
+              text: 'Обмін',
+              collapsed: false,
+              items: [
+                { text: 'Огляд', link: '/returns-and-warranty/exchange/' },
+                { text: 'Регламент обміну товару', link: '/returns-and-warranty/exchange/reg-exchange-rules' },
+              ],
+            },
             {
               text: 'Гарантія',
               collapsed: false,
               items: [
                 { text: 'Огляд', link: '/returns-and-warranty/warranty/' },
+                { text: 'Регламент гарантійних умов', link: '/returns-and-warranty/warranty/reg-warranty-conditions' },
                 { text: 'SOP: Гарантійне обслуговування', link: '/returns-and-warranty/warranty/sop-warranty' },
               ],
             },
@@ -144,7 +154,14 @@ export default withMermaid(defineConfig({
                 { text: 'SOP: Експертиза товару', link: '/returns-and-warranty/expertise/sop-expertise' },
               ],
             },
-            { text: 'Претензії клієнтів', link: '/returns-and-warranty/customer-claims/' },
+            {
+              text: 'Претензії клієнтів',
+              collapsed: false,
+              items: [
+                { text: 'Огляд', link: '/returns-and-warranty/customer-claims/' },
+                { text: 'SOP: Робота з претензіями клієнтів', link: '/returns-and-warranty/customer-claims/sop-customer-claims-handling' },
+              ],
+            },
           ],
         },
       ],
