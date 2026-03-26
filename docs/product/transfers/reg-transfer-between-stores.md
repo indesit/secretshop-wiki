@@ -27,6 +27,11 @@ approval_required: true
 
 # Регламент переміщення товару між магазинами
 
+<div style="display:flex; gap:10px; flex-wrap:wrap; margin: 0 0 14px 0;">
+  <DocTypeBadge type="regulation" />
+  <StatusBadge status="draft" />
+</div>
+
 > [!WARNING]
 > Цей документ має статус `draft`. Не є офіційним до підтвердження редактором.
 
@@ -87,6 +92,10 @@ approval_required: true
 - Для підсорту застосовується окремий документ: [Регламент переміщення товару між магазинами в рамках підсорту](/product/transfers/reg-subsort-transfer-between-stores).
 - Для термінового запиту під реального клієнта застосовується окремий документ: [Регламент LIVE-переміщення між магазинами](/product/transfers/reg-live-transfer-between-stores).
 - Покрокова процедура LIVE-сценарію описана в документі: [SOP: LIVE-переміщення між магазинами](/product/transfers/sop-live-transfer).
+
+<EscalationBox title="Ключове правило" level="info">
+Будь-яке переміщення між магазинами виконується тільки через єдиний порядок оформлення, підтвердження та прийому. Ручні домовленості не замінюють регламент.
+</EscalationBox>
 
 ## Заборонені дії
 

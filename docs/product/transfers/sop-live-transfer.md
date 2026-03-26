@@ -28,6 +28,11 @@ approval_required: true
 
 # SOP: LIVE-переміщення між магазинами
 
+<div style="display:flex; gap:10px; flex-wrap:wrap; margin: 0 0 14px 0;">
+  <DocTypeBadge type="sop" />
+  <StatusBadge status="draft" />
+</div>
+
 > [!WARNING]
 > Цей документ має статус `draft`. Не є офіційним до підтвердження редактором.
 
@@ -94,6 +99,10 @@ flowchart TD
 ```
 
 ## Основні правила
+
+<EscalationBox title="Критична точка" level="critical">
+Якщо магазин-донор не підтверджує наявність, блокує передачу поза регламентом або виникає конфлікт по резерву, процес не зупиняється в чаті — кейс одразу ескалується.
+</EscalationBox>
 
 ## Покрокові дії
 
