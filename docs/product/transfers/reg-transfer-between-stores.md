@@ -138,6 +138,4 @@ approval_required: true
 
 ## Пов'язані документи
 
-- [Регламент переміщення товару між магазинами в рамках підсорту](/product/transfers/reg-subsort-transfer-between-stores)
-- [Регламент LIVE-переміщення між магазинами](/product/transfers/reg-live-transfer-between-stores)
-- [SOP: LIVE-переміщення між магазинами](/product/transfers/sop-live-transfer)
+<RelatedDocuments />

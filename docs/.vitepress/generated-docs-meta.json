@@ -1,0 +1,192 @@
+{
+  "/company/": {
+    "title": "Компанія",
+    "type": "regulation",
+    "icon": "📘"
+  },
+  "/company/escalation-matrix": {
+    "title": "Матриця ескалації нестандартних ситуацій",
+    "type": "regulation",
+    "icon": "📘"
+  },
+  "/company/mission-and-principles": {
+    "title": "Mission And Principles",
+    "type": "regulation",
+    "icon": "📘"
+  },
+  "/company/org-structure": {
+    "title": "Org Structure",
+    "type": "regulation",
+    "icon": "📘"
+  },
+  "/company/roles-and-responsibilities": {
+    "title": "Roles And Responsibilities",
+    "type": "regulation",
+    "icon": "📘"
+  },
+  "/stores/": {
+    "title": "Магазини",
+    "type": "regulation",
+    "icon": "📘"
+  },
+  "/stores/нестандартні-ситуації": {
+    "title": "Нестандартні ситуації в магазині",
+    "type": "incident",
+    "icon": "🚨"
+  },
+  "/stores/opening-closing/sop-opening-closing": {
+    "title": "Відкриття та закриття магазину",
+    "type": "sop",
+    "icon": "🧭"
+  },
+  "/stores/service-standards/sop-service-standards": {
+    "title": "Стандарти обслуговування клієнтів",
+    "type": "sop",
+    "icon": "🧭"
+  },
+  "/stores/technical-issues/sop-technical-incident": {
+    "title": "Порядок дій при технічній несправності в магазині",
+    "type": "sop",
+    "icon": "🧭"
+  },
+  "/product/": {
+    "title": "Товар",
+    "type": "regulation",
+    "icon": "📘"
+  },
+  "/product/transfers/checklist-live-transfer-chat-rules": {
+    "title": "Чекліст комунікації для LIVE-переміщення",
+    "type": "checklist",
+    "icon": "✅"
+  },
+  "/product/transfers/reg-live-transfer-between-stores": {
+    "title": "Регламент LIVE-переміщення між магазинами",
+    "type": "regulation",
+    "icon": "📘"
+  },
+  "/product/transfers/reg-subsort-transfer-between-stores": {
+    "title": "Регламент переміщення товару між магазинами в рамках підсорту",
+    "type": "regulation",
+    "icon": "📘"
+  },
+  "/product/transfers/reg-transfer-between-stores": {
+    "title": "Регламент переміщення товару між магазинами",
+    "type": "regulation",
+    "icon": "📘"
+  },
+  "/product/transfers/sop-live-transfer": {
+    "title": "LIVE-переміщення між магазинами",
+    "type": "sop",
+    "icon": "🧭"
+  },
+  "/returns-and-warranty/": {
+    "title": "Повернення та гарантія",
+    "type": "regulation",
+    "icon": "📘"
+  },
+  "/returns-and-warranty/returns/checklist-seller-returns-exchange-warranty": {
+    "title": "Чекліст для продавця: повернення, обмін, гарантія",
+    "type": "checklist",
+    "icon": "✅"
+  },
+  "/returns-and-warranty/returns/instruction-underwear-returns-and-exchange": {
+    "title": "Звернення щодо повернення та обміну натільної білизни",
+    "type": "instruction",
+    "icon": "📝"
+  },
+  "/returns-and-warranty/returns/sop-return-exchange": {
+    "title": "Порядок дій при поверненні та обміні товару",
+    "type": "sop",
+    "icon": "🧭"
+  },
+  "/returns-and-warranty/exchange/reg-exchange-rules": {
+    "title": "Регламент обміну товару",
+    "type": "regulation",
+    "icon": "📘"
+  },
+  "/returns-and-warranty/warranty/reg-warranty-conditions": {
+    "title": "Регламент гарантійних умов",
+    "type": "regulation",
+    "icon": "📘"
+  },
+  "/returns-and-warranty/warranty/sop-warranty": {
+    "title": "Гарантійне обслуговування",
+    "type": "sop",
+    "icon": "🧭"
+  },
+  "/returns-and-warranty/expertise/sop-expertise": {
+    "title": "Товарна експертиза",
+    "type": "sop",
+    "icon": "🧭"
+  },
+  "/returns-and-warranty/customer-claims/sop-customer-claims-handling": {
+    "title": "Робота з претензіями клієнтів",
+    "type": "sop",
+    "icon": "🧭"
+  },
+  "/sales/": {
+    "title": "Продажі",
+    "type": "regulation",
+    "icon": "📘"
+  },
+  "/cash/": {
+    "title": "Каса",
+    "type": "regulation",
+    "icon": "📘"
+  },
+  "/cash/cash-discipline/sop-cash-discipline": {
+    "title": "Касова дисципліна",
+    "type": "sop",
+    "icon": "🧭"
+  },
+  "/hr/": {
+    "title": "HR",
+    "type": "regulation",
+    "icon": "📘"
+  },
+  "/templates/": {
+    "title": "Шаблони документів",
+    "type": "template",
+    "icon": "📄"
+  },
+  "/templates/checklist-template": {
+    "title": "Назва чекліста",
+    "type": "checklist",
+    "icon": "✅"
+  },
+  "/templates/decision-log-template": {
+    "title": "Реєстр управлінських рішень",
+    "type": "template",
+    "icon": "📄"
+  },
+  "/templates/incident-template": {
+    "title": "Назва інциденту",
+    "type": "incident",
+    "icon": "🚨"
+  },
+  "/templates/policy-template": {
+    "title": "Назва Policy",
+    "type": "policy",
+    "icon": "🛡️"
+  },
+  "/templates/regulation-template": {
+    "title": "Назва регламенту",
+    "type": "regulation",
+    "icon": "📘"
+  },
+  "/templates/sop-template": {
+    "title": "Назва SOP",
+    "type": "sop",
+    "icon": "🧭"
+  },
+  "/glossary/": {
+    "title": "index",
+    "type": "",
+    "icon": "📄"
+  },
+  "/glossary/terms": {
+    "title": "Глосарій термінів",
+    "type": "regulation",
+    "icon": "📘"
+  }
+}

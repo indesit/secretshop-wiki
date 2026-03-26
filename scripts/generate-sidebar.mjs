@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 /**
  * generate-sidebar.mjs
- * Generates a VitePress sidebar config from the docs/ directory structure
- * and frontmatter titles. Output: .vitepress/generated-sidebar.json
- *
- * Usage: node scripts/generate-sidebar.mjs
+ * Generates VitePress sidebar config and docs metadata index from docs/.
+ * Outputs:
+ *  - .vitepress/generated-sidebar.json
+ *  - .vitepress/generated-docs-meta.json
  */
 
 import { readFileSync, writeFileSync, readdirSync, statSync, existsSync } from 'fs'
@@ -13,7 +13,8 @@ import { fileURLToPath } from 'url'
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url))
 const DOCS_DIR = join(__dirname, '..', 'docs')
-const OUTPUT_PATH = join(__dirname, '..', 'docs', '.vitepress', 'generated-sidebar.json')
+const SIDEBAR_OUTPUT_PATH = join(__dirname, '..', 'docs', '.vitepress', 'generated-sidebar.json')
+const META_OUTPUT_PATH = join(__dirname, '..', 'docs', '.vitepress', 'generated-docs-meta.json')
 
 const SKIP_DIRS = new Set(['.vitepress', 'public', 'node_modules'])
 const TOP_LEVEL_SECTIONS = [
@@ -57,6 +58,8 @@ const TYPE_ORDER = {
 const SECTION_ORDER = {
   'returns-and-warranty': ['returns', 'exchange', 'warranty', 'expertise', 'customer-claims'],
 }
+
+const docsMeta = {}
 
 function parseFrontmatter(content) {
   const match = content.match(/^---\s*\n([\s\S]*?)\n---/)
@@ -122,6 +125,14 @@ function sortText(a, b) {
   return a.localeCompare(b, 'uk')
 }
 
+function registerDocMeta(link, meta) {
+  docsMeta[link] = {
+    title: cleanupTitle(meta.title, meta.type),
+    type: meta.type || '',
+    icon: TYPE_ICONS[meta.type] || TYPE_ICONS.default,
+  }
+}
+
 function buildSectionItems(sectionDir, rootSection = null) {
   const items = []
 
@@ -165,12 +176,14 @@ function buildSectionItems(sectionDir, rootSection = null) {
         })
       } else if (extname(entry) === '.md' && entry !== 'index.md') {
         const meta = getDocMeta(fullPath)
+        const link = toVitePressLink(fullPath)
+        registerDocMeta(link, meta)
         items.push({
           kind: 'doc',
           key: entry,
           sortType: meta.type,
           text: prefixTitle(cleanupTitle(meta.title, meta.type), meta.type),
-          link: toVitePressLink(fullPath),
+          link,
         })
       }
     }
@@ -200,6 +213,7 @@ for (const section of TOP_LEVEL_SECTIONS) {
   const sectionMeta = getDocMeta(indexPath)
   const sectionTitle = sectionMeta.title || section
 
+  registerDocMeta(sectionKey, sectionMeta)
   const items = buildSectionItems(sectionDir, section)
 
   sidebar[sectionKey] = [{
@@ -211,6 +225,8 @@ for (const section of TOP_LEVEL_SECTIONS) {
   }]
 }
 
-writeFileSync(OUTPUT_PATH, JSON.stringify(sidebar, null, 2), 'utf-8')
-console.log(`✅ Sidebar config generated → ${OUTPUT_PATH}`)
+writeFileSync(SIDEBAR_OUTPUT_PATH, JSON.stringify(sidebar, null, 2), 'utf-8')
+writeFileSync(META_OUTPUT_PATH, JSON.stringify(docsMeta, null, 2), 'utf-8')
+console.log(`✅ Sidebar config generated → ${SIDEBAR_OUTPUT_PATH}`)
+console.log(`✅ Docs meta generated → ${META_OUTPUT_PATH}`)
 console.log(`   Sections: ${Object.keys(sidebar).join(', ')}`)
