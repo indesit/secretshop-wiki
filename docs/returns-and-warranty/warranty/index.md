@@ -37,5 +37,10 @@ approval_required: false
 
 ## Документи розділу
 
-- [Регламент гарантійних умов](/returns-and-warranty/warranty/reg-warranty-conditions)
+### SOP
+
 - [SOP: Гарантійне обслуговування](/returns-and-warranty/warranty/sop-warranty)
+
+### Регламенти
+
+- [Регламент гарантійних умов](/returns-and-warranty/warranty/reg-warranty-conditions)

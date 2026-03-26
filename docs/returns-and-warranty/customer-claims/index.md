@@ -36,4 +36,6 @@ approval_required: false
 
 ## Документи розділу
 
+### SOP
+
 - [SOP: Робота з претензіями клієнтів](/returns-and-warranty/customer-claims/sop-customer-claims-handling)

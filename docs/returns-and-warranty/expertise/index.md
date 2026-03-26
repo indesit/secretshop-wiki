@@ -36,4 +36,6 @@ approval_required: false
 
 ## Документи розділу
 
+### SOP
+
 - [SOP: Товарна експертиза](/returns-and-warranty/expertise/sop-expertise)

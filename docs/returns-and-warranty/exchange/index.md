@@ -36,4 +36,6 @@ approval_required: false
 
 ## Документи розділу
 
+### Регламенти
+
 - [Регламент обміну товару](/returns-and-warranty/exchange/reg-exchange-rules)

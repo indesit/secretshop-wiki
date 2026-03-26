@@ -38,6 +38,14 @@ approval_required: false
 
 ## Документи розділу
 
+### Чеклісти
+
 - [Чекліст для продавця: повернення, обмін, гарантія](/returns-and-warranty/returns/checklist-seller-returns-exchange-warranty)
+
+### SOP
+
 - [SOP: Порядок дій при поверненні та обміні товару](/returns-and-warranty/returns/sop-return-exchange)
+
+### Інструкції
+
 - [Інструкція: Звернення щодо повернення та обміну натільної білизни](/returns-and-warranty/returns/instruction-underwear-returns-and-exchange)

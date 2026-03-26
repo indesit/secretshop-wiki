@@ -47,16 +47,16 @@ approval_required: false
 
 ## Документи розділу
 
-### Регламенти
+### Чеклісти
 
-- [Регламент переміщення товару між магазинами](/product/transfers/reg-transfer-between-stores)
-- [Регламент переміщення товару між магазинами в рамках підсорту](/product/transfers/reg-subsort-transfer-between-stores)
-- [Регламент LIVE-переміщення між магазинами](/product/transfers/reg-live-transfer-between-stores)
+- [Чекліст комунікації для LIVE-переміщення](/product/transfers/checklist-live-transfer-chat-rules)
 
 ### SOP
 
 - [SOP: LIVE-переміщення між магазинами](/product/transfers/sop-live-transfer)
 
-### Короткі пам'ятки та чеклісти
+### Регламенти
 
-- [Чекліст комунікації для LIVE-переміщення](/product/transfers/checklist-live-transfer-chat-rules)
+- [Регламент переміщення товару між магазинами](/product/transfers/reg-transfer-between-stores)
+- [Регламент переміщення товару між магазинами в рамках підсорту](/product/transfers/reg-subsort-transfer-between-stores)
+- [Регламент LIVE-переміщення між магазинами](/product/transfers/reg-live-transfer-between-stores)
