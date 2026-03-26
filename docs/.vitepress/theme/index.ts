@@ -6,6 +6,8 @@ import DocTypeBadge from './components/DocTypeBadge.vue'
 import EscalationBox from './components/EscalationBox.vue'
 import DocumentMeta from './components/DocumentMeta.vue'
 import RelatedDocuments from './components/RelatedDocuments.vue'
+import RoleCard from './components/RoleCard.vue'
+import DecisionRule from './components/DecisionRule.vue'
 import { h, nextTick } from 'vue'
 import mediumZoom from 'medium-zoom'
 import { enhanceAppWithTabs } from 'vitepress-plugin-tabs/client'
@@ -43,6 +45,8 @@ export default {
     app.component('EscalationBox', EscalationBox)
     app.component('DocumentMeta', DocumentMeta)
     app.component('RelatedDocuments', RelatedDocuments)
+    app.component('RoleCard', RoleCard)
+    app.component('DecisionRule', DecisionRule)
     enhanceAppWithTabs(app)
 
     if (typeof window !== 'undefined') {
