@@ -20,6 +20,7 @@ summary: >-
   оборачуваності та строку зберігання.
 related_documents:
   - /product/transfers/reg-transfer-between-stores
+  - /product/transfers/reg-live-transfer-between-stores
   - /product/transfers/sop-live-transfer
 source_of_truth: ai-draft
 ai_generated: true
@@ -201,7 +202,7 @@ approval_required: true
 
 - Для нових моделей рішення приймається за фактичний період продажу, якщо 12 місяців даних ще немає.
 - Якщо бракує повних даних по моделі, запит не відхиляється автоматично, але потребує додаткового уточнення.
-- Для LIVE-сценаріїв застосовується окремий порядок: [SOP: LIVE-переміщення між магазинами](/product/transfers/sop-live-transfer).
+- Для LIVE-сценаріїв застосовується окремий регламент: [Регламент LIVE-переміщення між магазинами](/product/transfers/reg-live-transfer-between-stores).
 - TODO: уточнити, чи є окремі винятки для сезонного товару, акційних моделей або резервів під клієнта.
 
 ## Контроль виконання
