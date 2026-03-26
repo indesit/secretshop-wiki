@@ -58,6 +58,42 @@ approval_required: true
 | КЗ / адміністратор | Перевірку підстав і маршрутизацію звернення |
 | Директор магазину | Спірні випадки та передачу на експертизу |
 
+## Блок-схема маршрутизації звернення
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "fontFamily": "Inter, Arial, sans-serif",
+    "primaryColor": "#dbeafe",
+    "primaryBorderColor": "#2563eb",
+    "primaryTextColor": "#1e3a8a",
+    "secondaryColor": "#fef3c7",
+    "tertiaryColor": "#dcfce7",
+    "lineColor": "#64748b"
+  }
+}}%%
+flowchart TD
+    A[Клієнт звертається] --> B{Тип звернення}
+    B -->|Повернення / обмін| C{Категорія товару}
+    B -->|Дефект| D[Перевірити гарантійний строк]
+    C -->|Стандартний товар| E[Стандартний порядок]
+    C -->|Білизна / піжами / купальники| F[Окрема інструкція]
+    D --> G{Причина дефекту очевидна?}
+    G -->|Так| H[Гарантійний порядок]
+    G -->|Ні| I[Експертиза]
+    E --> J[Оформити рішення]
+    F --> J
+    H --> J
+    I --> J
+
+    classDef action fill:#dbeafe,stroke:#2563eb,color:#1e3a8a,stroke-width:2px;
+    classDef decision fill:#fef3c7,stroke:#d97706,color:#92400e,stroke-width:2px;
+    classDef success fill:#dcfce7,stroke:#16a34a,color:#166534,stroke-width:2px;
+    class A,D,E,F,H,I,J action;
+    class B,C,G decision;
+```
+
 ## Покрокові дії
 
 ### Крок 1 — Визначте тип звернення
