@@ -5,6 +5,9 @@ hero:
   name: Company Wiki
   text: Корпоративна база знань
   tagline: Створено людьми та AI-агентами. Затверджено редактором. Актуально завжди.
+  image:
+    src: /img/secretshop-logo.jpg
+    alt: Secret Shop
   actions:
     - theme: brand
       text: Магазини
