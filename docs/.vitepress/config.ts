@@ -1,6 +1,10 @@
 import { defineConfig } from 'vitepress'
+import { withMermaid } from 'vitepress-plugin-mermaid'
+import { tabsMarkdownPlugin } from 'vitepress-plugin-tabs'
+import Icons from 'unplugin-icons/vite'
 
-export default defineConfig({
+export default withMermaid(defineConfig({
+
   title: 'Company Wiki',
   description: 'Корпоративна база знань',
   lang: 'uk-UA',
@@ -10,6 +14,14 @@ export default defineConfig({
   head: [
     ['meta', { name: 'theme-color', content: '#3b82f6' }],
   ],
+
+  vite: {
+    plugins: [
+      Icons({
+        compiler: 'vue3',
+      }),
+    ],
+  },
 
   themeConfig: {
     logo: '/logo.svg',
@@ -238,5 +250,8 @@ export default defineConfig({
 
   markdown: {
     lineNumbers: true,
+    config(md) {
+      md.use(tabsMarkdownPlugin)
+    },
   },
-})
+}))

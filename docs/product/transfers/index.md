@@ -29,6 +29,13 @@ approval_required: false
 > [!NOTE]
 > У цьому розділі зібрані регламенти, SOP та короткі операційні матеріали щодо переміщення товару між магазинами мережі.
 
+## Навігація по розділу
+
+- <IconLucideArrowRightLeft style="vertical-align: text-bottom; margin-right: 6px;" /> **Базові правила:** регламент загального переміщення між магазинами
+- <IconLucideChartColumnIncreasing style="vertical-align: text-bottom; margin-right: 6px;" /> **Аналітична логіка:** окремий регламент підсорту
+- <IconLucideZap style="vertical-align: text-bottom; margin-right: 6px;" /> **Терміновий сценарій:** окремий LIVE-регламент і SOP
+- <IconLucideMessageSquareWarning style="vertical-align: text-bottom; margin-right: 6px;" /> **Комунікація:** короткий чекліст для чатів
+
 ## Документи розділу
 
 ### Регламенти
