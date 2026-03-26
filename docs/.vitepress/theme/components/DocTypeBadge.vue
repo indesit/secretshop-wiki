@@ -8,12 +8,12 @@ const props = withDefaults(defineProps<{
 })
 
 const labelMap: Record<string, string> = {
-  policy: 'Policy',
-  regulation: 'Regulation',
+  policy: 'Політика',
+  regulation: 'Регламент',
   sop: 'SOP',
-  instruction: 'Instruction',
-  checklist: 'Checklist',
-  incident: 'Incident',
+  instruction: 'Інструкція',
+  checklist: 'Чекліст',
+  incident: 'Інцидент',
 }
 
 const normalized = computed(() => String(props.type).toLowerCase())

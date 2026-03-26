@@ -20,22 +20,21 @@
   padding-bottom: 0.5rem;
 }
 
-/* Status badge styling */
 .status-draft    { color: #f59e0b; font-weight: 600; }
 .status-approved { color: #10b981; font-weight: 600; }
 .status-archived { color: #6b7280; font-weight: 600; }
 
-/* Custom utility for the nav content */
 .VPNavBarContent {
   display: flex !important;
   align-items: center;
 }
 
-/* Wiki UI components */
 .wiki-badge {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.35rem;
+  min-width: 112px;
   padding: 0.28rem 0.7rem;
   border-radius: 999px;
   border: 1px solid transparent;
@@ -44,6 +43,12 @@
   line-height: 1;
   letter-spacing: 0.01em;
   white-space: nowrap;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.wiki-badge--status {
+  min-width: 92px;
 }
 
 .wiki-badge--status.wiki-badge--draft {
@@ -185,7 +190,6 @@
   background: rgba(239, 68, 68, 0.12);
 }
 
-/* Mermaid diagrams */
 .vp-doc .mermaid {
   display: flex;
   justify-content: center;

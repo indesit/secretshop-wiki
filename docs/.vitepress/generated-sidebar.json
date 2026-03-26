@@ -1,0 +1,402 @@
+{
+  "/company/": [
+    {
+      "text": "Компанія",
+      "items": [
+        {
+          "text": "🏠 Огляд",
+          "link": "/company/"
+        },
+        {
+          "text": "📘 Матриця ескалації нестандартних ситуацій",
+          "link": "/company/escalation-matrix"
+        },
+        {
+          "text": "📘 Mission And Principles",
+          "link": "/company/mission-and-principles"
+        },
+        {
+          "text": "📘 Org Structure",
+          "link": "/company/org-structure"
+        },
+        {
+          "text": "📘 Roles And Responsibilities",
+          "link": "/company/roles-and-responsibilities"
+        }
+      ]
+    }
+  ],
+  "/stores/": [
+    {
+      "text": "Магазини",
+      "items": [
+        {
+          "text": "🏠 Огляд",
+          "link": "/stores/"
+        },
+        {
+          "text": "🚨 Нестандартні ситуації в магазині",
+          "link": "/stores/нестандартні-ситуації"
+        },
+        {
+          "text": "📁 Технічне обслуговування",
+          "collapsed": false,
+          "items": []
+        },
+        {
+          "text": "📁 Мерчендайзинг",
+          "collapsed": false,
+          "items": []
+        },
+        {
+          "text": "📁 Відкриття та закриття магазину",
+          "collapsed": false,
+          "items": [
+            {
+              "text": "🧭 Відкриття та закриття магазину",
+              "link": "/stores/opening-closing/sop-opening-closing"
+            }
+          ]
+        },
+        {
+          "text": "📁 Безпека та охорона",
+          "collapsed": false,
+          "items": []
+        },
+        {
+          "text": "📁 Стандарти обслуговування",
+          "collapsed": false,
+          "items": [
+            {
+              "text": "🧭 Стандарти обслуговування клієнтів",
+              "link": "/stores/service-standards/sop-service-standards"
+            }
+          ]
+        },
+        {
+          "text": "📁 Технічні несправності",
+          "collapsed": false,
+          "items": [
+            {
+              "text": "🧭 Порядок дій при технічній несправності в магазині",
+              "link": "/stores/technical-issues/sop-technical-incident"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "/product/": [
+    {
+      "text": "Товар",
+      "items": [
+        {
+          "text": "🏠 Огляд",
+          "link": "/product/"
+        },
+        {
+          "text": "📁 Асортимент",
+          "collapsed": false,
+          "items": []
+        },
+        {
+          "text": "📁 Обробка браку",
+          "collapsed": false,
+          "items": []
+        },
+        {
+          "text": "📁 Пошкодження товару",
+          "collapsed": false,
+          "items": []
+        },
+        {
+          "text": "📁 Приймання товару",
+          "collapsed": false,
+          "items": []
+        },
+        {
+          "text": "📁 Недостача та лишки",
+          "collapsed": false,
+          "items": []
+        },
+        {
+          "text": "📁 Залишки на складі",
+          "collapsed": false,
+          "items": []
+        },
+        {
+          "text": "📁 Переміщення між магазинами",
+          "collapsed": false,
+          "items": [
+            {
+              "text": "✅ Чекліст комунікації для LIVE-переміщення",
+              "link": "/product/transfers/checklist-live-transfer-chat-rules"
+            },
+            {
+              "text": "📘 Регламент LIVE-переміщення між магазинами",
+              "link": "/product/transfers/reg-live-transfer-between-stores"
+            },
+            {
+              "text": "📘 Регламент переміщення товару між магазинами в рамках підсорту",
+              "link": "/product/transfers/reg-subsort-transfer-between-stores"
+            },
+            {
+              "text": "📘 Регламент переміщення товару між магазинами",
+              "link": "/product/transfers/reg-transfer-between-stores"
+            },
+            {
+              "text": "🧭 LIVE-переміщення між магазинами",
+              "link": "/product/transfers/sop-live-transfer"
+            }
+          ]
+        },
+        {
+          "text": "📁 Списання",
+          "collapsed": false,
+          "items": []
+        }
+      ]
+    }
+  ],
+  "/returns-and-warranty/": [
+    {
+      "text": "Повернення та гарантія",
+      "items": [
+        {
+          "text": "🏠 Огляд",
+          "link": "/returns-and-warranty/"
+        },
+        {
+          "text": "📁 Претензії клієнтів",
+          "collapsed": false,
+          "items": [
+            {
+              "text": "🧭 Робота з претензіями клієнтів",
+              "link": "/returns-and-warranty/customer-claims/sop-customer-claims-handling"
+            }
+          ]
+        },
+        {
+          "text": "📁 Обмін товару",
+          "collapsed": false,
+          "items": [
+            {
+              "text": "📘 Регламент обміну товару",
+              "link": "/returns-and-warranty/exchange/reg-exchange-rules"
+            }
+          ]
+        },
+        {
+          "text": "📁 Товарна експертиза",
+          "collapsed": false,
+          "items": [
+            {
+              "text": "🧭 Товарна експертиза",
+              "link": "/returns-and-warranty/expertise/sop-expertise"
+            }
+          ]
+        },
+        {
+          "text": "📁 Повернення товару",
+          "collapsed": false,
+          "items": [
+            {
+              "text": "✅ Чекліст для продавця: повернення, обмін, гарантія",
+              "link": "/returns-and-warranty/returns/checklist-seller-returns-exchange-warranty"
+            },
+            {
+              "text": "📝 Звернення щодо повернення та обміну натільної білизни",
+              "link": "/returns-and-warranty/returns/instruction-underwear-returns-and-exchange"
+            },
+            {
+              "text": "🧭 Порядок дій при поверненні та обміні товару",
+              "link": "/returns-and-warranty/returns/sop-return-exchange"
+            }
+          ]
+        },
+        {
+          "text": "📁 Гарантійне обслуговування",
+          "collapsed": false,
+          "items": [
+            {
+              "text": "📘 Регламент гарантійних умов",
+              "link": "/returns-and-warranty/warranty/reg-warranty-conditions"
+            },
+            {
+              "text": "🧭 Гарантійне обслуговування",
+              "link": "/returns-and-warranty/warranty/sop-warranty"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "/sales/": [
+    {
+      "text": "Продажі",
+      "items": [
+        {
+          "text": "🏠 Огляд",
+          "link": "/sales/"
+        },
+        {
+          "text": "📁 Консультація клієнтів",
+          "collapsed": false,
+          "items": []
+        },
+        {
+          "text": "📁 Робота із запереченнями",
+          "collapsed": false,
+          "items": []
+        },
+        {
+          "text": "📁 Замовлення",
+          "collapsed": false,
+          "items": []
+        },
+        {
+          "text": "📁 Резерви",
+          "collapsed": false,
+          "items": []
+        },
+        {
+          "text": "📁 Нестандартні кейси продажу",
+          "collapsed": false,
+          "items": []
+        },
+        {
+          "text": "📁 Допродаж (Upsell/Cross-sell)",
+          "collapsed": false,
+          "items": []
+        }
+      ]
+    }
+  ],
+  "/cash/": [
+    {
+      "text": "Каса",
+      "items": [
+        {
+          "text": "🏠 Огляд",
+          "link": "/cash/"
+        },
+        {
+          "text": "📁 Касова дисципліна",
+          "collapsed": false,
+          "items": [
+            {
+              "text": "🧭 Касова дисципліна",
+              "link": "/cash/cash-discipline/sop-cash-discipline"
+            }
+          ]
+        },
+        {
+          "text": "📁 Касові інциденти",
+          "collapsed": false,
+          "items": []
+        },
+        {
+          "text": "📁 Оплати",
+          "collapsed": false,
+          "items": []
+        },
+        {
+          "text": "📁 Чеки",
+          "collapsed": false,
+          "items": []
+        },
+        {
+          "text": "📁 Закриття зміни",
+          "collapsed": false,
+          "items": []
+        }
+      ]
+    }
+  ],
+  "/hr/": [
+    {
+      "text": "HR",
+      "items": [
+        {
+          "text": "🏠 Огляд",
+          "link": "/hr/"
+        },
+        {
+          "text": "📁 Підбір персоналу",
+          "collapsed": false,
+          "items": []
+        },
+        {
+          "text": "📁 Мотивація",
+          "collapsed": false,
+          "items": []
+        },
+        {
+          "text": "📁 Адаптація",
+          "collapsed": false,
+          "items": []
+        },
+        {
+          "text": "📁 Стандарти персоналу",
+          "collapsed": false,
+          "items": []
+        },
+        {
+          "text": "📁 Навчання",
+          "collapsed": false,
+          "items": []
+        }
+      ]
+    }
+  ],
+  "/templates/": [
+    {
+      "text": "Шаблони документів",
+      "items": [
+        {
+          "text": "🏠 Огляд",
+          "link": "/templates/"
+        },
+        {
+          "text": "✅ Назва чекліста",
+          "link": "/templates/checklist-template"
+        },
+        {
+          "text": "📄 Реєстр управлінських рішень",
+          "link": "/templates/decision-log-template"
+        },
+        {
+          "text": "🚨 Назва інциденту",
+          "link": "/templates/incident-template"
+        },
+        {
+          "text": "🛡️ Назва Policy",
+          "link": "/templates/policy-template"
+        },
+        {
+          "text": "📘 Назва регламенту",
+          "link": "/templates/regulation-template"
+        },
+        {
+          "text": "🧭 Назва SOP",
+          "link": "/templates/sop-template"
+        }
+      ]
+    }
+  ],
+  "/glossary/": [
+    {
+      "text": "index",
+      "items": [
+        {
+          "text": "🏠 Огляд",
+          "link": "/glossary/"
+        },
+        {
+          "text": "📘 Глосарій термінів",
+          "link": "/glossary/terms"
+        }
+      ]
+    }
+  ]
+}
