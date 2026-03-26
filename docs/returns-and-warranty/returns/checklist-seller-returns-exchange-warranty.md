@@ -29,10 +29,14 @@ approval_required: true
 
 # Чекліст для продавця: повернення, обмін, гарантія
 
-<div style="display:flex; gap:10px; flex-wrap:wrap; margin: 0 0 14px 0;">
-  <DocTypeBadge type="checklist" />
-  <StatusBadge status="draft" />
-</div>
+<DocumentMeta
+  type="checklist"
+  status="draft"
+  owner="Anton"
+  review-cycle-days="90"
+  effective-from="2026-03-26"
+  last-reviewed="2026-03-26"
+/>
 
 **Коли використовується:** при будь-якому зверненні клієнта після покупки.
 

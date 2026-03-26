@@ -22,9 +22,14 @@ approval_required: false
 
 # Претензії клієнтів
 
-<div style="display:flex; gap:10px; flex-wrap:wrap; margin: 0 0 14px 0;">
-  <DocTypeBadge type="sop" />
-</div>
+<DocumentMeta
+  type="regulation"
+  status="approved"
+  owner="Anton"
+  review-cycle-days="365"
+  effective-from="2026-03-26"
+  last-reviewed="2026-03-26"
+/>
 
 > [!NOTE]
 > У цьому розділі зібрані документи щодо роботи зі складними претензіями, конфліктною комунікацією та внутрішньою ескалацією.

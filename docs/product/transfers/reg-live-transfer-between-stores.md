@@ -28,10 +28,14 @@ approval_required: true
 
 # Регламент LIVE-переміщення між магазинами
 
-<div style="display:flex; gap:10px; flex-wrap:wrap; margin: 0 0 14px 0;">
-  <DocTypeBadge type="regulation" />
-  <StatusBadge status="draft" />
-</div>
+<DocumentMeta
+  type="regulation"
+  status="draft"
+  owner="Anton"
+  review-cycle-days="365"
+  effective-from="2026-03-25"
+  last-reviewed="2026-03-25"
+/>
 
 > [!WARNING]
 > Цей документ має статус `draft`. Не є офіційним до підтвердження редактором.

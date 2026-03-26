@@ -27,10 +27,14 @@ approval_required: true
 
 # Інструкція: Звернення щодо повернення та обміну натільної білизни
 
-<div style="display:flex; gap:10px; flex-wrap:wrap; margin: 0 0 14px 0;">
-  <DocTypeBadge type="instruction" />
-  <StatusBadge status="draft" />
-</div>
+<DocumentMeta
+  type="instruction"
+  status="draft"
+  owner="Anton"
+  review-cycle-days="180"
+  effective-from="2026-03-26"
+  last-reviewed="2026-03-26"
+/>
 
 > [!WARNING]
 > Цей документ має статус `draft`. Не є офіційним до підтвердження редактором.

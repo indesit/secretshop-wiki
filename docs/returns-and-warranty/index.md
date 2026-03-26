@@ -25,11 +25,14 @@ approval_required: false
 
 # Повернення та гарантія
 
-<div style="display:flex; gap:10px; flex-wrap:wrap; margin: 0 0 14px 0;">
-  <DocTypeBadge type="regulation" />
-  <DocTypeBadge type="sop" />
-  <DocTypeBadge type="instruction" />
-</div>
+<DocumentMeta
+  type="regulation"
+  status="approved"
+  owner="Anton"
+  review-cycle-days="365"
+  effective-from="2026-03-26"
+  last-reviewed="2026-03-26"
+/>
 
 > [!NOTE]
 > Цей розділ містить документи про повернення, обмін, гарантійні звернення, експертизу та роботу зі спірними випадками після продажу.
