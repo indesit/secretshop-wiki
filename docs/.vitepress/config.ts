@@ -16,6 +16,9 @@ export default withMermaid(defineConfig({
   ],
 
   vite: {
+    server: {
+      allowedHosts: ['wiki.secretshop.ua'],
+    },
     plugins: [
       Icons({
         compiler: 'vue3',
