@@ -26,6 +26,13 @@ approval_required: false
 
 # Переміщення між магазинами
 
+<div style="display:flex; gap:10px; flex-wrap:wrap; margin: 0 0 14px 0;">
+  <DocTypeBadge type="regulation" />
+  <DocTypeBadge type="sop" />
+  <DocTypeBadge type="checklist" />
+  <StatusBadge status="draft" />
+</div>
+
 > [!NOTE]
 > У цьому розділі зібрані регламенти, SOP та короткі операційні матеріали щодо переміщення товару між магазинами мережі.
 

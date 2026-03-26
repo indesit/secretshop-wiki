@@ -1,6 +1,9 @@
 import DefaultTheme from 'vitepress/theme'
 import './custom.css'
 import AISearch from './components/AISearch.vue'
+import StatusBadge from './components/StatusBadge.vue'
+import DocTypeBadge from './components/DocTypeBadge.vue'
+import EscalationBox from './components/EscalationBox.vue'
 import { h, nextTick } from 'vue'
 import mediumZoom from 'medium-zoom'
 import { enhanceAppWithTabs } from 'vitepress-plugin-tabs/client'
@@ -33,6 +36,9 @@ export default {
   },
   enhanceApp({ app, router }: EnhanceAppContext) {
     app.component('AISearch', AISearch)
+    app.component('StatusBadge', StatusBadge)
+    app.component('DocTypeBadge', DocTypeBadge)
+    app.component('EscalationBox', EscalationBox)
     enhanceAppWithTabs(app)
 
     if (typeof window !== 'undefined') {
