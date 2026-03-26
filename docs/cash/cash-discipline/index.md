@@ -48,6 +48,48 @@ approval_required: false
 - <IconLucideReceiptText style="vertical-align: text-bottom; margin-right: 6px;" /> **Точність чека:** у чеку тільки фактичний товар
 - <IconLucideTriangleAlert style="vertical-align: text-bottom; margin-right: 6px;" /> **Аварійний сценарій:** дії при помилці нестачі в 1С
 
+## Блок-схема касової дисципліни
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "fontFamily": "Inter, Arial, sans-serif",
+    "primaryColor": "#dbeafe",
+    "primaryBorderColor": "#2563eb",
+    "primaryTextColor": "#1e3a8a",
+    "secondaryColor": "#fef3c7",
+    "tertiaryColor": "#dcfce7",
+    "lineColor": "#64748b"
+  }
+}}%%
+flowchart TD
+    A[Операція на касі] --> B{Що відбувається?}
+    B -->|Продаж| C[Провести фактичний товар у чеку]
+    B -->|Робота з цінником| D[Тримати цінник тільки під час операції]
+    B -->|Рух товару| E[Спочатку оформити документ у 1С]
+    B -->|Помилка нестачі| F[Запустити аварійний SOP]
+    C --> G{Товар у чеку відповідає фактичному?}
+    G -->|Так| H[Завершити операцію]
+    G -->|Ні| I[Підміна заборонена]
+    D --> J[Прибрати цінник одразу після дії]
+    E --> K{Документ у 1С проведено?}
+    K -->|Так| H
+    K -->|Ні| L[Передача товару заборонена]
+    F --> M[Товар «товар» + коментар зі штрихкодом + повідомлення адміну]
+    M --> H
+
+    classDef action fill:#dbeafe,stroke:#2563eb,color:#1e3a8a,stroke-width:2px;
+    classDef decision fill:#fef3c7,stroke:#d97706,color:#92400e,stroke-width:2px;
+    classDef success fill:#dcfce7,stroke:#16a34a,color:#166534,stroke-width:2px;
+    classDef danger fill:#fee2e2,stroke:#dc2626,color:#991b1b,stroke-width:2px;
+
+    class A,C,D,E,F,J,M action;
+    class B,G,K decision;
+    class H success;
+    class I,L danger;
+```
+
 ## Документи розділу
 
 ### Політики
