@@ -138,5 +138,4 @@ approval_required: true
 
 ## Пов'язані документи
 
-- [Регламент гарантійних умов](/returns-and-warranty/warranty/reg-warranty-conditions)
-- [SOP: Гарантійне обслуговування](/returns-and-warranty/warranty/sop-warranty)
+<RelatedDocuments />

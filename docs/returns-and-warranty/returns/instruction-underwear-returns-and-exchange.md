@@ -147,5 +147,4 @@ approval_required: true
 
 ## Пов'язані документи
 
-- [Регламент гарантійних умов](/returns-and-warranty/warranty/reg-warranty-conditions)
-- [SOP: Порядок дій при поверненні та обміні товару](/returns-and-warranty/returns/sop-return-exchange)
+<RelatedDocuments />

@@ -306,5 +306,4 @@ flowchart TD
 
 ## Пов'язані документи
 
-- [Регламент переміщення товару між магазинами](/product/transfers/reg-transfer-between-stores)
-- [SOP: LIVE-переміщення між магазинами](/product/transfers/sop-live-transfer)
+<RelatedDocuments />

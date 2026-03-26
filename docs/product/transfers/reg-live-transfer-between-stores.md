@@ -195,6 +195,4 @@ STOCK-переміщення при залишку 1 одиниця заборо
 
 ## Пов'язані документи
 
-- [Регламент переміщення товару між магазинами](/product/transfers/reg-transfer-between-stores)
-- [SOP: LIVE-переміщення між магазинами](/product/transfers/sop-live-transfer)
-- [Чекліст комунікації для LIVE-переміщення](/product/transfers/checklist-live-transfer-chat-rules)
+<RelatedDocuments />

@@ -64,5 +64,4 @@ approval_required: true
 
 ## Пов'язані документи
 
-- [Регламент LIVE-переміщення між магазинами](/product/transfers/reg-live-transfer-between-stores)
-- [SOP: LIVE-переміщення між магазинами](/product/transfers/sop-live-transfer)
+<RelatedDocuments />

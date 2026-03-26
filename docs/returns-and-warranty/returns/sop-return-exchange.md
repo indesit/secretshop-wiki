@@ -142,7 +142,4 @@ flowchart TD
 
 ## Пов'язані документи
 
-- [Регламент гарантійних умов](/returns-and-warranty/warranty/reg-warranty-conditions)
-- [SOP: Гарантійне обслуговування](/returns-and-warranty/warranty/sop-warranty)
-- [SOP: Товарна експертиза](/returns-and-warranty/expertise/sop-expertise)
-- [Інструкція: Звернення щодо повернення та обміну натільної білизни](/returns-and-warranty/returns/instruction-underwear-returns-and-exchange)
+<RelatedDocuments />

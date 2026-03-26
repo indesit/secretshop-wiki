@@ -111,6 +111,4 @@ approval_required: true
 
 ## Пов'язані документи
 
-- [SOP: Порядок дій при поверненні та обміні товару](/returns-and-warranty/returns/sop-return-exchange)
-- [Інструкція: Звернення щодо повернення та обміну натільної білизни](/returns-and-warranty/returns/instruction-underwear-returns-and-exchange)
-- [Регламент гарантійних умов](/returns-and-warranty/warranty/reg-warranty-conditions)
+<RelatedDocuments />
