@@ -35,16 +35,7 @@
           "link": "/stores/"
         },
         {
-          "text": "🚨 Нестандартні ситуації в магазині",
-          "link": "/stores/нестандартні-ситуації"
-        },
-        {
-          "text": "📁 Технічне обслуговування",
-          "collapsed": false,
-          "items": []
-        },
-        {
-          "text": "📁 Мерчендайзинг",
+          "text": "📁 Безпека та охорона",
           "collapsed": false,
           "items": []
         },
@@ -59,7 +50,7 @@
           ]
         },
         {
-          "text": "📁 Безпека та охорона",
+          "text": "📁 Мерчендайзинг",
           "collapsed": false,
           "items": []
         },
@@ -74,6 +65,11 @@
           ]
         },
         {
+          "text": "📁 Технічне обслуговування",
+          "collapsed": false,
+          "items": []
+        },
+        {
           "text": "📁 Технічні несправності",
           "collapsed": false,
           "items": [
@@ -82,6 +78,10 @@
               "link": "/stores/technical-issues/sop-technical-incident"
             }
           ]
+        },
+        {
+          "text": "🚨 Нестандартні ситуації в магазині",
+          "link": "/stores/нестандартні-ситуації"
         }
       ]
     }
@@ -100,17 +100,7 @@
           "items": []
         },
         {
-          "text": "📁 Обробка браку",
-          "collapsed": false,
-          "items": []
-        },
-        {
-          "text": "📁 Пошкодження товару",
-          "collapsed": false,
-          "items": []
-        },
-        {
-          "text": "📁 Приймання товару",
+          "text": "📁 Залишки на складі",
           "collapsed": false,
           "items": []
         },
@@ -120,7 +110,7 @@
           "items": []
         },
         {
-          "text": "📁 Залишки на складі",
+          "text": "📁 Обробка браку",
           "collapsed": false,
           "items": []
         },
@@ -133,22 +123,32 @@
               "link": "/product/transfers/checklist-live-transfer-chat-rules"
             },
             {
-              "text": "📘 Регламент LIVE-переміщення між магазинами",
-              "link": "/product/transfers/reg-live-transfer-between-stores"
-            },
-            {
-              "text": "📘 Регламент переміщення товару між магазинами в рамках підсорту",
-              "link": "/product/transfers/reg-subsort-transfer-between-stores"
+              "text": "🧭 LIVE-переміщення між магазинами",
+              "link": "/product/transfers/sop-live-transfer"
             },
             {
               "text": "📘 Регламент переміщення товару між магазинами",
               "link": "/product/transfers/reg-transfer-between-stores"
             },
             {
-              "text": "🧭 LIVE-переміщення між магазинами",
-              "link": "/product/transfers/sop-live-transfer"
+              "text": "📘 Регламент переміщення товару між магазинами в рамках підсорту",
+              "link": "/product/transfers/reg-subsort-transfer-between-stores"
+            },
+            {
+              "text": "📘 Регламент LIVE-переміщення між магазинами",
+              "link": "/product/transfers/reg-live-transfer-between-stores"
             }
           ]
+        },
+        {
+          "text": "📁 Пошкодження товару",
+          "collapsed": false,
+          "items": []
+        },
+        {
+          "text": "📁 Приймання товару",
+          "collapsed": false,
+          "items": []
         },
         {
           "text": "📁 Списання",
@@ -167,12 +167,16 @@
           "link": "/returns-and-warranty/"
         },
         {
-          "text": "📁 Претензії клієнтів",
+          "text": "📁 Гарантійне обслуговування",
           "collapsed": false,
           "items": [
             {
-              "text": "🧭 Робота з претензіями клієнтів",
-              "link": "/returns-and-warranty/customer-claims/sop-customer-claims-handling"
+              "text": "🧭 Гарантійне обслуговування",
+              "link": "/returns-and-warranty/warranty/sop-warranty"
+            },
+            {
+              "text": "📘 Регламент гарантійних умов",
+              "link": "/returns-and-warranty/warranty/reg-warranty-conditions"
             }
           ]
         },
@@ -187,16 +191,6 @@
           ]
         },
         {
-          "text": "📁 Товарна експертиза",
-          "collapsed": false,
-          "items": [
-            {
-              "text": "🧭 Товарна експертиза",
-              "link": "/returns-and-warranty/expertise/sop-expertise"
-            }
-          ]
-        },
-        {
           "text": "📁 Повернення товару",
           "collapsed": false,
           "items": [
@@ -205,26 +199,32 @@
               "link": "/returns-and-warranty/returns/checklist-seller-returns-exchange-warranty"
             },
             {
-              "text": "📝 Звернення щодо повернення та обміну натільної білизни",
-              "link": "/returns-and-warranty/returns/instruction-underwear-returns-and-exchange"
-            },
-            {
               "text": "🧭 Порядок дій при поверненні та обміні товару",
               "link": "/returns-and-warranty/returns/sop-return-exchange"
+            },
+            {
+              "text": "📝 Звернення щодо повернення та обміну натільної білизни",
+              "link": "/returns-and-warranty/returns/instruction-underwear-returns-and-exchange"
             }
           ]
         },
         {
-          "text": "📁 Гарантійне обслуговування",
+          "text": "📁 Претензії клієнтів",
           "collapsed": false,
           "items": [
             {
-              "text": "📘 Регламент гарантійних умов",
-              "link": "/returns-and-warranty/warranty/reg-warranty-conditions"
-            },
+              "text": "🧭 Робота з претензіями клієнтів",
+              "link": "/returns-and-warranty/customer-claims/sop-customer-claims-handling"
+            }
+          ]
+        },
+        {
+          "text": "📁 Товарна експертиза",
+          "collapsed": false,
+          "items": [
             {
-              "text": "🧭 Гарантійне обслуговування",
-              "link": "/returns-and-warranty/warranty/sop-warranty"
+              "text": "🧭 Товарна експертиза",
+              "link": "/returns-and-warranty/expertise/sop-expertise"
             }
           ]
         }
@@ -240,12 +240,7 @@
           "link": "/sales/"
         },
         {
-          "text": "📁 Консультація клієнтів",
-          "collapsed": false,
-          "items": []
-        },
-        {
-          "text": "📁 Робота із запереченнями",
+          "text": "📁 Допродаж (Upsell/Cross-sell)",
           "collapsed": false,
           "items": []
         },
@@ -255,7 +250,7 @@
           "items": []
         },
         {
-          "text": "📁 Резерви",
+          "text": "📁 Консультація клієнтів",
           "collapsed": false,
           "items": []
         },
@@ -265,7 +260,12 @@
           "items": []
         },
         {
-          "text": "📁 Допродаж (Upsell/Cross-sell)",
+          "text": "📁 Резерви",
+          "collapsed": false,
+          "items": []
+        },
+        {
+          "text": "📁 Робота із запереченнями",
           "collapsed": false,
           "items": []
         }
@@ -279,6 +279,11 @@
         {
           "text": "🏠 Огляд",
           "link": "/cash/"
+        },
+        {
+          "text": "📁 Закриття зміни",
+          "collapsed": false,
+          "items": []
         },
         {
           "text": "📁 Касова дисципліна",
@@ -304,11 +309,6 @@
           "text": "📁 Чеки",
           "collapsed": false,
           "items": []
-        },
-        {
-          "text": "📁 Закриття зміни",
-          "collapsed": false,
-          "items": []
         }
       ]
     }
@@ -322,7 +322,7 @@
           "link": "/hr/"
         },
         {
-          "text": "📁 Підбір персоналу",
+          "text": "📁 Адаптація",
           "collapsed": false,
           "items": []
         },
@@ -332,17 +332,17 @@
           "items": []
         },
         {
-          "text": "📁 Адаптація",
+          "text": "📁 Навчання",
+          "collapsed": false,
+          "items": []
+        },
+        {
+          "text": "📁 Підбір персоналу",
           "collapsed": false,
           "items": []
         },
         {
           "text": "📁 Стандарти персоналу",
-          "collapsed": false,
-          "items": []
-        },
-        {
-          "text": "📁 Навчання",
           "collapsed": false,
           "items": []
         }
@@ -362,24 +362,24 @@
           "link": "/templates/checklist-template"
         },
         {
-          "text": "📄 Реєстр управлінських рішень",
-          "link": "/templates/decision-log-template"
-        },
-        {
-          "text": "🚨 Назва інциденту",
-          "link": "/templates/incident-template"
-        },
-        {
-          "text": "🛡️ Назва Policy",
-          "link": "/templates/policy-template"
+          "text": "🧭 Назва SOP",
+          "link": "/templates/sop-template"
         },
         {
           "text": "📘 Назва регламенту",
           "link": "/templates/regulation-template"
         },
         {
-          "text": "🧭 Назва SOP",
-          "link": "/templates/sop-template"
+          "text": "🛡️ Назва Policy",
+          "link": "/templates/policy-template"
+        },
+        {
+          "text": "🚨 Назва інциденту",
+          "link": "/templates/incident-template"
+        },
+        {
+          "text": "📄 Реєстр управлінських рішень",
+          "link": "/templates/decision-log-template"
         }
       ]
     }

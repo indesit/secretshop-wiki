@@ -43,6 +43,21 @@ const TYPE_ICONS = {
   overview: '🏠',
 }
 
+const TYPE_ORDER = {
+  checklist: 1,
+  sop: 2,
+  instruction: 3,
+  regulation: 4,
+  policy: 5,
+  incident: 6,
+  template: 7,
+  '': 99,
+}
+
+const SECTION_ORDER = {
+  'returns-and-warranty': ['returns', 'exchange', 'warranty', 'expertise', 'customer-claims'],
+}
+
 function parseFrontmatter(content) {
   const match = content.match(/^---\s*\n([\s\S]*?)\n---/)
   if (!match) return {}
@@ -94,9 +109,7 @@ function cleanupTitle(title, type) {
   ]
 
   let cleaned = title
-  for (const pattern of patterns) {
-    cleaned = cleaned.replace(pattern, '')
-  }
+  for (const pattern of patterns) cleaned = cleaned.replace(pattern, '')
   return cleaned
 }
 
@@ -105,28 +118,47 @@ function toVitePressLink(filePath) {
   return '/' + rel.replace(/\.md$/, '').replace(/\/index$/, '/')
 }
 
-function sortEntries(a, b) {
+function sortText(a, b) {
   return a.localeCompare(b, 'uk')
 }
 
-function buildSectionItems(sectionDir) {
+function buildSectionItems(sectionDir, rootSection = null) {
   const items = []
 
   try {
-    const entries = readdirSync(sectionDir).sort(sortEntries)
+    let entries = readdirSync(sectionDir)
+
+    const preferredOrder = SECTION_ORDER[rootSection || '']
+    if (preferredOrder) {
+      entries.sort((a, b) => {
+        const ai = preferredOrder.indexOf(a)
+        const bi = preferredOrder.indexOf(b)
+        if (ai !== -1 || bi !== -1) {
+          if (ai === -1) return 1
+          if (bi === -1) return -1
+          return ai - bi
+        }
+        return sortText(a, b)
+      })
+    } else {
+      entries.sort(sortText)
+    }
 
     for (const entry of entries) {
       const fullPath = join(sectionDir, entry)
       const stat = statSync(fullPath)
 
       if (stat.isDirectory() && !SKIP_DIRS.has(entry)) {
-        const subItems = buildSectionItems(fullPath)
+        const subItems = buildSectionItems(fullPath, rootSection)
         const indexPath = join(fullPath, 'index.md')
         const subMeta = existsSync(indexPath)
           ? getDocMeta(indexPath)
           : { title: entry, type: '' }
 
         items.push({
+          kind: 'section',
+          key: entry,
+          sortType: '',
           text: prefixTitle(cleanupTitle(subMeta.title, subMeta.type), subMeta.type, true),
           collapsed: false,
           items: subItems,
@@ -134,6 +166,9 @@ function buildSectionItems(sectionDir) {
       } else if (extname(entry) === '.md' && entry !== 'index.md') {
         const meta = getDocMeta(fullPath)
         items.push({
+          kind: 'doc',
+          key: entry,
+          sortType: meta.type,
           text: prefixTitle(cleanupTitle(meta.title, meta.type), meta.type),
           link: toVitePressLink(fullPath),
         })
@@ -143,7 +178,17 @@ function buildSectionItems(sectionDir) {
     console.warn(`Warning: Could not read ${sectionDir}: ${e.message}`)
   }
 
-  return items
+  items.sort((a, b) => {
+    if (a.kind !== b.kind) return a.kind === 'section' ? -1 : 1
+    if (a.kind === 'section' && b.kind === 'section') return sortText(a.text, b.text)
+
+    const ao = TYPE_ORDER[a.sortType] ?? 99
+    const bo = TYPE_ORDER[b.sortType] ?? 99
+    if (ao !== bo) return ao - bo
+    return sortText(a.text, b.text)
+  })
+
+  return items.map(({ kind, key, sortType, ...rest }) => rest)
 }
 
 const sidebar = {}
@@ -155,17 +200,15 @@ for (const section of TOP_LEVEL_SECTIONS) {
   const sectionMeta = getDocMeta(indexPath)
   const sectionTitle = sectionMeta.title || section
 
-  const items = buildSectionItems(sectionDir)
+  const items = buildSectionItems(sectionDir, section)
 
-  sidebar[sectionKey] = [
-    {
-      text: sectionTitle,
-      items: [
-        { text: `${TYPE_ICONS.overview} Огляд`, link: sectionKey },
-        ...items,
-      ],
-    },
-  ]
+  sidebar[sectionKey] = [{
+    text: sectionTitle,
+    items: [
+      { text: `${TYPE_ICONS.overview} Огляд`, link: sectionKey },
+      ...items,
+    ],
+  }]
 }
 
 writeFileSync(OUTPUT_PATH, JSON.stringify(sidebar, null, 2), 'utf-8')
