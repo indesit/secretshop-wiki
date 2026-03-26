@@ -4,6 +4,7 @@ import AISearch from './components/AISearch.vue'
 import StatusBadge from './components/StatusBadge.vue'
 import DocTypeBadge from './components/DocTypeBadge.vue'
 import EscalationBox from './components/EscalationBox.vue'
+import DocumentMeta from './components/DocumentMeta.vue'
 import { h, nextTick } from 'vue'
 import mediumZoom from 'medium-zoom'
 import { enhanceAppWithTabs } from 'vitepress-plugin-tabs/client'
@@ -39,6 +40,7 @@ export default {
     app.component('StatusBadge', StatusBadge)
     app.component('DocTypeBadge', DocTypeBadge)
     app.component('EscalationBox', EscalationBox)
+    app.component('DocumentMeta', DocumentMeta)
     enhanceAppWithTabs(app)
 
     if (typeof window !== 'undefined') {
