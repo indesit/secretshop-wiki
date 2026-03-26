@@ -48,6 +48,38 @@ approval_required: true
 
 У такій ситуації працівник не має права довільно підміняти номенклатуру. Потрібно діяти лише за встановленим порядком.
 
+## Блок-схема аварійного сценарію
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "fontFamily": "Inter, Arial, sans-serif",
+    "primaryColor": "#dbeafe",
+    "primaryBorderColor": "#2563eb",
+    "primaryTextColor": "#1e3a8a",
+    "secondaryColor": "#fef3c7",
+    "tertiaryColor": "#dcfce7",
+    "lineColor": "#64748b"
+  }
+}}%%
+flowchart TD
+    A[Під час оплати система показує нестачу] --> B[Видалити проблемний товар із чека]
+    B --> C[Додати товар «товар» через Ctrl + 1]
+    C --> D[Ввести фактичну ціну з цінника]
+    D --> E[Відкрити «Этот чек"]
+    E --> F[Внести штрихкод фактичного товару в коментар]
+    F --> G[Завершити продаж]
+    G --> H[Написати адміністратору номер чека]
+    H --> I[Адміністратор перевіряє інцидент]
+
+    classDef action fill:#dbeafe,stroke:#2563eb,color:#1e3a8a,stroke-width:2px;
+    classDef success fill:#dcfce7,stroke:#16a34a,color:#166534,stroke-width:2px;
+
+    class A,B,C,D,E,F,H,I action;
+    class G success;
+```
+
 ## Покрокові дії
 
 1. Видалити з чека товар, якого не вистачає на складі.
