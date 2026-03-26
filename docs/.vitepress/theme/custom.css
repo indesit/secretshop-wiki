@@ -3,6 +3,16 @@
   --vp-c-brand-2: #2563eb;
   --vp-c-brand-3: #1d4ed8;
   --vp-c-brand-soft: rgba(59, 130, 246, 0.1);
+
+  --wiki-mermaid-bg: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  --wiki-mermaid-border: rgba(148, 163, 184, 0.28);
+  --wiki-mermaid-shadow: 0 14px 36px rgba(15, 23, 42, 0.08);
+}
+
+.dark {
+  --wiki-mermaid-bg: linear-gradient(180deg, #0f172a 0%, #111827 100%);
+  --wiki-mermaid-border: rgba(148, 163, 184, 0.2);
+  --wiki-mermaid-shadow: 0 18px 40px rgba(2, 6, 23, 0.45);
 }
 
 .vp-doc h1 {
@@ -14,3 +24,52 @@
 .status-draft    { color: #f59e0b; font-weight: 600; }
 .status-approved { color: #10b981; font-weight: 600; }
 .status-archived { color: #6b7280; font-weight: 600; }
+
+/* Custom utility for the nav content */
+.VPNavBarContent {
+  display: flex !important;
+  align-items: center;
+}
+
+/* Mermaid diagrams */
+.vp-doc .mermaid {
+  display: flex;
+  justify-content: center;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+}
+
+.vp-doc .mermaid svg {
+  max-width: 100%;
+  height: auto;
+  background: var(--wiki-mermaid-bg);
+  border: 1px solid var(--wiki-mermaid-border);
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: var(--wiki-mermaid-shadow);
+}
+
+.vp-doc .mermaid .label,
+.vp-doc .mermaid text,
+.vp-doc .mermaid tspan {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+}
+
+.vp-doc .mermaid .cluster rect {
+  rx: 14px;
+  ry: 14px;
+}
+
+.vp-doc .mermaid .node rect,
+.vp-doc .mermaid .node polygon,
+.vp-doc .mermaid .node circle,
+.vp-doc .mermaid .node path {
+  filter: drop-shadow(0 4px 10px rgba(15, 23, 42, 0.08));
+}
+
+.dark .vp-doc .mermaid .node rect,
+.dark .vp-doc .mermaid .node polygon,
+.dark .vp-doc .mermaid .node circle,
+.dark .vp-doc .mermaid .node path {
+  filter: drop-shadow(0 4px 12px rgba(2, 6, 23, 0.35));
+}

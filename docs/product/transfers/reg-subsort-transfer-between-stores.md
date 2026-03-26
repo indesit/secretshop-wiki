@@ -253,6 +253,44 @@ approval_required: true
 
 > Переміщення товару в рамках підсорту здійснюється на постійній основі між магазинами мережі на підставі показників продажу, оборачуваності, строку зберігання та поточного залишку. Товар має бути зосереджений у тій точці, де він продається швидше, за умови збереження мінімально достатньої представленості в магазині-донорі.
 
+## Блок-схема логіки підсорту
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "fontFamily": "Inter, Arial, sans-serif",
+    "primaryColor": "#dbeafe",
+    "primaryBorderColor": "#2563eb",
+    "primaryTextColor": "#1e3a8a",
+    "secondaryColor": "#fef3c7",
+    "tertiaryColor": "#dcfce7",
+    "lineColor": "#64748b"
+  }
+}}%%
+flowchart TD
+    A[Магазин ініціює запит на підсорт] --> B{Є підстава для запиту?}
+    B -->|Ні| C[Запит не запускається]
+    B -->|Так| D[Зібрати продаж, залишок, оборачуваність]
+    D --> E{Магазин-отримувач продає краще?}
+    E -->|Ні| F[Відмовити з цифровим обґрунтуванням]
+    E -->|Так| G{Після передачі зберігається мінімальний залишок?}
+    G -->|Ні| H[Відмовити через захищений залишок]
+    G -->|Так| I[Погодити переміщення]
+    I --> J{Є спір між магазинами?}
+    J -->|Ні| K[Виконати підсорт]
+    J -->|Так| L[Передати рішення керуючому]
+
+    classDef action fill:#dbeafe,stroke:#2563eb,color:#1e3a8a,stroke-width:2px;
+    classDef decision fill:#fef3c7,stroke:#d97706,color:#92400e,stroke-width:2px;
+    classDef success fill:#dcfce7,stroke:#16a34a,color:#166534,stroke-width:2px;
+    classDef danger fill:#fee2e2,stroke:#dc2626,color:#991b1b,stroke-width:2px;
+
+    class A,D,I,K,L action;
+    class B,E,G,J decision;
+    class C,F,H danger;
+```
+
 ## Пов'язані документи
 
 - [Регламент переміщення товару між магазинами](/product/transfers/reg-transfer-between-stores)
