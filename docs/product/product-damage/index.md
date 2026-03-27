@@ -27,4 +27,4 @@ approval_required: false
 
 ### Регламенти
 
-- [Регламент: Брак та пошкодження товару](/product/product-damage/reg-defects-and-product-damage)
+- [Регламент: Пошкодження товару в магазині](/product/product-damage/reg-product-damage-in-store)

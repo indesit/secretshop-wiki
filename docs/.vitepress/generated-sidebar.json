@@ -112,7 +112,12 @@
         {
           "text": "📁 Обробка браку",
           "collapsed": false,
-          "items": []
+          "items": [
+            {
+              "text": "📘 Виявлення браку при прийманні товару",
+              "link": "/product/defect-handling/reg-defect-detection-at-receiving"
+            }
+          ]
         },
         {
           "text": "📁 Переміщення між магазинами",
@@ -145,8 +150,8 @@
           "collapsed": false,
           "items": [
             {
-              "text": "📘 Брак та пошкодження товару",
-              "link": "/product/product-damage/reg-defects-and-product-damage"
+              "text": "📘 Пошкодження товару в магазині",
+              "link": "/product/product-damage/reg-product-damage-in-store"
             }
           ]
         },

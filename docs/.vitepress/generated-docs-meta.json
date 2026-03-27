@@ -54,8 +54,13 @@
     "type": "regulation",
     "icon": "📘"
   },
-  "/product/product-damage/reg-defects-and-product-damage": {
-    "title": "Брак та пошкодження товару",
+  "/product/defect-handling/reg-defect-detection-at-receiving": {
+    "title": "Виявлення браку при прийманні товару",
+    "type": "regulation",
+    "icon": "📘"
+  },
+  "/product/product-damage/reg-product-damage-in-store": {
+    "title": "Пошкодження товару в магазині",
     "type": "regulation",
     "icon": "📘"
   },

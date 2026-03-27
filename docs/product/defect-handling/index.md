@@ -23,4 +23,8 @@ approval_required: false
 > [!NOTE]
 > Цей розділ знаходиться в стадії наповнення. Документи будуть додані за пріоритетом.
 
-<!-- TODO: add document list table -->
+## Документи розділу
+
+### Регламенти
+
+- [Регламент: Виявлення браку при прийманні товару](/product/defect-handling/reg-defect-detection-at-receiving)
