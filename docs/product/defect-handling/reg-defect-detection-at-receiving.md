@@ -19,8 +19,9 @@ summary: >-
   Правила перевірки товару на наявність браку/дефектів під час приймання та
   порядок ескалації і централізованого рішення щодо подальших дій.
 related_documents:
-  - /product/receiving/index
+  - /product/receiving/
   - /product/transfers/reg-transfer-between-stores
+  - /product/product-damage/reg-product-damage-in-store
 source_of_truth: ai-draft
 ai_generated: true
 approval_required: true
