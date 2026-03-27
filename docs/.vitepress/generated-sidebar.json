@@ -143,7 +143,12 @@
         {
           "text": "📁 Пошкодження товару",
           "collapsed": false,
-          "items": []
+          "items": [
+            {
+              "text": "📘 Брак та пошкодження товару",
+              "link": "/product/product-damage/reg-defects-and-product-damage"
+            }
+          ]
         },
         {
           "text": "📁 Приймання товару",

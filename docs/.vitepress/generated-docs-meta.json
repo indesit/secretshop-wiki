@@ -54,6 +54,11 @@
     "type": "regulation",
     "icon": "📘"
   },
+  "/product/product-damage/reg-defects-and-product-damage": {
+    "title": "Брак та пошкодження товару",
+    "type": "regulation",
+    "icon": "📘"
+  },
   "/product/transfers/checklist-live-transfer-chat-rules": {
     "title": "Чекліст комунікації для LIVE-переміщення",
     "type": "checklist",
