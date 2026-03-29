@@ -91,21 +91,39 @@ flowchart TD
     class I,L danger;
 ```
 
-## Документи розділу
+## Документи розділу (підтеми)
 
-### Політики
+> [!TIP]
+> Щоб не роздувати структуру папок, підтемами керуємо тут: у межах одного підрозділу `cash-discipline` групуємо документи за задачами, а не за типом.
+
+### Базові принципи
 
 - [Політика касової дисципліни](/cash/cash-discipline/policy-cash-discipline)
 
-### SOP / Інструкції
+### Зміна (відкриття/закриття)
 
-- [SOP: Робота з цінниками в прикасовій зоні](/cash/cash-discipline/sop-price-tags-at-cashdesk)
-- [SOP: Дії при помилці нестачі товару в 1С](/cash/cash-discipline/sop-stock-shortage-error-during-sale)
 - [Інструкція: Закриття зміни в BAF](/cash/cash-discipline/instruction-closing-shift-in-baf)
 
-### Регламенти
+### Прикасова зона
+
+- [SOP: Робота з цінниками в прикасовій зоні](/cash/cash-discipline/sop-price-tags-at-cashdesk)
+
+### Точність чека
+
+- [Регламент відповідності товару в чеку фактичному товару](/cash/cash-discipline/reg-receipt-item-must-match-actual-goods)
+
+### Рух товару
+
+- [Регламент руху товару тільки через 1С](/cash/cash-discipline/reg-goods-movement-only-through-1c)
+
+### Внутрішні придбання
+
+- [Регламент внутрішнього придбання товарів працівниками в рахунок заробітної плати](/cash/cash-discipline/reg-employee-purchases-via-payroll-deduction)
+
+### Заборонені дії
 
 - [Регламент заборонених дій на касі](/cash/cash-discipline/reg-forbidden-actions-at-cashdesk)
-- [Регламент руху товару тільки через 1С](/cash/cash-discipline/reg-goods-movement-only-through-1c)
-- [Регламент відповідності товару в чеку фактичному товару](/cash/cash-discipline/reg-receipt-item-must-match-actual-goods)
-- [Регламент внутрішнього придбання товарів працівниками в рахунок заробітної плати](/cash/cash-discipline/reg-employee-purchases-via-payroll-deduction)
+
+### Аварійні сценарії
+
+- [SOP: Дії при помилці нестачі товару в 1С](/cash/cash-discipline/sop-stock-shortage-error-during-sale)
