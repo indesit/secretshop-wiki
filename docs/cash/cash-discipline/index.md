@@ -97,10 +97,11 @@ flowchart TD
 
 - [Політика касової дисципліни](/cash/cash-discipline/policy-cash-discipline)
 
-### SOP
+### SOP / Інструкції
 
 - [SOP: Робота з цінниками в прикасовій зоні](/cash/cash-discipline/sop-price-tags-at-cashdesk)
 - [SOP: Дії при помилці нестачі товару в 1С](/cash/cash-discipline/sop-stock-shortage-error-during-sale)
+- [Інструкція: Закриття зміни в BAF](/cash/cash-discipline/instruction-closing-shift-in-baf)
 
 ### Регламенти
 

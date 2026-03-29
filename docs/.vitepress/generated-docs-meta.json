@@ -144,6 +144,11 @@
     "type": "regulation",
     "icon": "📘"
   },
+  "/cash/cash-discipline/instruction-closing-shift-in-baf": {
+    "title": "Закриття зміни в BAF",
+    "type": "instruction",
+    "icon": "📝"
+  },
   "/cash/cash-discipline/policy-cash-discipline": {
     "title": "Політика касової дисципліни",
     "type": "policy",
