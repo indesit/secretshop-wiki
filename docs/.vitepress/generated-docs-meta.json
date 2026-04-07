@@ -149,6 +149,11 @@
     "type": "instruction",
     "icon": "📝"
   },
+  "/cash/cash-discipline/instruction-prro-offline-mode-in-baf": {
+    "title": "ПРРО в BAF — перехід в офлайн і відправка документів",
+    "type": "instruction",
+    "icon": "📝"
+  },
   "/cash/cash-discipline/policy-cash-discipline": {
     "title": "Політика касової дисципліни",
     "type": "policy",

@@ -108,6 +108,10 @@ flowchart TD
 
 - [SOP: Робота з цінниками в прикасовій зоні](/cash/cash-discipline/sop-price-tags-at-cashdesk)
 
+### Фіскалізація / ПРРО
+
+- [Інструкція: ПРРО в BAF — перехід в офлайн і відправка документів](/cash/cash-discipline/instruction-prro-offline-mode-in-baf)
+
 ### Точність чека
 
 - [Регламент відповідності товару в чеку фактичному товару](/cash/cash-discipline/reg-receipt-item-must-match-actual-goods)
