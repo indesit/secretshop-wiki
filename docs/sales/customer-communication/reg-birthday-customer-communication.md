@@ -20,6 +20,7 @@ summary: >-
   передачі на бонуси та фіксації статусів у сценарії привітання з днем народження.
 related_documents:
   - /sales/customer-communication/
+  - /sales/customer-communication/reg-segmented-customer-communication
   - /stores/service-standards/sop-service-standards
 source_of_truth: ai-draft
 ai_generated: true
@@ -195,5 +196,5 @@ approval_required: true
 - [Правила комунікації з клієнтами](/sales/customer-communication/)
 - [SOP: Стандарти обслуговування клієнтів](/stores/service-standards/sop-service-standards)
 клієнтів](/stores/service-standards/sop-service-standards)
-�ми](/sales/customer-communication/)
+�ми](/sales/customer-communication/)
 - [SOP: Стандарти обслуговування клієнтів](/stores/service-standards/sop-service-standards)

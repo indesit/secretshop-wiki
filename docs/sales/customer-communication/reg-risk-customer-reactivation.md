@@ -19,6 +19,7 @@ summary: >-
   реактивації без технічних формулювань та фіксації результату.
 related_documents:
   - /sales/customer-communication/
+  - /sales/customer-communication/reg-segmented-customer-communication
   - /stores/service-standards/sop-service-standards
 source_of_truth: ai-draft
 ai_generated: true
