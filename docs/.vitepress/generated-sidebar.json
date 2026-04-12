@@ -276,6 +276,14 @@
             {
               "text": "📘 Комунікація з клієнтами у день народження",
               "link": "/sales/customer-communication/reg-birthday-customer-communication"
+            },
+            {
+              "text": "📘 М'яка реактивація ризикових клієнтів",
+              "link": "/sales/customer-communication/reg-risk-customer-reactivation"
+            },
+            {
+              "text": "📘 Нагадування клієнтам про згоряння бонусів",
+              "link": "/sales/customer-communication/reg-bonus-expiration-customer-communication"
             }
           ]
         },

@@ -144,6 +144,16 @@
     "type": "regulation",
     "icon": "📘"
   },
+  "/sales/customer-communication/reg-bonus-expiration-customer-communication": {
+    "title": "Нагадування клієнтам про згоряння бонусів",
+    "type": "regulation",
+    "icon": "📘"
+  },
+  "/sales/customer-communication/reg-risk-customer-reactivation": {
+    "title": "М'яка реактивація ризикових клієнтів",
+    "type": "regulation",
+    "icon": "📘"
+  },
   "/cash/": {
     "title": "Каса",
     "type": "regulation",
