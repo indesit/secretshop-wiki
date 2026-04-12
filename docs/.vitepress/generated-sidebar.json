@@ -270,6 +270,16 @@
           "items": []
         },
         {
+          "text": "📁 Правила комунікації з клієнтами",
+          "collapsed": false,
+          "items": [
+            {
+              "text": "📘 Комунікація з клієнтами у день народження",
+              "link": "/sales/customer-communication/reg-birthday-customer-communication"
+            }
+          ]
+        },
+        {
           "text": "📁 Резерви",
           "collapsed": false,
           "items": []

@@ -139,6 +139,11 @@
     "type": "regulation",
     "icon": "📘"
   },
+  "/sales/customer-communication/reg-birthday-customer-communication": {
+    "title": "Комунікація з клієнтами у день народження",
+    "type": "regulation",
+    "icon": "📘"
+  },
   "/cash/": {
     "title": "Каса",
     "type": "regulation",
