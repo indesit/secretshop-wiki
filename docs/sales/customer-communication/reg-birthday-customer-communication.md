@@ -194,7 +194,5 @@ approval_required: true
 ## Пов'язані документи
 
 - [Правила комунікації з клієнтами](/sales/customer-communication/)
-- [SOP: Стандарти обслуговування клієнтів](/stores/service-standards/sop-service-standards)
-клієнтів](/stores/service-standards/sop-service-standards)
-�ми](/sales/customer-communication/)
+- [Регламент: Сегментована комунікація з клієнтами](/sales/customer-communication/reg-segmented-customer-communication)
 - [SOP: Стандарти обслуговування клієнтів](/stores/service-standards/sop-service-standards)
