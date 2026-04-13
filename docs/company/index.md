@@ -31,3 +31,4 @@ approval_required: false
 | [Оргструктура](./org-structure.md) | regulation | draft |
 | [Ролі та відповідальність](./roles-and-responsibilities.md) | regulation | draft |
 | [Матриця ескалації](./escalation-matrix.md) | regulation | draft |
+| [Авторизація та система доступів](./governance/reg-authentication-and-access-control.md) | regulation | draft |
