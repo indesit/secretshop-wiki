@@ -2,10 +2,10 @@
 title: Чекліст комунікації для LIVE-переміщення
 type: checklist
 status: draft
-owner: Anton
+owner: founders
 review_cycle_days: 90
-last_reviewed: 2026-03-25
-effective_from: 2026-03-25
+last_reviewed: 2026-03-25T00:00:00.000Z
+effective_from: 2026-03-25T00:00:00.000Z
 domain: product
 subdomain: transfers
 scope: all-stores
@@ -23,6 +23,7 @@ related_documents:
 source_of_truth: ai-draft
 ai_generated: true
 approval_required: true
+canonical_path: docs/product/transfers/checklist-live-transfer-chat-rules.md
 ---
 
 # Чекліст комунікації для LIVE-переміщення

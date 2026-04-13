@@ -1,11 +1,11 @@
 ---
-title: "Інструкція: Звернення щодо повернення та обміну натільної білизни"
+title: 'Інструкція: Звернення щодо повернення та обміну натільної білизни'
 type: instruction
 status: draft
-owner: Anton
+owner: founders
 review_cycle_days: 180
-last_reviewed: 2026-03-26
-effective_from: 2026-03-26
+last_reviewed: 2026-03-26T00:00:00.000Z
+effective_from: 2026-03-26T00:00:00.000Z
 domain: returns-and-warranty
 subdomain: returns
 scope: all-stores
@@ -23,6 +23,8 @@ related_documents:
 source_of_truth: ai-draft
 ai_generated: true
 approval_required: true
+canonical_path: >-
+  docs/returns-and-warranty/returns/instruction-underwear-returns-and-exchange.md
 ---
 
 # Інструкція: Звернення щодо повернення та обміну натільної білизни

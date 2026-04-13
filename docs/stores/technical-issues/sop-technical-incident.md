@@ -2,10 +2,10 @@
 title: Порядок дій при технічній несправності в магазині
 type: sop
 status: draft
-owner: Anton
+owner: founders
 review_cycle_days: 180
-last_reviewed: 2026-03-25
-effective_from: 2026-03-25
+last_reviewed: 2026-03-25T00:00:00.000Z
+effective_from: 2026-03-25T00:00:00.000Z
 domain: stores
 subdomain: technical-issues
 scope: all-stores
@@ -14,14 +14,15 @@ tags:
   - incidents
   - technical
 summary: >-
-  Алгоритм дій для співробітників магазину при технічній проблемі,
-  яка заважає роботі або впливає на клієнтський досвід.
+  Алгоритм дій для співробітників магазину при технічній проблемі, яка заважає
+  роботі або впливає на клієнтський досвід.
 related_documents:
   - /stores/maintenance/
   - /company/escalation-matrix
 source_of_truth: ai-draft
 ai_generated: true
 approval_required: true
+canonical_path: docs/stores/technical-issues/sop-technical-incident.md
 ---
 
 # Порядок дій при технічній несправності в магазині

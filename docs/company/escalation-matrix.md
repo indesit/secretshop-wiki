@@ -2,10 +2,10 @@
 title: Матриця ескалації нестандартних ситуацій
 type: regulation
 status: draft
-owner: Anton
+owner: founders
 review_cycle_days: 180
-last_reviewed: 2026-03-25
-effective_from: 2026-03-25
+last_reviewed: 2026-03-25T00:00:00.000Z
+effective_from: 2026-03-25T00:00:00.000Z
 domain: company
 subdomain: governance
 scope: all-stores
@@ -15,14 +15,15 @@ tags:
   - governance
   - incidents
 summary: >-
-  Визначає, хто і в яких ситуаціях приймає рішення,
-  кому повідомляти і в які терміни. Є основним орієнтиром при будь-якому нестандартному кейсі.
+  Визначає, хто і в яких ситуаціях приймає рішення, кому повідомляти і в які
+  терміни. Є основним орієнтиром при будь-якому нестандартному кейсі.
 related_documents:
   - /company/roles-and-responsibilities
   - /stores/technical-issues/sop-technical-incident
 source_of_truth: ai-draft
 ai_generated: true
 approval_required: true
+canonical_path: docs/company/escalation-matrix.md
 ---
 
 # Матриця ескалації нестандартних ситуацій

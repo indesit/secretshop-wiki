@@ -2,10 +2,10 @@
 title: Регламент заборонених дій на касі
 type: regulation
 status: draft
-owner: Anton
+owner: founders
 review_cycle_days: 365
-last_reviewed: 2026-03-26
-effective_from: 2026-03-26
+last_reviewed: 2026-03-26T00:00:00.000Z
+effective_from: 2026-03-26T00:00:00.000Z
 domain: cash
 subdomain: cash-discipline
 scope: all-stores
@@ -14,8 +14,8 @@ tags:
   - forbidden-actions
   - control
 summary: >-
-  Перелік категорично заборонених дій у прикасовій зоні, які спотворюють
-  облік або створюють простір для маніпуляцій.
+  Перелік категорично заборонених дій у прикасовій зоні, які спотворюють облік
+  або створюють простір для маніпуляцій.
 related_documents:
   - /cash/cash-discipline/policy-cash-discipline
   - /cash/cash-discipline/sop-price-tags-at-cashdesk
@@ -24,6 +24,7 @@ related_documents:
 source_of_truth: ai-draft
 ai_generated: true
 approval_required: true
+canonical_path: docs/cash/cash-discipline/reg-forbidden-actions-at-cashdesk.md
 ---
 
 # Регламент заборонених дій на касі

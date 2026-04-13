@@ -2,10 +2,10 @@
 title: Політика касової дисципліни
 type: policy
 status: draft
-owner: Anton
+owner: founders
 review_cycle_days: 365
-last_reviewed: 2026-03-26
-effective_from: 2026-03-26
+last_reviewed: 2026-03-26T00:00:00.000Z
+effective_from: 2026-03-26T00:00:00.000Z
 domain: cash
 subdomain: cash-discipline
 scope: all-stores
@@ -14,8 +14,8 @@ tags:
   - discipline
   - policy
 summary: >-
-  Базові принципи касової дисципліни в магазині, її призначення та
-  управлінська логіка для компанії.
+  Базові принципи касової дисципліни в магазині, її призначення та управлінська
+  логіка для компанії.
 related_documents:
   - /cash/cash-discipline/reg-forbidden-actions-at-cashdesk
   - /cash/cash-discipline/sop-price-tags-at-cashdesk
@@ -25,6 +25,7 @@ related_documents:
 source_of_truth: ai-draft
 ai_generated: true
 approval_required: true
+canonical_path: docs/cash/cash-discipline/policy-cash-discipline.md
 ---
 
 # Політика касової дисципліни

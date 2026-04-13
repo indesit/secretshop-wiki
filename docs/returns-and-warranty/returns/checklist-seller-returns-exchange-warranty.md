@@ -1,11 +1,11 @@
 ---
-title: "Чекліст для продавця: повернення, обмін, гарантія"
+title: 'Чекліст для продавця: повернення, обмін, гарантія'
 type: checklist
 status: draft
-owner: Anton
+owner: founders
 review_cycle_days: 90
-last_reviewed: 2026-03-26
-effective_from: 2026-03-26
+last_reviewed: 2026-03-26T00:00:00.000Z
+effective_from: 2026-03-26T00:00:00.000Z
 domain: returns-and-warranty
 subdomain: returns
 scope: all-stores
@@ -25,6 +25,8 @@ related_documents:
 source_of_truth: ai-draft
 ai_generated: true
 approval_required: true
+canonical_path: >-
+  docs/returns-and-warranty/returns/checklist-seller-returns-exchange-warranty.md
 ---
 
 # Чекліст для продавця: повернення, обмін, гарантія

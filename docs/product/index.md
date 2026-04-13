@@ -2,10 +2,10 @@
 title: Товар
 type: regulation
 status: approved
-owner: Anton
+owner: founders
 review_cycle_days: 365
-last_reviewed: 2026-03-25
-effective_from: 2026-03-25
+last_reviewed: 2026-03-25T00:00:00.000Z
+effective_from: 2026-03-25T00:00:00.000Z
 domain: product
 subdomain: overview
 scope: all-stores
@@ -17,6 +17,7 @@ related_documents: []
 source_of_truth: manual
 ai_generated: false
 approval_required: false
+canonical_path: docs/product/index.md
 ---
 
 # Товар

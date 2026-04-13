@@ -2,10 +2,10 @@
 title: Регламент відповідності товару в чеку фактичному товару
 type: regulation
 status: draft
-owner: Anton
+owner: founders
 review_cycle_days: 365
-last_reviewed: 2026-03-26
-effective_from: 2026-03-26
+last_reviewed: 2026-03-26T00:00:00.000Z
+effective_from: 2026-03-26T00:00:00.000Z
 domain: cash
 subdomain: cash-discipline
 scope: all-stores
@@ -14,8 +14,7 @@ tags:
   - receipts
   - sku-control
   - regulation
-summary: >-
-  У чек може потрапляти лише той товар, який фактично відпускається клієнту.
+summary: 'У чек може потрапляти лише той товар, який фактично відпускається клієнту.'
 related_documents:
   - /cash/cash-discipline/policy-cash-discipline
   - /cash/cash-discipline/reg-forbidden-actions-at-cashdesk
@@ -23,6 +22,7 @@ related_documents:
 source_of_truth: ai-draft
 ai_generated: true
 approval_required: true
+canonical_path: docs/cash/cash-discipline/reg-receipt-item-must-match-actual-goods.md
 ---
 
 # Регламент відповідності товару в чеку фактичному товару

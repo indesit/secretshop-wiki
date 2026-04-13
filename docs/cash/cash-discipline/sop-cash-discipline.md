@@ -1,11 +1,11 @@
 ---
-title: "SOP: Касова дисципліна"
+title: 'SOP: Касова дисципліна'
 type: sop
 status: draft
-owner: Anton
+owner: founders
 review_cycle_days: 180
-last_reviewed: 2026-03-25
-effective_from: 2026-03-25
+last_reviewed: 2026-03-25T00:00:00.000Z
+effective_from: 2026-03-25T00:00:00.000Z
 domain: cash
 subdomain: cash-discipline
 scope: all-stores
@@ -14,8 +14,8 @@ tags:
   - discipline
   - payments
 summary: >-
-  Правила роботи з готівкою та касою. Порядок прийому оплат,
-  закриття зміни, зберігання готівки та дії при розбіжностях.
+  Правила роботи з готівкою та касою. Порядок прийому оплат, закриття зміни,
+  зберігання готівки та дії при розбіжностях.
 related_documents:
   - /cash/shift-closing/
   - /cash/cash-incidents/
@@ -23,6 +23,7 @@ related_documents:
 source_of_truth: ai-draft
 ai_generated: true
 approval_required: true
+canonical_path: docs/cash/cash-discipline/sop-cash-discipline.md
 ---
 
 # SOP: Касова дисципліна

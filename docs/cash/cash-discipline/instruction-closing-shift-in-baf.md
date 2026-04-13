@@ -1,11 +1,11 @@
 ---
-title: "Інструкція: Закриття зміни в BAF"
+title: 'Інструкція: Закриття зміни в BAF'
 type: instruction
 status: draft
-owner: Anton
+owner: founders
 review_cycle_days: 180
-last_reviewed: 2026-03-29
-effective_from: 2026-03-29
+last_reviewed: 2026-03-29T00:00:00.000Z
+effective_from: 2026-03-29T00:00:00.000Z
 domain: cash
 subdomain: cash-discipline
 scope: all-stores
@@ -29,6 +29,7 @@ related_documents:
 source_of_truth: ai-draft
 ai_generated: true
 approval_required: true
+canonical_path: docs/cash/cash-discipline/instruction-closing-shift-in-baf.md
 ---
 
 # Інструкція: Закриття зміни в BAF
