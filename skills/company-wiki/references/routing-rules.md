@@ -105,16 +105,16 @@ Scope helps distinguish broad governance from local execution.
 ## Step 6. Build path
 
 Format:
-`skills or wiki path / domain / subdomain / file`
+`docs / domain / subdomain / file`
 
 File name format:
 `<type-prefix>-<scope>-<topic>.md`
 
 Examples:
-- `wiki/stores/daily-operations/reg-store-daily-operations.md`
-- `wiki/cash/prro/instruction-prro-offline-mode.md`
-- `wiki/loyalty/bonus-expiration/reg-store-bonus-expiration-contact-process.md`
-- `wiki/hr/onboarding/sop-role-onboarding-checkpoint.md`
+- `docs/stores/daily-operations/reg-store-daily-operations.md`
+- `docs/cash/prro/instruction-prro-offline-mode.md`
+- `docs/loyalty/bonus-expiration/reg-store-bonus-expiration-contact-process.md`
+- `docs/hr/onboarding/sop-role-onboarding-checkpoint.md`
 
 ## Conflict rules
 

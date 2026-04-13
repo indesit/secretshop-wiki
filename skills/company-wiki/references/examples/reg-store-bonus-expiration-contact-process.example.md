@@ -8,14 +8,14 @@ subdomain: "bonus-expiration"
 scope: "store-level"
 summary: "Описує порядок підготовки списку клієнтів із наближенням згоряння бонусів, правила контакту та фіксації результатів взаємодії."
 related_documents:
-  - "crm-bonus-expiration-contact-log"
-  - "instruction-bonus-expiration-viber-message"
-  - "reg-store-daily-operations"
+  - "/crm/bonus-expiration/contact-log"
+  - "/loyalty/bonus-expiration/instruction-bonus-expiration-viber-message"
+  - "/stores/daily-operations/reg-store-daily-operations"
 approval_required: true
 ai_generated: true
 source_of_truth: "repo"
 last_reviewed_at: "TODO"
-canonical_path: "wiki/loyalty/bonus-expiration/reg-store-bonus-expiration-contact-process.md"
+canonical_path: "docs/loyalty/bonus-expiration/reg-store-bonus-expiration-contact-process.md"
 ---
 
 # Регламент роботи з клієнтами, у яких згорають бонуси
@@ -59,6 +59,6 @@ canonical_path: "wiki/loyalty/bonus-expiration/reg-store-bonus-expiration-contac
 - якщо контакт із клієнтом неможливий через відсутність валідних даних, це має бути окремо зафіксовано
 
 ## Пов'язані документи
-- crm-bonus-expiration-contact-log
-- instruction-bonus-expiration-viber-message
-- reg-store-daily-operations
+- /crm/bonus-expiration/contact-log
+- /loyalty/bonus-expiration/instruction-bonus-expiration-viber-message
+- /stores/daily-operations/reg-store-daily-operations

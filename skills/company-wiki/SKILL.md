@@ -35,7 +35,9 @@ Do this:
 Read before writing:
 - `references/taxonomy.md`
 - `references/routing-rules.md`
+- `references/boundary-cases.md`
 - `references/frontmatter-schema.md`
+- `references/owner-vocabulary.md`
 - `references/repo-operations.md`
 
 Use templates from:
@@ -57,6 +59,7 @@ Do this:
 Read before editing:
 - `references/operating-rules.md`
 - `references/frontmatter-schema.md`
+- `references/owner-vocabulary.md`
 - `references/repo-operations.md`
 
 ### 3. Lint
@@ -74,6 +77,8 @@ Read:
 - `references/lint-rules.md`
 - `references/operating-rules.md`
 - `references/routing-rules.md`
+- `references/boundary-cases.md`
+- `references/owner-vocabulary.md`
 
 ### 4. Structure
 Use when deciding where a document belongs, whether a folder is justified, or whether two docs should merge.
@@ -81,6 +86,7 @@ Use when deciding where a document belongs, whether a folder is justified, or wh
 Read:
 - `references/taxonomy.md`
 - `references/routing-rules.md`
+- `references/boundary-cases.md`
 - `references/operating-rules.md`
 
 ### 5. Sync

@@ -15,7 +15,7 @@ Examples:
 - duplicate or near-duplicate docs
 - wrong domain placement
 - missing owner or status
-- broken link from active doc
+- broken link from approved doc
 
 ### minor
 Use when the issue is real but not immediately dangerous.

@@ -52,8 +52,9 @@ Status rule:
 - use `archived` when the doc is retained only for history
 
 ### owner
-Responsible function, role, or team.
-If unknown: TODO
+Responsible function or stable responsibility zone.
+Use only the preferred owner vocabulary.
+If unknown: TODO.
 Do not invent.
 
 ### domain
@@ -61,7 +62,7 @@ Top-level domain. Must match allowed taxonomy.
 
 ### subdomain
 Operational subdomain within the domain.
-If unresolved: TODO
+If unresolved: TODO.
 
 ### scope
 Recommended values:
@@ -74,9 +75,15 @@ Recommended values:
 ### summary
 Short operational summary.
 One or two sentences.
+Do not make it literary or promotional.
 
 ### related_documents
-Array of canonical related slugs or file IDs.
+Array of canonical repo-relative document paths from the docs root.
+Preferred format:
+- `/sales/consultation/`
+- `/cash/cash-discipline/instruction-prro-offline-mode-in-baf`
+- `/returns-and-warranty/returns/`
+
 If unknown, keep empty and add TODO in body when relevant.
 
 ### approval_required
@@ -94,7 +101,9 @@ Must be `repo` for canonical docs.
 Date or TODO.
 
 ### canonical_path
-Repo path to the canonical file.
+Repo-relative path to the canonical markdown file under `docs/`.
+Example:
+- `docs/stores/daily-operations/reg-store-daily-operations.md`
 
 ## Missing data policy
 

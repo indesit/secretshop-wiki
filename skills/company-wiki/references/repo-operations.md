@@ -6,6 +6,8 @@ The canonical wiki content lives in:
 - `docs/` — all knowledge base content
 - `docs/templates/` — source templates used by the wiki repo itself
 
+Canonical paths in frontmatter must point to real repo-relative paths under `docs/`.
+
 Skill package lives separately in:
 - `skills/company-wiki/`
 

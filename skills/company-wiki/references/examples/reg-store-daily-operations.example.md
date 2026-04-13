@@ -2,20 +2,20 @@
 title: "Регламент щоденних операцій магазину"
 type: "regulation"
 status: "draft"
-owner: "operations"
+owner: "retail"
 domain: "stores"
 subdomain: "daily-operations"
 scope: "store-level"
-summary: "Описує порядок щоденної роботи магазину, обов'язкові контрольні точки та межі відповідальності між продавцем, адміністратором і власником процесу."
+summary: "Описує порядок щоденної роботи магазину, обов'язкові контрольні точки та межі відповідальності між продавцем, адміністратором і відповідальним за роздрібну операційну дисципліну."
 related_documents:
-  - "sop-store-opening-shift"
-  - "checklist-store-closing"
-  - "instruction-prro-offline-mode"
+  - "/stores/opening-closing/sop-opening-closing"
+  - "/cash/shift-closing/"
+  - "/cash/cash-discipline/instruction-prro-offline-mode-in-baf"
 approval_required: true
 ai_generated: true
 source_of_truth: "repo"
 last_reviewed_at: "TODO"
-canonical_path: "wiki/stores/daily-operations/reg-store-daily-operations.md"
+canonical_path: "docs/stores/daily-operations/reg-store-daily-operations.md"
 ---
 
 # Регламент щоденних операцій магазину
@@ -29,7 +29,7 @@ canonical_path: "wiki/stores/daily-operations/reg-store-daily-operations.md"
 ## Учасники
 - продавець зміни
 - адміністратор магазину
-- відповідальний за операційний контроль
+- відповідальний за роздрібну операційну дисципліну
 
 ## Тригер і частота
 - щоденно, у день роботи магазину
@@ -61,6 +61,6 @@ canonical_path: "wiki/stores/daily-operations/reg-store-daily-operations.md"
 - якщо стався технічний збій, дії визначаються відповідною інструкцією або incident-документом
 
 ## Пов'язані документи
-- sop-store-opening-shift
-- checklist-store-closing
-- instruction-prro-offline-mode
+- /stores/opening-closing/sop-opening-closing
+- /cash/shift-closing/
+- /cash/cash-discipline/instruction-prro-offline-mode-in-baf

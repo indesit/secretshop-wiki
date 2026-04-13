@@ -10,63 +10,60 @@ If the correct owner is unclear, use `TODO` and keep the document in `draft` or 
 
 ## Preferred owner values
 
-### Governance and company-wide
-- `company`
-- `hq`
+Use this canonical set for v1:
+- `founders`
 - `operations`
-
-### Functional owners
+- `retail`
 - `sales`
-- `stores`
-- `product`
-- `returns-and-warranty`
 - `cash`
 - `hr`
 - `marketing`
 - `loyalty`
 - `crm`
 - `analytics`
-
-### Special owners
+- `product`
 - `finance`
+- `support`
 - `it`
-- `legal`
-- `security`
 
 ## Usage rules
 
 ### Use functional owner when
-- the process clearly belongs to one operating domain
+- the process clearly belongs to one operating function
 - the document is maintained by a known business function
 
 Examples:
 - PRRO offline mode → `cash`
 - transfer process between stores → `product`
 - customer bonus expiration contact process → `loyalty`
+- daily store operations regulation → `retail`
 - customer birthday contact script executed by stores but governed by seller workflow → `sales`
+- return and exchange customer-handling process → `support`
 
 ### Use `operations` when
 - the process is cross-functional
 - the rule governs multiple store functions together
 - no narrower owner fits cleanly
 
-### Use `company` when
-- the document is a top-level governance rule
-- the document defines company-wide standards or principles
-- the document is not owned by one narrow function
+### Use `retail` when
+- the process is primarily owned by store operations as a retail function
+- the document governs store-floor execution, daily routines, or retail discipline
+- the owner is broader than one store but narrower than cross-functional operations
 
-### Use `hq` when
-- the owner is central office control rather than one specific operating function
-- the exact function is intentionally broad
+### Use `founders` when
+- the document is a top-level governance rule
+- the rule is owned directly at founder level
+- no narrower functional owner fits
 
 ## Avoid
 
 Do not use:
-- personal names unless your governance model explicitly requires them
+- personal names
 - temporary project names
 - store-specific labels as canonical owners
 - mixed values like `sales/hr`
 - vague labels like `team`, `manager`, `admin` without function
+- ad hoc synonyms for existing owner values
 
 ## If owner is ambiguous
 

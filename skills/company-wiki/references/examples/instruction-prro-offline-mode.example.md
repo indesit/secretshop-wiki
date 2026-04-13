@@ -8,13 +8,13 @@ subdomain: "prro"
 scope: "store-level"
 summary: "Описує дії працівника у випадку втрати зв'язку з сервером фіскалізації та переходу ПРРО в офлайн-режим."
 related_documents:
-  - "incident-prro-connection-loss"
-  - "reg-store-daily-operations"
+  - "/cash/cash-incidents/incident-prro-connection-loss"
+  - "/stores/daily-operations/reg-store-daily-operations"
 approval_required: true
 ai_generated: true
 source_of_truth: "repo"
 last_reviewed_at: "TODO"
-canonical_path: "wiki/cash/prro/instruction-prro-offline-mode.md"
+canonical_path: "docs/cash/prro/instruction-prro-offline-mode.md"
 ---
 
 # Інструкція: робота ПРРО в офлайн-режимі
@@ -47,5 +47,5 @@ canonical_path: "wiki/cash/prro/instruction-prro-offline-mode.md"
 - діяти за incident-документом, якщо ситуація виходить за межі звичайної помилки зв'язку
 
 ## Пов'язані документи
-- incident-prro-connection-loss
-- reg-store-daily-operations
+- /cash/cash-incidents/incident-prro-connection-loss
+- /stores/daily-operations/reg-store-daily-operations
