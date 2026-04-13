@@ -1,4 +1,4 @@
-# CLAUDE.md - Company Wiki Skill Operating Rules
+# Company Wiki Skill Operating Rules
 
 ## Mission
 
