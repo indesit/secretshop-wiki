@@ -42,9 +42,14 @@ Allowed:
 - draft
 - review
 - approved
-- active
 - deprecated
 - archived
+
+Status rule:
+- `approved` is the active canonical state
+- do not use a separate `active` status
+- use `deprecated` when the doc is replaced or should no longer be used
+- use `archived` when the doc is retained only for history
 
 ### owner
 Responsible function, role, or team.

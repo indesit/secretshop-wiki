@@ -15,6 +15,7 @@ Hard rules:
 - If repo and Outline differ, repo wins.
 - Never create canonical content only in Outline.
 - Never invent business rules, owners, approvals, or metadata.
+- Use the preferred owner vocabulary instead of ad hoc owner labels.
 - Prefer updating an existing canonical document over creating a near-duplicate.
 - Use `TODO` when required information is missing.
 - Write internal canonical docs in Ukrainian, dry and operational.
