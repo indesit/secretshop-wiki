@@ -3,12 +3,10 @@ import path from "node:path";
 import process from "node:process";
 
 import {
-  cleanForOutline,
-  extractMetadataTable,
-  inferCanonicalPathFromFile,
-  canonicalMarker,
+  enhanceForOutline,
   readFrontmatterTitle,
   readFrontmatterCanonicalPath,
+  inferCanonicalPathFromFile,
 } from "./cleaners.mjs";
 
 /**
@@ -43,10 +41,8 @@ export default async function publishOne({
   const canonicalPath = canonicalPathFromFm || inferCanonicalPathFromFile(absFile, repoRoot);
   const colName = collection || defaultCollectionForCanonicalPath(canonicalPath);
 
-  const metaTable = extractMetadataTable(raw);
-  const cleaned = cleanForOutline(raw);
-  const marker = canonicalMarker(canonicalPath);
-  const text = `${metaTable}${cleaned}${marker}`.trim() + "\n";
+  const cleaned = enhanceForOutline(raw);
+  const text = `${cleaned}`.trim() + "\n";
 
   const existingId = await findDocumentIdByCanonicalPath(canonicalPath);
   const collectionId = await ensureCollectionByName(colName);

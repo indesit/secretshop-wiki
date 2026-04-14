@@ -137,3 +137,127 @@ export function inferCanonicalPathFromFile(filePath, repoRoot) {
   return rel;
 }
 
+// ============================================================
+// Visual enhancements for Outline rendering
+// ============================================================
+
+/** Status badge */
+function statusBadge(raw) {
+  const m = raw.match(/^---\n[\s\S]*?status:\s*(.+)$/m);
+  if (!m) return "";
+  const s = m[1].trim();
+  const map = {
+    approved: "✅ Затверджено",
+    draft: "🚫 Чернетка",
+    archived: "🗃 Архівований",
+  };
+  return map[s] || `📋 ${s}`;
+}
+
+/** Type badge */
+function typeBadge(raw) {
+  const m = raw.match(/^---\n[\s\S]*?type:\s*(.+)$/m);
+  if (!m) return "";
+  const t = m[1].trim();
+  const map = {
+    policy: "📜 Policy",
+    regulation: "⚙️ Регламент",
+    sop: "📋 SOP",
+    instruction: "🛠 Інструкція",
+    checklist: "☑️ Чекліст",
+    incident: "🚨 Інцидент",
+    "decision-log": "📝 Рішення",
+    template: "📄 Шаблон",
+  };
+  return map[t] || `📄 ${t}`;
+}
+
+/** Extract related_documents list from frontmatter */
+function relatedLinks(raw) {
+  const m = raw.match(/^---\n[\s\S]*?related_documents:\s*\[([\s\S]*?)\]\n/m);
+  if (!m) return [];
+  return m[1]
+    .split(",")
+    .map((s) => s.trim().replace(/['"]/g, "").replace(/^docs\//, ""))
+    .filter(Boolean);
+}
+
+/** Build a pretty related-links block */
+function buildRelatedLinks(raw) {
+  const links = relatedLinks(raw);
+  if (links.length === 0) return "";
+  const rows = links
+    .map((l) => {
+      const slug = l.replace(/^docs\//, "");
+      const label = slug
+        .split("/")
+        .pop()
+        .replace(/^reg-|^sop-|^policy-|^instruction-|^checklist-|^incident-|^decision-log-/, "")
+        .replace(/-/g, " ");
+      return `- [[${slug}]]`;
+    })
+    .join("\n");
+  return `\n\n## Пов'язані документи\n${rows}\n`;
+}
+
+/** Build table-of-contents for docs with 3+ headings */
+function buildTOC(content) {
+  const headings = [];
+  const re = /^(#{1,3})\s+(.+)$/gm;
+  let m;
+  while ((m = re.exec(content)) !== null) {
+    if (m[1].length <= 3) {
+      headings.push(m[2].trim());
+    }
+  }
+  if (headings.length < 3) return "";
+  const items = headings
+    .map((h) => `  - ${h}`)
+    .join("\n");
+  return `\n\n## Зміст\n${items}\n`;
+}
+
+/** Build a light footer table with canonical path and updated date */
+function buildFooter(raw) {
+  const canonicalPath = readFrontmatterCanonicalPath(raw) || "";
+  const dateMatch = raw.match(/^---\n[\s\S]*?(?:updated|last_reviewed):\s*(.+)$/m);
+  const date = dateMatch ? dateMatch[1].trim() : "";
+  if (!canonicalPath && !date) return "";
+  return (
+    `\n\n---\n\n` +
+    `| 🗂️ Джерело | ${canonicalPath || "—"} |\n` +
+    `| 📅 Оновлено | ${date || "—"} |\n`
+  );
+}
+
+/**
+ * Add decorative header, TOC, related links, and footer.
+ * Works only when frontmatter data is available — never invents.
+ */
+export function enhanceForOutline(rawContent) {
+  const status = statusBadge(rawContent);
+  const type = typeBadge(rawContent);
+
+  let header = "";
+  if (status || type) {
+    const badges = [status, type].filter(Boolean).join("   ");
+    header = `\n${badges}\n\n`;
+  }
+
+  let content = stripFrontmatter(rawContent);
+  content = convertRoleCards(content);
+  content = convertEscalationBoxes(content);
+  content = convertDecisionRules(content);
+  content = removeDocumentMeta(content);
+  content = removeRelatedDocuments(content);
+  content = removeIconComponents(content);
+  content = convertGithubAlerts(content);
+  content = removeRemainingSelfClosingTags(content);
+  content = content.replace(/\n{4,}/g, "\n\n\n");
+
+  const toc = buildTOC(content);
+  const related = buildRelatedLinks(rawContent);
+  const footer = buildFooter(rawContent);
+
+  return `${header}${toc}${content}${related}${footer}`;
+}
