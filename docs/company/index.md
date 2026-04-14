@@ -2,21 +2,22 @@
 title: Компанія
 type: regulation
 status: approved
-owner: Anton
+owner: founders
 review_cycle_days: 365
-last_reviewed: 2026-03-25
-effective_from: 2026-03-25
+last_reviewed: 2026-03-25T00:00:00.000Z
+effective_from: 2026-03-25T00:00:00.000Z
 domain: company
 subdomain: overview
 scope: all-stores
 tags:
   - company
   - overview
-summary: Розділ про загальні принципи компанії, структуру та ролі.
+summary: 'Розділ про загальні принципи компанії, структуру та ролі.'
 related_documents: []
 source_of_truth: manual
 ai_generated: false
 approval_required: false
+canonical_path: docs/company/index.md
 ---
 
 # Компанія

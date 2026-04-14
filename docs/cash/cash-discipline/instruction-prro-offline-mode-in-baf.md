@@ -1,11 +1,11 @@
 ---
-title: "Інструкція: ПРРО в BAF — перехід в офлайн і відправка документів"
+title: 'Інструкція: ПРРО в BAF — перехід в офлайн і відправка документів'
 type: instruction
 status: draft
-owner: Anton
+owner: founders
 review_cycle_days: 180
-last_reviewed: 2026-04-07
-effective_from: 2026-04-07
+last_reviewed: 2026-04-07T00:00:00.000Z
+effective_from: 2026-04-07T00:00:00.000Z
 domain: cash
 subdomain: cash-discipline
 scope: all-stores
@@ -18,9 +18,9 @@ tags:
   - fiscalization
   - incident
 summary: >-
-  Що робити, коли під час пробиття чеку ПРРО в BAF пропонує перехід в офлайн:
-  як продовжити роботу, де перевірити відправку офлайн-документів і як
-  відправити офлайн-пакет вручну.
+  Що робити, коли під час пробиття чеку ПРРО в BAF пропонує перехід в офлайн: як
+  продовжити роботу, де перевірити відправку офлайн-документів і як відправити
+  офлайн-пакет вручну.
 related_documents:
   - /cash/cash-discipline/policy-cash-discipline
   - /cash/cash-discipline/reg-forbidden-actions-at-cashdesk
@@ -29,6 +29,7 @@ related_documents:
 source_of_truth: ai-draft
 ai_generated: true
 approval_required: true
+canonical_path: docs/cash/cash-discipline/instruction-prro-offline-mode-in-baf.md
 ---
 
 # Інструкція: ПРРО в BAF — перехід в офлайн і відправка документів

@@ -2,10 +2,10 @@
 title: Обмін товару
 type: regulation
 status: approved
-owner: Anton
+owner: founders
 review_cycle_days: 365
-last_reviewed: 2026-03-26
-effective_from: 2026-03-26
+last_reviewed: 2026-03-26T00:00:00.000Z
+effective_from: 2026-03-26T00:00:00.000Z
 domain: returns-and-warranty
 subdomain: exchange
 scope: all-stores
@@ -18,6 +18,7 @@ related_documents:
 source_of_truth: manual
 ai_generated: false
 approval_required: false
+canonical_path: docs/returns-and-warranty/exchange/index.md
 ---
 
 # Обмін товару

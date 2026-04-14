@@ -6,8 +6,8 @@
 Use when the issue affects canonical truth, creates serious contradiction, or can mislead execution.
 Examples:
 - two approved docs contradict each other
-- repo and Outline diverge on active process logic
-- active doc points to deprecated replacement incorrectly
+- repo and Outline diverge on approved process logic
+- approved doc points to deprecated replacement incorrectly
 
 ### major
 Use when the issue damages structure or operational usefulness.
@@ -15,7 +15,7 @@ Examples:
 - duplicate or near-duplicate docs
 - wrong domain placement
 - missing owner or status
-- broken link from active doc
+- broken link from approved doc
 
 ### minor
 Use when the issue is real but not immediately dangerous.
@@ -89,7 +89,7 @@ Must detect:
 - SOP without expected result
 - instruction without failure handling
 - regulation without control points
-- active doc with critical TODO markers
+- approved doc with critical TODO markers
 
 ## Drift checks
 

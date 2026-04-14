@@ -1,11 +1,11 @@
 ---
-title: "SOP: Відкриття та закриття магазину"
+title: 'SOP: Відкриття та закриття магазину'
 type: sop
 status: draft
-owner: Anton
+owner: founders
 review_cycle_days: 180
-last_reviewed: 2026-03-25
-effective_from: 2026-03-25
+last_reviewed: 2026-03-25T00:00:00.000Z
+effective_from: 2026-03-25T00:00:00.000Z
 domain: stores
 subdomain: opening-closing
 scope: all-stores
@@ -15,8 +15,8 @@ tags:
   - closing
   - daily
 summary: >-
-  Стандартна процедура відкриття та закриття магазину.
-  Включає перевірки обладнання, безпеки та систем обліку.
+  Стандартна процедура відкриття та закриття магазину. Включає перевірки
+  обладнання, безпеки та систем обліку.
 related_documents:
   - /stores/technical-issues/sop-technical-incident
   - /cash/cash-discipline/sop-cash-discipline
@@ -24,6 +24,7 @@ related_documents:
 source_of_truth: ai-draft
 ai_generated: true
 approval_required: true
+canonical_path: docs/stores/opening-closing/sop-opening-closing.md
 ---
 
 # SOP: Відкриття та закриття магазину

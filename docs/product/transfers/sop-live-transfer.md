@@ -1,11 +1,11 @@
 ---
-title: "SOP: LIVE-переміщення між магазинами"
+title: 'SOP: LIVE-переміщення між магазинами'
 type: sop
 status: draft
-owner: Anton
+owner: founders
 review_cycle_days: 180
-last_reviewed: 2026-03-25
-effective_from: 2026-03-25
+last_reviewed: 2026-03-25T00:00:00.000Z
+effective_from: 2026-03-25T00:00:00.000Z
 domain: product
 subdomain: transfers
 scope: all-stores
@@ -24,6 +24,7 @@ related_documents:
 source_of_truth: ai-draft
 ai_generated: true
 approval_required: true
+canonical_path: docs/product/transfers/sop-live-transfer.md
 ---
 
 # SOP: LIVE-переміщення між магазинами

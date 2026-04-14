@@ -1,11 +1,11 @@
 ---
-title: "SOP: Дії при помилці нестачі товару в 1С"
+title: 'SOP: Дії при помилці нестачі товару в 1С'
 type: sop
 status: draft
-owner: Anton
+owner: founders
 review_cycle_days: 180
-last_reviewed: 2026-03-26
-effective_from: 2026-03-26
+last_reviewed: 2026-03-26T00:00:00.000Z
+effective_from: 2026-03-26T00:00:00.000Z
 domain: cash
 subdomain: cash-discipline
 scope: all-stores
@@ -24,6 +24,7 @@ related_documents:
 source_of_truth: ai-draft
 ai_generated: true
 approval_required: true
+canonical_path: docs/cash/cash-discipline/sop-stock-shortage-error-during-sale.md
 ---
 
 # SOP: Дії при помилці нестачі товару в 1С

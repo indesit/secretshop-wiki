@@ -1,11 +1,11 @@
 ---
-title: "Регламент: Виявлення браку при прийманні товару"
+title: 'Регламент: Виявлення браку при прийманні товару'
 type: regulation
 status: draft
-owner: Anton
+owner: founders
 review_cycle_days: 365
-last_reviewed: 2026-03-27
-effective_from: 2026-03-27
+last_reviewed: 2026-03-27T00:00:00.000Z
+effective_from: 2026-03-27T00:00:00.000Z
 domain: product
 subdomain: defect-handling
 scope: all-stores
@@ -25,6 +25,7 @@ related_documents:
 source_of_truth: ai-draft
 ai_generated: true
 approval_required: true
+canonical_path: docs/product/defect-handling/reg-defect-detection-at-receiving.md
 ---
 
 # Регламент: Виявлення браку при прийманні товару

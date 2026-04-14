@@ -2,10 +2,10 @@
 title: Регламент переміщення товару між магазинами в рамках підсорту
 type: regulation
 status: draft
-owner: Anton
+owner: founders
 review_cycle_days: 365
-last_reviewed: 2026-03-25
-effective_from: 2026-03-25
+last_reviewed: 2026-03-25T00:00:00.000Z
+effective_from: 2026-03-25T00:00:00.000Z
 domain: product
 subdomain: transfers
 scope: all-stores
@@ -16,8 +16,8 @@ tags:
   - regulation
 summary: >-
   Правила ініціювання, оцінки, погодження та відмови у переміщенні товару між
-  магазинами в рамках підсорту на підставі продажу, залишків,
-  оборачуваності та строку зберігання.
+  магазинами в рамках підсорту на підставі продажу, залишків, оборачуваності та
+  строку зберігання.
 related_documents:
   - /product/transfers/reg-transfer-between-stores
   - /product/transfers/reg-live-transfer-between-stores
@@ -25,6 +25,7 @@ related_documents:
 source_of_truth: ai-draft
 ai_generated: true
 approval_required: true
+canonical_path: docs/product/transfers/reg-subsort-transfer-between-stores.md
 ---
 
 # Регламент переміщення товару між магазинами в рамках підсорту

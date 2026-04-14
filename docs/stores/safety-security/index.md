@@ -2,10 +2,10 @@
 title: Безпека та охорона
 type: regulation
 status: approved
-owner: Anton
+owner: founders
 review_cycle_days: 365
-last_reviewed: 2026-03-25
-effective_from: 2026-03-25
+last_reviewed: 2026-03-25T00:00:00.000Z
+effective_from: 2026-03-25T00:00:00.000Z
 domain: stores
 subdomain: safety-security
 scope: all-stores
@@ -16,6 +16,7 @@ related_documents: []
 source_of_truth: manual
 ai_generated: false
 approval_required: false
+canonical_path: docs/stores/safety-security/index.md
 ---
 
 # Безпека та охорона

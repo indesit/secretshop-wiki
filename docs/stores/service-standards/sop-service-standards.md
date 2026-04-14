@@ -1,11 +1,11 @@
 ---
-title: "SOP: Стандарти обслуговування клієнтів"
+title: 'SOP: Стандарти обслуговування клієнтів'
 type: sop
 status: draft
-owner: Anton
+owner: founders
 review_cycle_days: 180
-last_reviewed: 2026-03-25
-effective_from: 2026-03-25
+last_reviewed: 2026-03-25T00:00:00.000Z
+effective_from: 2026-03-25T00:00:00.000Z
 domain: stores
 subdomain: service-standards
 scope: all-stores
@@ -15,8 +15,8 @@ tags:
   - standards
   - customers
 summary: >-
-  Мінімальні стандарти обслуговування клієнтів у магазинах мережі.
-  Регулює вітання, активну роботу в залі, поведінку в конфліктних ситуаціях.
+  Мінімальні стандарти обслуговування клієнтів у магазинах мережі. Регулює
+  вітання, активну роботу в залі, поведінку в конфліктних ситуаціях.
 related_documents:
   - /sales/consultation/
   - /sales/objections/
@@ -24,6 +24,7 @@ related_documents:
 source_of_truth: ai-draft
 ai_generated: true
 approval_required: true
+canonical_path: docs/stores/service-standards/sop-service-standards.md
 ---
 
 # SOP: Стандарти обслуговування клієнтів

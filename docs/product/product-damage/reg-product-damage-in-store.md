@@ -1,11 +1,11 @@
 ---
-title: "Регламент: Пошкодження товару в магазині"
+title: 'Регламент: Пошкодження товару в магазині'
 type: regulation
 status: draft
-owner: Anton
+owner: founders
 review_cycle_days: 365
-last_reviewed: 2026-03-27
-effective_from: 2026-03-27
+last_reviewed: 2026-03-27T00:00:00.000Z
+effective_from: 2026-03-27T00:00:00.000Z
 domain: product
 subdomain: product-damage
 scope: all-stores
@@ -24,6 +24,7 @@ related_documents:
 source_of_truth: ai-draft
 ai_generated: true
 approval_required: true
+canonical_path: docs/product/product-damage/reg-product-damage-in-store.md
 ---
 
 # Регламент: Пошкодження товару в магазині
