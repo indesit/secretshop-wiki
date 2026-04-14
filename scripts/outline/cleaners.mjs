@@ -219,8 +219,7 @@ function buildTOC(content) {
 }
 
 /** Build a light footer table with canonical path and updated date */
-function buildFooter(raw) {
-  const canonicalPath = readFrontmatterCanonicalPath(raw) || "";
+function buildFooter(raw, canonicalPath) {
   const dateMatch = raw.match(/^---\n[\s\S]*?(?:updated|last_reviewed):\s*(.+)$/m);
   const date = dateMatch ? dateMatch[1].trim() : "";
   if (!canonicalPath && !date) return "";
@@ -259,7 +258,7 @@ export function enhanceForOutline(rawContent, canonicalPath = "") {
 
   const toc = buildTOC(content);
   const related = buildRelatedLinks(rawContent);
-  const footer = buildFooter(rawContent);
+  const footer = buildFooter(rawContent, canonicalPath);
   const marker = canonicalMarker(canonicalPath);
 
   return `${header}${toc}${content}${related}${footer}${marker}\n`;
