@@ -1,6 +1,6 @@
 ---
 title: Історія Secret Shop (Our Story)
-type: regulation
+type: brand
 status: draft
 owner: founders
 review_cycle_days: 365

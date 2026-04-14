@@ -84,17 +84,29 @@ function defaultCollectionForCanonicalPath(canonicalPath) {
   return map[m] || "Company Wiki";
 }
 
-async function findDocumentIdByCanonicalPath(canonicalPath) {
-  const query = `canonical_path: ${canonicalPath}`;
-  const res = await outlineRequest("documents.search", {
-    query,
-    includeArchived: true,
-    limit: 25,
-    offset: 0,
-  });
-  const docs = res?.data || [];
-  const hit = docs.find((d) => d?.title);
-  return hit?.id || "";
+async function findDocumentIdByCanonicalPath(canonicalPath, title, colName) {
+  // Search by title + collection — unique pair, reliable
+  if (!title || !colName) return "";
+  const cols = await listCollections();
+  const col = cols.find((c) => c.name === colName);
+  if (!col) return "";
+
+
+  // Paginate through all docs in the collection
+  let offset = 0;
+  while (true) {
+    const res = await outlineRequest("documents.list", {
+      collectionId: col.id,
+      limit: 100,
+      offset,
+    });
+    const docs = res?.data || [];
+    const hit = docs.find((d) => d.title === title);
+    if (hit) return hit.id;
+    if (docs.length < 100) break;
+    offset += docs.length;
+  }
+  return "";
 }
 
 async function publishOneCli({ file, collection, dryRun }) {

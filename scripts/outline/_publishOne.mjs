@@ -41,10 +41,10 @@ export default async function publishOne({
   const canonicalPath = canonicalPathFromFm || inferCanonicalPathFromFile(absFile, repoRoot);
   const colName = collection || defaultCollectionForCanonicalPath(canonicalPath);
 
-  const cleaned = enhanceForOutline(raw);
+  const cleaned = enhanceForOutline(raw, canonicalPath);
   const text = `${cleaned}`.trim() + "\n";
 
-  const existingId = await findDocumentIdByCanonicalPath(canonicalPath);
+  const existingId = await findDocumentIdByCanonicalPath(canonicalPath, title, colName);
   const collectionId = await ensureCollectionByName(colName);
 
   if (dryRun) {

@@ -128,7 +128,7 @@ export function readFrontmatterCanonicalPath(rawContent) {
 export function canonicalMarker(canonicalPath) {
   const p = canonicalPath?.trim();
   if (!p) return "";
-  return `\n\n<!-- canonical_path: ${p} -->\n`;
+  return `\n\n📂 ${p}\n`;
 }
 
 export function inferCanonicalPathFromFile(filePath, repoRoot) {
@@ -168,6 +168,7 @@ function typeBadge(raw) {
     incident: "🚨 Інцидент",
     "decision-log": "📝 Рішення",
     template: "📄 Шаблон",
+    brand: "🏷️ Бренд",
   };
   return map[t] || `📄 ${t}`;
 }
@@ -234,9 +235,10 @@ function buildFooter(raw) {
  * Add decorative header, TOC, related links, and footer.
  * Works only when frontmatter data is available — never invents.
  */
-export function enhanceForOutline(rawContent) {
+export function enhanceForOutline(rawContent, canonicalPath = "") {
   const status = statusBadge(rawContent);
   const type = typeBadge(rawContent);
+
 
   let header = "";
   if (status || type) {
@@ -258,6 +260,7 @@ export function enhanceForOutline(rawContent) {
   const toc = buildTOC(content);
   const related = buildRelatedLinks(rawContent);
   const footer = buildFooter(rawContent);
+  const marker = canonicalMarker(canonicalPath);
 
-  return `${header}${toc}${content}${related}${footer}`;
+  return `${header}${toc}${content}${related}${footer}${marker}\n`;
 }
