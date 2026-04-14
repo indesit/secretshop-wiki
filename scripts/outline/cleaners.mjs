@@ -259,7 +259,6 @@ export function enhanceForOutline(rawContent, canonicalPath = "") {
   const toc = buildTOC(content);
   const related = buildRelatedLinks(rawContent);
   const footer = buildFooter(rawContent, canonicalPath);
-  const marker = canonicalMarker(canonicalPath);
 
-  return `${header}${toc}${content}${related}${footer}${marker}\n`;
+  return `${header}${toc}${content}${related}${footer}\n`;
 }
