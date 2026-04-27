@@ -57,6 +57,8 @@ Use:
 - checklist for verification and completion tracking
 - incident for failure and event response
 - decision-log for decision records and rationale
+- brand for brand artifacts (history, official bio); use sparingly
+- template for reusable document skeletons (only in `docs/templates/`)
 
 If content mixes multiple types:
 - split if necessary
@@ -64,7 +66,7 @@ If content mixes multiple types:
 
 ## Domain routing heuristics
 
-Use top-level domains:
+Active top-level domains (підтримані `scripts/new-doc.mjs ALLOWED_DOMAINS`):
 - company
 - sales
 - stores
@@ -72,13 +74,11 @@ Use top-level domains:
 - returns-and-warranty
 - cash
 - hr
-- marketing
-- loyalty
-- crm
-- operations
-- analytics
-- decisions
 - glossary
+
+Future-reserved (не активовані, потребують додавання в CLI перед першим використанням):
+`marketing`, `loyalty`, `crm`, `operations`, `analytics`, `decisions` — деталі в
+`references/taxonomy.md` → "Future domains".
 
 Do not create a new subdomain unless the topic is stable and likely to contain at least 3 documents.
 

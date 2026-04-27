@@ -112,6 +112,8 @@ Choose the type before writing:
 - `checklist` — verification and completion tracking
 - `incident` — exception, failure, and recovery handling
 - `decision-log` — decision, context, rationale, alternatives, affected docs
+- `brand` — brand artifacts (history, "Our Story", official bio); use sparingly
+- `template` — reusable document skeleton; lives only in `docs/templates/`
 
 If content mixes types:
 - split if needed;

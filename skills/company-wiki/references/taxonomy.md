@@ -30,7 +30,13 @@ Do not use as a permanent operating process document.
 Use for decisions, context, alternatives, reasoning, effective date, and affected docs.
 Do not use as a policy replacement.
 
+### brand
+Use for brand artifacts: brand history, official bio, "Our Story" narrative.
+Use sparingly — only when content is genuinely a brand asset, not a regulation.
+
 ## Routing matrix
+
+Active domains (підтримані в `scripts/new-doc.mjs ALLOWED_DOMAINS`):
 
 ### company
 Company-wide principles, roles, governance, service standards.
@@ -53,26 +59,25 @@ Cash discipline, POS, PRRO procedures, end-of-day cash operations.
 ### hr
 Hiring, onboarding, role expectations, performance process.
 
-### marketing
-Campaign execution, promotions, communication coordination.
-
-### loyalty
-Cards, bonus balances, bonus expiration process, loyalty operations.
-
-### crm
-CRM workflows, contact segmentation, triggers, customer handling logic.
-
-### operations
-Cross-functional operational management documents not limited to one store.
-
-### analytics
-Metrics definitions, dashboards, reporting rules, data interpretation logic.
-
-### decisions
-Decision logs and governance decisions.
-
 ### glossary
-Definitions for canonical internal terms.
+Definitions for canonical internal terms (доступний як top-level через sidebar generator).
+
+## Future domains (not yet activated)
+
+Наступні домени резервовано в плані, але **не активовані** — папок під них немає,
+`scripts/new-doc.mjs` їх не приймає:
+- `marketing` — campaign execution, promotions
+- `loyalty` — bonus balances, bonus expiration, loyalty operations
+- `crm` — contact segmentation, triggers, customer workflows
+- `operations` — cross-functional operational governance
+- `analytics` — metrics, dashboards, reporting logic
+- `decisions` — decision logs and governance decisions
+
+Активація: коли з'являється перший канонічний документ у такому домені, додавай domain
+одночасно в трьох місцях:
+- `skills/company-wiki/references/frontmatter-schema.md`
+- `skills/company-wiki/references/routing-rules.md`
+- `scripts/new-doc.mjs ALLOWED_DOMAINS` + `scripts/generate-sidebar.mjs TOP_LEVEL_SECTIONS`.
 
 ## Anti-patterns
 

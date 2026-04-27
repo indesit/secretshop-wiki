@@ -2,7 +2,7 @@
 title: "Регламент: Авторизація та система доступів до внутрішнього порталу"
 type: regulation
 status: draft
-owner: Anton
+owner: it
 review_cycle_days: 365
 last_reviewed: 2026-04-13
 effective_from: 2026-04-13

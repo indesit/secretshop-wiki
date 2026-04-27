@@ -5,7 +5,7 @@ import Icons from 'unplugin-icons/vite'
 import sidebar from './generated-sidebar.json'
 
 export default withMermaid(defineConfig({
-  title: 'Company Wiki',
+  title: 'Secret Shop Wiki',
   description: 'Корпоративна база знань',
   lang: 'uk-UA',
   srcDir: '.',
@@ -27,8 +27,8 @@ export default withMermaid(defineConfig({
   },
 
   themeConfig: {
-    logo: '/logo.svg',
-    siteTitle: 'Company Wiki',
+    logo: '/img/secretshop-logo.jpg',
+    siteTitle: 'Secret Shop Wiki',
 
     nav: [
       { text: 'Компанія', link: '/company/' },
@@ -48,7 +48,7 @@ export default withMermaid(defineConfig({
     },
 
     editLink: {
-      pattern: 'https://github.com/your-org/company-wiki/edit/main/docs/:path',
+      pattern: 'https://github.com/indesit/secretshop-wiki/edit/main/docs/:path',
       text: 'Редагувати цю сторінку',
     },
 
@@ -58,7 +58,7 @@ export default withMermaid(defineConfig({
 
     footer: {
       message: 'Лише затверджені документи є офіційними.',
-      copyright: `© ${new Date().getFullYear()} Company Wiki. Усі права захищені.`,
+      copyright: `© ${new Date().getFullYear()} Secret Shop Wiki. Усі права захищені.`,
     },
 
     docFooter: {

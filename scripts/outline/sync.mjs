@@ -1,6 +1,7 @@
 import { execSync } from "node:child_process";
 import path from "node:path";
 import process from "node:process";
+import { defaultCollectionForCanonicalPath } from "./cleaners.mjs";
 
 // Simple git-based sync: publish only markdown files changed since a ref.
 // Usage:
@@ -75,21 +76,6 @@ async function ensureCollectionByName(name) {
   return created.data.id;
 }
 
-function defaultCollectionForCanonicalPath(canonicalPath) {
-  const m = canonicalPath.replace(/^docs\//, "").split("/")[0];
-  const map = {
-    cash: "Касса",
-    company: "Компания",
-    glossary: "Глоссарий",
-    hr: "Отдел кадров",
-    product: "Продукты",
-    "returns-and-warranty": "Возвраты и гарантия",
-    sales: "Продажи",
-    stores: "Магазины",
-    templates: "Шаблоны",
-  };
-  return map[m] || "Company Wiki";
-}
 
 async function findDocumentIdByCanonicalPath(canonicalPath) {
   const query = `canonical_path: ${canonicalPath}`;

@@ -1,0 +1,68 @@
+
+
+services:
+  outline:
+    image: outlinewiki/outline:latest
+    env_file: ./outline.env
+    ports:
+      - "127.0.0.1:3000:3000"
+    restart: unless-stopped
+    depends_on:
+      - postgres
+      - redis
+      - minio
+    networks:
+      - wiki-auth_default
+
+  redis:
+    image: redis:alpine
+    restart: unless-stopped
+    networks:
+      - wiki-auth_default
+
+  postgres:
+    image: postgres:15
+    env_file: ./outline.env
+    environment:
+      POSTGRES_USER: outline
+      POSTGRES_DB: outline
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - wiki-auth_default
+
+  minio:
+    image: minio/minio
+    command: server /data --console-address ":9001"
+    env_file: ./outline.env
+    ports:
+      - "127.0.0.1:9000:9000"
+      - "127.0.0.1:9001:9001"
+    restart: unless-stopped
+    volumes:
+      - minio-data:/data
+    networks:
+      - wiki-auth_default
+
+  minio-init:
+    image: minio/mc
+    depends_on:
+      - minio
+    env_file: ./outline.env
+    entrypoint: >
+      /bin/sh -c "
+      sleep 5;
+      mc alias set myminio http://minio:9000 $${AWS_ACCESS_KEY_ID} $${AWS_SECRET_ACCESS_KEY};
+      mc mb myminio/outline || true;
+      mc anonymous set download myminio/outline;
+      "
+    networks:
+      - wiki-auth_default
+
+volumes:
+  db-data:
+  minio-data:
+
+networks:
+  wiki-auth_default:
+    external: true

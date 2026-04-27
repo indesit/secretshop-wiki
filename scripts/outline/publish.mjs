@@ -1,6 +1,7 @@
 import process from "node:process";
 
 import publishOne from "./_publishOne.mjs";
+import { defaultCollectionForCanonicalPath } from "./cleaners.mjs";
 
 const OUTLINE_URL = process.env.OUTLINE_URL || "http://localhost:3000";
 const API_TOKEN = process.env.OUTLINE_API_TOKEN;
@@ -68,21 +69,6 @@ async function ensureCollectionByName(name) {
   return created.data.id;
 }
 
-function defaultCollectionForCanonicalPath(canonicalPath) {
-  const m = canonicalPath.replace(/^docs\//, "").split("/")[0];
-  const map = {
-    cash: "Касса",
-    company: "Компания",
-    glossary: "Глоссарий",
-    hr: "Отдел кадров",
-    product: "Продукты",
-    "returns-and-warranty": "Возвраты и гарантия",
-    sales: "Продажи",
-    stores: "Магазины",
-    templates: "Шаблоны",
-  };
-  return map[m] || "Company Wiki";
-}
 
 async function findDocumentIdByCanonicalPath(canonicalPath, title, colName) {
   // Search by title + collection — unique pair, reliable

@@ -2,7 +2,7 @@
 title: Реєстр управлінських рішень
 type: template
 status: draft
-owner: Anton
+owner: founders
 review_cycle_days: 90
 last_reviewed: 2026-03-25
 effective_from: 2026-03-25

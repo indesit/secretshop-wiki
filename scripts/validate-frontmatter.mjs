@@ -16,9 +16,10 @@ const SKIP_DIRS = new Set(['.vitepress', 'public', 'node_modules'])
 const SKIP_FILES = new Set(['index.md']) // top-level section indexes use approved status directly
 
 const ALLOWED_TYPES = new Set([
-  'policy', 'regulation', 'sop', 'instruction', 'checklist', 'template', 'incident'
+  'policy', 'regulation', 'sop', 'instruction', 'checklist', 'template',
+  'incident', 'decision-log', 'brand'
 ])
-const ALLOWED_STATUSES = new Set(['draft', 'approved', 'archived'])
+const ALLOWED_STATUSES = new Set(['draft', 'review', 'approved', 'deprecated', 'archived'])
 const REQUIRED_FIELDS = ['title', 'type', 'status', 'owner', 'domain']
 
 // Parse YAML frontmatter manually (without external dependency at CI time)

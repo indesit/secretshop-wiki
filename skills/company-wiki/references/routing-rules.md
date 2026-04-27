@@ -36,47 +36,45 @@ Use:
 
 ## Step 3. Determine domain
 
-### company
+### Active domains
+
+Підтримані одночасно в `frontmatter-schema.md` і `scripts/new-doc.mjs ALLOWED_DOMAINS`:
+
+#### company
 Use for company-wide governance, service standards, shared principles, and high-level role rules.
 
-### sales
+#### sales
 Use for selling process, client communication in sales context, conversion workflow, and interaction scripts.
 
-### stores
+#### stores
 Use for store-level daily operations, shifts, opening and closing, local process execution, and store responsibility boundaries.
 
-### product
+#### product
 Use for assortment logic, product handling, category structure, stock interaction rules, and product-related governance.
 
-### returns-and-warranty
+#### returns-and-warranty
 Use for return, exchange, complaint, and warranty procedures.
 
-### cash
+#### cash
 Use for cash discipline, PRRO, fiscal operations, receipt issues, end-of-day cash control, and payment process rules.
 
-### hr
+#### hr
 Use for hiring, onboarding, performance expectations, evaluation process, and staff development procedures.
 
-### marketing
-Use for campaigns, promos, communication preparation, and marketing execution rules.
-
-### loyalty
-Use for bonus balances, bonus expiration process, loyalty cards, loyalty operational rules, and customer incentive rules tied to the loyalty system.
-
-### crm
-Use for segmentation, contact workflows, communication triggers, CRM task logic, and handling rules in the CRM layer.
-
-### operations
-Use for cross-functional operational governance that does not fit cleanly inside one store or one narrow function.
-
-### analytics
-Use for metric definitions, dashboards, reports, analytical interpretation rules, and data logic.
-
-### decisions
-Use for decision logs and decision history.
-
-### glossary
+#### glossary
 Use for canonical terms and definitions.
+
+### Future domains (not yet activated)
+
+Наступні домени резервовано, але **не активовані** — `new-doc.mjs` поверне помилку.
+Якщо плануєш створити документ в одному з них — спочатку активуй (див. `taxonomy.md` →
+"Future domains"):
+- `marketing` — campaigns, promos, communication preparation, marketing execution rules
+- `loyalty` — bonus balances, bonus expiration, loyalty cards, customer incentive rules
+- `crm` — segmentation, contact workflows, communication triggers, CRM handling
+- `operations` — cross-functional operational governance not fitting one function
+- `analytics` — metric definitions, dashboards, reports, analytical interpretation
+- `decisions` — decision logs and governance decisions
 
 ## Step 4. Determine subdomain
 

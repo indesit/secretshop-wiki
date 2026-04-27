@@ -1,5 +1,23 @@
 import path from "node:path";
 
+/** Canonical domain → Outline collection name mapping (Ukrainian). */
+export const COLLECTION_MAP = {
+  cash: "Каса",
+  company: "Компанія",
+  glossary: "Глосарій",
+  hr: "HR",
+  product: "Товар",
+  "returns-and-warranty": "Повернення та гарантія",
+  sales: "Продажі",
+  stores: "Магазини",
+  templates: "Шаблони",
+};
+
+export function defaultCollectionForCanonicalPath(canonicalPath) {
+  const domain = canonicalPath.replace(/^docs\//, "").split("/")[0];
+  return COLLECTION_MAP[domain] || "Secret Shop Wiki";
+}
+
 /** Strip YAML frontmatter block */
 export function stripFrontmatter(content) {
   return content.replace(/^---\n[\s\S]*?\n---\n/, "");
@@ -93,9 +111,25 @@ export function removeRemainingSelfClosingTags(content) {
   return content.replace(/<[A-Z][a-zA-Z]+\s*[^>]*\/>/g, "");
 }
 
+/**
+ * Remove leading H1 from body if it duplicates the frontmatter title.
+ * Outline renders `title` as its own H1 — a matching body H1 creates a double header.
+ */
+export function deduplicateH1(content, fmTitle) {
+  if (!fmTitle) return content;
+  // Match an H1 at the very start of the body (after optional blank lines)
+  return content.replace(/^(\s*)(# .+\n)/, (match, space, h1line) => {
+    const h1text = h1line.replace(/^# /, "").trim();
+    if (h1text === fmTitle) return space; // drop matching H1
+    return match; // keep non-matching H1
+  });
+}
+
 export function cleanForOutline(rawContent) {
+  const fmTitle = readFrontmatterTitle(rawContent);
   let content = stripFrontmatter(rawContent);
 
+  content = deduplicateH1(content, fmTitle);
   content = convertRoleCards(content);
   content = convertEscalationBoxes(content);
   content = convertDecisionRules(content);
@@ -245,7 +279,9 @@ export function enhanceForOutline(rawContent, canonicalPath = "") {
     header = `\n${badges}\n\n`;
   }
 
+  const fmTitle = readFrontmatterTitle(rawContent);
   let content = stripFrontmatter(rawContent);
+  content = deduplicateH1(content, fmTitle);
   content = convertRoleCards(content);
   content = convertEscalationBoxes(content);
   content = convertDecisionRules(content);

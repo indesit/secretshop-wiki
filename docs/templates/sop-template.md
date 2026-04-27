@@ -2,7 +2,7 @@
 title: Назва SOP
 type: sop
 status: draft
-owner: Anton
+owner: founders
 review_cycle_days: 180
 last_reviewed: 2026-03-25
 effective_from: 2026-03-25

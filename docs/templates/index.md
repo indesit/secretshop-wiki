@@ -2,7 +2,7 @@
 title: Шаблони документів
 type: template
 status: approved
-owner: Anton
+owner: founders
 review_cycle_days: 365
 last_reviewed: 2026-03-25
 effective_from: 2026-03-25

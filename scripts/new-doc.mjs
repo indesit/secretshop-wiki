@@ -19,7 +19,10 @@ const TEMPLATES_DIR = join(DOCS_DIR, 'templates')
 
 const TODAY = new Date().toISOString().split('T')[0]
 
-const ALLOWED_TYPES = ['policy', 'regulation', 'sop', 'instruction', 'checklist', 'template', 'incident']
+const ALLOWED_TYPES = [
+  'policy', 'regulation', 'sop', 'instruction', 'checklist', 'template',
+  'incident', 'decision-log', 'brand'
+]
 const ALLOWED_DOMAINS = ['company', 'stores', 'product', 'returns-and-warranty', 'sales', 'cash', 'hr']
 
 const TEMPLATE_MAP = {
@@ -30,6 +33,8 @@ const TEMPLATE_MAP = {
   checklist: 'checklist-template.md',
   incident: 'incident-template.md',
   template: 'decision-log-template.md',
+  'decision-log': 'decision-log-template.md',
+  brand: 'regulation-template.md',
 }
 
 // Parse CLI args

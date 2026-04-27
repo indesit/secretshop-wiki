@@ -1,6 +1,6 @@
 # Frontmatter schema
 
-## Required fields
+## Required fields (enforced by `scripts/validate-frontmatter.mjs`)
 
 ```yaml
 ---
@@ -9,115 +9,132 @@ type: "TODO"
 status: "draft"
 owner: "TODO"
 domain: "TODO"
+---
+```
+
+Якщо хоча б одне з цих полів відсутнє — `npm run validate` падає.
+
+## Recommended fields (не обов'язкові, але присутні в усіх canonical-документах)
+
+```yaml
 subdomain: "TODO"
-scope: "TODO"
+scope: "all-stores"
 summary: "TODO"
 related_documents: []
 approval_required: true
 ai_generated: true
-source_of_truth: "repo"
-last_reviewed_at: "TODO"
-canonical_path: "TODO"
----
+source_of_truth: "manual"   # або "ai-draft" | "repo"
+last_reviewed: "YYYY-MM-DD"
+effective_from: "YYYY-MM-DD"
+review_cycle_days: 180
+tags: []
+canonical_path: "docs/<domain>/<subdomain>/<slug>.md"
 ```
 
 ## Field rules
 
 ### title
-Human-readable title.
-Do not use file slug as title.
+Human-readable title. Не використовуй файловий slug як title.
 
 ### type
-Allowed:
-- policy
-- regulation
-- sop
-- instruction
-- checklist
-- incident
-- decision-log
+Allowed (синхронізовано з `scripts/validate-frontmatter.mjs:18-22` і `scripts/new-doc.mjs:22-25`):
+- `policy`
+- `regulation`
+- `sop`
+- `instruction`
+- `checklist`
+- `incident`
+- `decision-log`
+- `template`
+- `brand`
 
 ### status
-Allowed:
-- draft
-- review
-- approved
-- deprecated
-- archived
+Allowed (синхронізовано з валідатором):
+- `draft` — чернетка, не є офіційним
+- `review` — в процесі рев'ю редактором
+- `approved` — активний канонічний стан
+- `deprecated` — замінено новим документом, не використовувати
+- `archived` — збережено лише для історії
 
 Status rule:
-- `approved` is the active canonical state
-- do not use a separate `active` status
-- use `deprecated` when the doc is replaced or should no longer be used
-- use `archived` when the doc is retained only for history
+- `approved` — активний канонічний стан;
+- не використовувати окремий `active`;
+- `deprecated` коли документ замінено;
+- `archived` коли документ зберігається лише для історії.
 
 ### owner
-Responsible function or stable responsibility zone.
-Use only the preferred owner vocabulary.
-If unknown: TODO.
-Do not invent.
+Відповідальна функція або зона відповідальності. Використовуй лише vocabulary з `owner-vocabulary.md`.
+Якщо невідомо — `TODO`. Не вигадуй.
 
 ### domain
-Top-level domain. Must match allowed taxonomy.
+Top-level domain. Має збігатися з `ALLOWED_DOMAINS` в `scripts/new-doc.mjs:23`:
+`company | sales | stores | product | returns-and-warranty | cash | hr`.
+
+> Домени `marketing | loyalty | crm | operations | analytics | decisions` поки не активовані —
+> папок під них немає. Коли з'явиться перший канонічний doc у такому домені, додавай domain
+> одночасно в трьох місцях: тут, у `routing-rules.md`, у `new-doc.mjs ALLOWED_DOMAINS`,
+> і в `generate-sidebar.mjs TOP_LEVEL_SECTIONS`.
 
 ### subdomain
-Operational subdomain within the domain.
-If unresolved: TODO.
+Operational subdomain в межах домену. Якщо невирішено — `TODO`.
 
 ### scope
 Recommended values:
-- company-wide
-- store-level
-- role-level
-- system-level
-- campaign-level
+- `all-stores` (за замовчуванням)
+- `company-wide`
+- `store-level`
+- `role-level`
+- `system-level`
+- `campaign-level`
 
 ### summary
-Short operational summary.
-One or two sentences.
-Do not make it literary or promotional.
+Короткий operational summary. 1-2 речення. Без літератури і маркетингу.
 
 ### related_documents
-Array of canonical repo-relative document paths from the docs root.
+Масив repo-relative шляхів від кореня `docs/`.
 Preferred format:
 - `/sales/consultation/`
 - `/cash/cash-discipline/instruction-prro-offline-mode-in-baf`
 - `/returns-and-warranty/returns/`
 
-If unknown, keep empty and add TODO in body when relevant.
+Порожній якщо невідомо; додай TODO в тілі коли релевантно.
 
 ### approval_required
-Boolean.
-Default true for canonical docs.
+Boolean. Default `true` для канонічних документів.
 
 ### ai_generated
-Boolean.
-Set true when initial content or structure is produced by AI.
+Boolean. `true` коли початкова версія створена AI.
 
 ### source_of_truth
-Must be `repo` for canonical docs.
+Поточно вживані значення:
+- `manual` — створено вручну редактором;
+- `ai-draft` — створено AI-агентом, очікує погодження;
+- `repo` — підтверджено як канонічна версія в репо.
 
-### last_reviewed_at
-Date or TODO.
+### last_reviewed
+Дата останнього перегляду у форматі `YYYY-MM-DD` або `TODO`.
+
+> **Notation**: у документації використовується `last_reviewed`, не `last_reviewed_at`.
+> Це історично прийнятий формат, узгоджений з `cleaners.mjs:223` та існуючими 90 файлами.
 
 ### canonical_path
-Repo-relative path to the canonical markdown file under `docs/`.
-Example:
-- `docs/stores/daily-operations/reg-store-daily-operations.md`
+Repo-relative шлях до канонічного markdown-файлу під `docs/`.
+Приклад: `docs/stores/daily-operations/reg-store-daily-operations.md`.
+
+Не required, але всі скрипти Outline-публікації покладаються на нього (інакше шлях
+інферується з реального розташування файлу).
 
 ## Missing data policy
 
-If data is unknown:
-- use TODO
-- keep doc in draft or review
-- do not invent owner, approval state, effective date, or related docs
+Якщо дані невідомі:
+- використовуй `TODO`;
+- тримай документ у `draft` або `review`;
+- не вигадуй owner, approval state, effective date, related docs.
 
 ## Validation checks
 
-Invalid if:
-- type is outside enum
-- status is outside enum
-- source_of_truth is not repo for canonical docs
-- required field is missing
-- domain does not match taxonomy
-- canonical_path does not match actual path
+Invalid коли:
+- `type` поза enum;
+- `status` поза enum;
+- відсутнє required-поле (`title`, `type`, `status`, `owner`, `domain`);
+- `domain` не входить в `ALLOWED_DOMAINS`.

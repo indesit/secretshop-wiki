@@ -2,7 +2,7 @@
 title: "Регламент: Нагадування клієнтам про згоряння бонусів"
 type: regulation
 status: draft
-owner: Anton
+owner: sales
 review_cycle_days: 365
 last_reviewed: 2026-04-12
 effective_from: 2026-04-12
