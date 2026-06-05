@@ -8,6 +8,30 @@
           "link": "/company/"
         },
         {
+          "text": "📁 brand",
+          "collapsed": false,
+          "items": [
+            {
+              "text": "📄 Історія Secret Shop (Our Story)",
+              "link": "/company/brand/reg-secret-shop-history"
+            },
+            {
+              "text": "📄 Контакти Secret Shop",
+              "link": "/company/brand/contacts"
+            }
+          ]
+        },
+        {
+          "text": "📁 governance",
+          "collapsed": false,
+          "items": [
+            {
+              "text": "📘 Авторизація та система доступів до внутрішнього порталу",
+              "link": "/company/governance/reg-authentication-and-access-control"
+            }
+          ]
+        },
+        {
           "text": "📘 Матриця ескалації нестандартних ситуацій",
           "link": "/company/escalation-matrix"
         },
@@ -37,7 +61,16 @@
         {
           "text": "📁 Безпека та охорона",
           "collapsed": false,
-          "items": []
+          "items": [
+            {
+              "text": "✅ Безпека при відкритті та закритті магазину",
+              "link": "/stores/safety-security/checklist-safety-opening-closing"
+            },
+            {
+              "text": "📘 Безпека та охорона магазину",
+              "link": "/stores/safety-security/reg-store-safety"
+            }
+          ]
         },
         {
           "text": "📁 Відкриття та закриття магазину",
@@ -53,6 +86,16 @@
           "text": "📁 Мерчендайзинг",
           "collapsed": false,
           "items": []
+        },
+        {
+          "text": "📁 Нестандартні ситуації",
+          "collapsed": false,
+          "items": [
+            {
+              "text": "🚨 Нестандартні ситуації в магазині",
+              "link": "/stores/incidents/incident-non-standard-situations"
+            }
+          ]
         },
         {
           "text": "📁 Стандарти обслуговування",
@@ -76,12 +119,12 @@
             {
               "text": "🧭 Порядок дій при технічній несправності в магазині",
               "link": "/stores/technical-issues/sop-technical-incident"
+            },
+            {
+              "text": "📝 Як повідомляти про проблему в магазині",
+              "link": "/stores/technical-issues/instruction-incident-notice"
             }
           ]
-        },
-        {
-          "text": "🚨 Нестандартні ситуації в магазині",
-          "link": "/stores/нестандартні-ситуації"
         }
       ]
     }
@@ -102,12 +145,22 @@
         {
           "text": "📁 Залишки на складі",
           "collapsed": false,
-          "items": []
+          "items": [
+            {
+              "text": "📘 Регламент контролю залишків товару",
+              "link": "/product/stock-balance/reg-stock-balance-control"
+            }
+          ]
         },
         {
           "text": "📁 Недостача та лишки",
           "collapsed": false,
-          "items": []
+          "items": [
+            {
+              "text": "🧭 Обробка недостачі та лишків",
+              "link": "/product/shortage-overage/sop-shortage-overage-handling"
+            }
+          ]
         },
         {
           "text": "📁 Обробка браку",
@@ -158,7 +211,12 @@
         {
           "text": "📁 Приймання товару",
           "collapsed": false,
-          "items": []
+          "items": [
+            {
+              "text": "🧭 Приймання товару",
+              "link": "/product/receiving/sop-goods-receiving"
+            }
+          ]
         },
         {
           "text": "📁 Списання",
@@ -299,7 +357,16 @@
         {
           "text": "📁 Робота із запереченнями",
           "collapsed": false,
-          "items": []
+          "items": [
+            {
+              "text": "🧭 Відповідь на заперечення клієнта",
+              "link": "/sales/objections/sop-objections-response"
+            },
+            {
+              "text": "📘 Робота із запереченнями клієнта",
+              "link": "/sales/objections/reg-objections-handling"
+            }
+          ]
         }
       ]
     }
@@ -315,7 +382,16 @@
         {
           "text": "📁 Закриття зміни",
           "collapsed": false,
-          "items": []
+          "items": [
+            {
+              "text": "✅ Закриття касової зміни",
+              "link": "/cash/shift-closing/checklist-shift-closing"
+            },
+            {
+              "text": "🧭 Закриття касової зміни",
+              "link": "/cash/shift-closing/sop-shift-closing"
+            }
+          ]
         },
         {
           "text": "📁 Касова дисципліна",
@@ -342,12 +418,12 @@
               "link": "/cash/cash-discipline/instruction-prro-offline-mode-in-baf"
             },
             {
-              "text": "📘 Регламент відповідності товару в чеку фактичному товару",
-              "link": "/cash/cash-discipline/reg-receipt-item-must-match-actual-goods"
+              "text": "📘 >-",
+              "link": "/cash/cash-discipline/reg-employee-purchases-via-payroll-deduction"
             },
             {
-              "text": "📘 Регламент внутрішнього придбання товарів працівниками в рахунок заробітної плати",
-              "link": "/cash/cash-discipline/reg-employee-purchases-via-payroll-deduction"
+              "text": "📘 Регламент відповідності товару в чеку фактичному товару",
+              "link": "/cash/cash-discipline/reg-receipt-item-must-match-actual-goods"
             },
             {
               "text": "📘 Регламент заборонених дій на касі",
@@ -371,12 +447,26 @@
         {
           "text": "📁 Оплати",
           "collapsed": false,
-          "items": []
+          "items": [
+            {
+              "text": "📘 Типи оплат і порядок їх проведення",
+              "link": "/cash/payments/reg-payment-types"
+            }
+          ]
         },
         {
           "text": "📁 Чеки",
           "collapsed": false,
-          "items": []
+          "items": [
+            {
+              "text": "🧭 Виправлення чеку",
+              "link": "/cash/receipts/sop-receipt-correction"
+            },
+            {
+              "text": "📘 Типи чеків і правила їх застосування",
+              "link": "/cash/receipts/reg-receipt-types"
+            }
+          ]
         }
       ]
     }
@@ -392,7 +482,20 @@
         {
           "text": "📁 Адаптація",
           "collapsed": false,
-          "items": []
+          "items": [
+            {
+              "text": "✅ Адаптація нового співробітника",
+              "link": "/hr/onboarding/checklist-onboarding"
+            },
+            {
+              "text": "🧭 Перший тиждень нового співробітника",
+              "link": "/hr/onboarding/sop-onboarding-first-week"
+            },
+            {
+              "text": "📘 Адаптація нового співробітника",
+              "link": "/hr/onboarding/reg-onboarding-process"
+            }
+          ]
         },
         {
           "text": "📁 Мотивація",

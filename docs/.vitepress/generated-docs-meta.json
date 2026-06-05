@@ -4,8 +4,23 @@
     "type": "regulation",
     "icon": "📘"
   },
+  "/company/brand/contacts": {
+    "title": "Контакти Secret Shop",
+    "type": "brand",
+    "icon": "📄"
+  },
+  "/company/brand/reg-secret-shop-history": {
+    "title": "Історія Secret Shop (Our Story)",
+    "type": "brand",
+    "icon": "📄"
+  },
   "/company/escalation-matrix": {
     "title": "Матриця ескалації нестандартних ситуацій",
+    "type": "regulation",
+    "icon": "📘"
+  },
+  "/company/governance/reg-authentication-and-access-control": {
+    "title": "Авторизація та система доступів до внутрішнього порталу",
     "type": "regulation",
     "icon": "📘"
   },
@@ -29,7 +44,7 @@
     "type": "regulation",
     "icon": "📘"
   },
-  "/stores/нестандартні-ситуації": {
+  "/stores/incidents/incident-non-standard-situations": {
     "title": "Нестандартні ситуації в магазині",
     "type": "incident",
     "icon": "🚨"
@@ -39,10 +54,25 @@
     "type": "sop",
     "icon": "🧭"
   },
+  "/stores/safety-security/checklist-safety-opening-closing": {
+    "title": "Безпека при відкритті та закритті магазину",
+    "type": "checklist",
+    "icon": "✅"
+  },
+  "/stores/safety-security/reg-store-safety": {
+    "title": "Безпека та охорона магазину",
+    "type": "regulation",
+    "icon": "📘"
+  },
   "/stores/service-standards/sop-service-standards": {
     "title": "Стандарти обслуговування клієнтів",
     "type": "sop",
     "icon": "🧭"
+  },
+  "/stores/technical-issues/instruction-incident-notice": {
+    "title": "Як повідомляти про проблему в магазині",
+    "type": "instruction",
+    "icon": "📝"
   },
   "/stores/technical-issues/sop-technical-incident": {
     "title": "Порядок дій при технічній несправності в магазині",
@@ -61,6 +91,21 @@
   },
   "/product/product-damage/reg-product-damage-in-store": {
     "title": "Пошкодження товару в магазині",
+    "type": "regulation",
+    "icon": "📘"
+  },
+  "/product/receiving/sop-goods-receiving": {
+    "title": "Приймання товару",
+    "type": "sop",
+    "icon": "🧭"
+  },
+  "/product/shortage-overage/sop-shortage-overage-handling": {
+    "title": "Обробка недостачі та лишків",
+    "type": "sop",
+    "icon": "🧭"
+  },
+  "/product/stock-balance/reg-stock-balance-control": {
+    "title": "Регламент контролю залишків товару",
     "type": "regulation",
     "icon": "📘"
   },
@@ -159,6 +204,16 @@
     "type": "regulation",
     "icon": "📘"
   },
+  "/sales/objections/reg-objections-handling": {
+    "title": "Робота із запереченнями клієнта",
+    "type": "regulation",
+    "icon": "📘"
+  },
+  "/sales/objections/sop-objections-response": {
+    "title": "Відповідь на заперечення клієнта",
+    "type": "sop",
+    "icon": "🧭"
+  },
   "/cash/": {
     "title": "Каса",
     "type": "regulation",
@@ -180,7 +235,7 @@
     "icon": "🛡️"
   },
   "/cash/cash-discipline/reg-employee-purchases-via-payroll-deduction": {
-    "title": "Регламент внутрішнього придбання товарів працівниками в рахунок заробітної плати",
+    "title": ">-",
     "type": "regulation",
     "icon": "📘"
   },
@@ -214,10 +269,50 @@
     "type": "sop",
     "icon": "🧭"
   },
+  "/cash/payments/reg-payment-types": {
+    "title": "Типи оплат і порядок їх проведення",
+    "type": "regulation",
+    "icon": "📘"
+  },
+  "/cash/receipts/reg-receipt-types": {
+    "title": "Типи чеків і правила їх застосування",
+    "type": "regulation",
+    "icon": "📘"
+  },
+  "/cash/receipts/sop-receipt-correction": {
+    "title": "Виправлення чеку",
+    "type": "sop",
+    "icon": "🧭"
+  },
+  "/cash/shift-closing/checklist-shift-closing": {
+    "title": "Закриття касової зміни",
+    "type": "checklist",
+    "icon": "✅"
+  },
+  "/cash/shift-closing/sop-shift-closing": {
+    "title": "Закриття касової зміни",
+    "type": "sop",
+    "icon": "🧭"
+  },
   "/hr/": {
     "title": "HR",
     "type": "regulation",
     "icon": "📘"
+  },
+  "/hr/onboarding/checklist-onboarding": {
+    "title": "Адаптація нового співробітника",
+    "type": "checklist",
+    "icon": "✅"
+  },
+  "/hr/onboarding/reg-onboarding-process": {
+    "title": "Адаптація нового співробітника",
+    "type": "regulation",
+    "icon": "📘"
+  },
+  "/hr/onboarding/sop-onboarding-first-week": {
+    "title": "Перший тиждень нового співробітника",
+    "type": "sop",
+    "icon": "🧭"
   },
   "/templates/": {
     "title": "Шаблони документів",

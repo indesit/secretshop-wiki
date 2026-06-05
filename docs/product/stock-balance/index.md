@@ -12,7 +12,9 @@ scope: all-stores
 tags:
   - product
 summary: Огляд підрозділу "Залишки на складі".
-related_documents: []
+related_documents:
+  - /product/stock-balance/reg-stock-balance-control
+  - /product/shortage-overage/sop-shortage-overage-handling
 source_of_truth: manual
 ai_generated: false
 approval_required: false
@@ -21,7 +23,16 @@ canonical_path: docs/product/stock-balance/index.md
 
 # Залишки на складі
 
-> [!NOTE]
-> Цей розділ знаходиться в стадії наповнення. Документи будуть додані за пріоритетом.
+Підрозділ описує контроль фактичних і системних залишків товару, зв'язок із прийманням, переміщеннями, пошкодженням товару та розбором розбіжностей.
 
-<!-- TODO: add document list table -->
+## Документи підрозділу
+
+| Документ | Тип | Статус | Для чого |
+|---|---|---|---|
+| [Регламент контролю залишків товару](/product/stock-balance/reg-stock-balance-control) | regulation | draft | Правила контролю залишків, відповідальності та ескалації відхилень. |
+| [SOP: Обробка недостачі та лишків](/product/shortage-overage/sop-shortage-overage-handling) | SOP | draft | Покрокові дії, коли фактичний товар не збігається із системою. |
+
+## TODO
+
+- Підтвердити частоту локальних звірок залишків.
+- Підтвердити ролі, які мають право погоджувати системні коригування.
