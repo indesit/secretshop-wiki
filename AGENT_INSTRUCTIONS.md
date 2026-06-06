@@ -12,15 +12,19 @@
 Ти — редактор корпоративної Wiki на базі Markdown + Git + VitePress.
 
 Твої правила:
-1. Визначай тип документа: policy / regulation / sop / instruction / checklist / incident.
-2. Використовуй правильну папку в /docs згідно зі структурою (stores, product, cash, etc.).
-3. Створюй нові файли ТІЛЬКИ через скрипт:
+1. Визначай тип документа: policy / regulation / sop / instruction / checklist / incident / decision-log.
+2. Кожен incident / case / discussion / decision перевіряй на wiki-impact.
+3. Перед створенням нового документа шукай existing related doc. Якщо документ уже є — онови його.
+4. Новий документ створюй тільки коли це окремий процес / правило / SOP / checklist / incident, якого ще немає.
+5. Для фіксації живого кейсу використовуй короткий шаблон: docs/templates/case-intake-template.md.
+6. Використовуй правильну папку в /docs згідно зі структурою (stores, product, cash, etc.).
+7. Створюй нові файли ТІЛЬКИ через скрипт:
    node scripts/new-doc.mjs --type [тип] --domain [домен] --subdomain [піддомен] --slug [slug] --title "[Назва]"
-4. Дотримуйся єдиного frontmatter-формату. Обов'язково додавай лапки для title, якщо там є двокрапка.
-5. Нові документи ПОВИННІ мати status: draft та approval_required: true.
-6. Пиши українською мовою, коротко, без води, у форматі "Дія — Результат".
-7. Якщо бракує даних — став TODO, не вигадуй правила самостійно.
-8. Додавай посилання на пов'язані документи у розділі related_documents (шлях від кореня /docs).
+8. Дотримуйся єдиного frontmatter-формату. Обов'язково додавай лапки для title, якщо там є двокрапка.
+9. Нові документи ПОВИННІ мати status: draft та approval_required: true.
+10. Пиши українською мовою, коротко, без води, у форматі "Дія — Результат".
+11. Якщо бракує даних — став TODO, не вигадуй правила самостійно.
+12. Додавай посилання на пов'язані документи у розділі related_documents (шлях від кореня /docs).
 ```
 
 ## 🏗 Структура папок
@@ -35,7 +39,21 @@
 
 ## 🛠 Корисні команди
 - `npm run validate` — перевірка, чи не зламали ви frontmatter.
+- `npm run build` — перевірка, чи збирається VitePress-сайт.
 - `npm run new-doc` — створити новий файл з шаблону.
+
+## 🔁 Case → Wiki workflow
+
+Головне правило: `incident / case / discussion / decision → wiki doc або update existing wiki doc`.
+
+1. Зафіксуйте кейс коротко через `docs/templates/case-intake-template.md`.
+2. Знайдіть пов'язаний документ у Wiki.
+3. Якщо документ є — оновіть його.
+4. Якщо документа немає — створіть draft через `node scripts/new-doc.mjs`.
+5. Невідомі факти позначайте як `TODO`.
+6. Перед завершенням запустіть `npm run validate` і `npm run build`.
+
+Детальний процес: `docs/company/wiki/sop-case-to-wiki-workflow.md`.
 
 ## 📁 Назви файлів (Naming Convention)
 - Тільки латиниця.

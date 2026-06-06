@@ -32,6 +32,16 @@
           ]
         },
         {
+          "text": "📁 wiki",
+          "collapsed": false,
+          "items": [
+            {
+              "text": "🧭 Процес перетворення кейсу у Wiki",
+              "link": "/company/wiki/sop-case-to-wiki-workflow"
+            }
+          ]
+        },
+        {
           "text": "📘 Матриця ескалації нестандартних ситуацій",
           "link": "/company/escalation-matrix"
         },
@@ -547,6 +557,10 @@
         {
           "text": "🚨 Назва інциденту",
           "link": "/templates/incident-template"
+        },
+        {
+          "text": "📄 Короткий шаблон фіксації кейсу",
+          "link": "/templates/case-intake-template"
         },
         {
           "text": "📄 Реєстр управлінських рішень",

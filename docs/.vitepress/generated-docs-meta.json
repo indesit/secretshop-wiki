@@ -39,6 +39,11 @@
     "type": "regulation",
     "icon": "📘"
   },
+  "/company/wiki/sop-case-to-wiki-workflow": {
+    "title": "Процес перетворення кейсу у Wiki",
+    "type": "sop",
+    "icon": "🧭"
+  },
   "/stores/": {
     "title": "Магазини",
     "type": "regulation",
@@ -316,6 +321,11 @@
   },
   "/templates/": {
     "title": "Шаблони документів",
+    "type": "template",
+    "icon": "📄"
+  },
+  "/templates/case-intake-template": {
+    "title": "Короткий шаблон фіксації кейсу",
     "type": "template",
     "icon": "📄"
   },
