@@ -24,4 +24,4 @@ canonical_path: docs/sales/consultation/index.md
 > [!NOTE]
 > Цей розділ знаходиться в стадії наповнення. Документи будуть додані за пріоритетом.
 
-![Альтернативний текст](https://lh3.googleusercontent.com/gvi0JGaJs2VVbkZOACmMVQU0K0naFiVPxYR9py1n_jgLq5gjMuY79MKKFZ2b0RG4FP-80iTOrWbtngmo519OxpIZbFcFtzBYaCG3jBsnzY-1GaBClh87CQsKZzCdLBzv7zX0oV0b)<!-- TODO: add document list table -->
+![Альтернативний текст](https://lh3.googleusercontent.com/gvi0JGaJs2VVbkZOACmMVQU0K0naFiVPxYR9py1n_jgLq5gjMuY79MKKFZ2b0RG4FP-80iTOrWbtngmo519OxpIZbFcFtzBYaCG3jBsnzY-1GaBClh87CQsKZzCdLBzv7zX0oV0b)

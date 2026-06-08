@@ -23,5 +23,3 @@ canonical_path: docs/product/writeoff/index.md
 
 > [!NOTE]
 > Цей розділ знаходиться в стадії наповнення. Документи будуть додані за пріоритетом.
-
-<!-- TODO: add document list table -->

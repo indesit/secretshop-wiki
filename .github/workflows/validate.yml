@@ -27,6 +27,12 @@ jobs:
       - name: Validate frontmatter
         run: node scripts/validate-frontmatter.mjs
 
+      - name: Check related_documents links
+        run: node scripts/check-links.mjs
+
+      - name: Check TODO budget
+        run: node scripts/check-todo-budget.mjs
+
       - name: Build VitePress (verify no broken links/config)
         run: npm run build
         env:

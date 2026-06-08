@@ -24,4 +24,8 @@ canonical_path: docs/stores/service-standards/index.md
 > [!NOTE]
 > Цей розділ знаходиться в стадії наповнення. Документи будуть додані за пріоритетом.
 
-<!-- TODO: add document list table -->
+## Документи розділу
+
+### SOP
+
+- [SOP: Стандарти обслуговування клієнтів](/stores/service-standards/sop-service-standards)

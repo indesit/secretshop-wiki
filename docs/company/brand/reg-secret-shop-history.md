@@ -15,7 +15,7 @@ tags:
   - history
 summary: Таймлайн та узгоджений текст «Our Story» для використання на сайті та у внутрішній wiki.
 related_documents:
-  - docs/company/mission-and-principles.md
+  - /company/mission-and-principles
 source_of_truth: manual
 ai_generated: false
 approval_required: true

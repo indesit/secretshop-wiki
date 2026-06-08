@@ -24,4 +24,8 @@ canonical_path: docs/stores/opening-closing/index.md
 > [!NOTE]
 > Цей розділ знаходиться в стадії наповнення. Документи будуть додані за пріоритетом.
 
-<!-- TODO: add document list table -->
+## Документи розділу
+
+### SOP
+
+- [SOP: Відкриття та закриття магазину](/stores/opening-closing/sop-opening-closing)
