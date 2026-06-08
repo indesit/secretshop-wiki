@@ -11,3 +11,9 @@ docs/.vitepress/dist/
 *.env
 !*.env.example
 scripts/ai-agent/.env
+
+# Build / IDE junk
+__pycache__/
+*.pyc
+*.code-workspace
+/image.png

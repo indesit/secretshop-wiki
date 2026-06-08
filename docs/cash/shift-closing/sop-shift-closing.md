@@ -19,6 +19,7 @@ summary: >-
   звірення з системою, здача інкасації та фіксація результату.
 related_documents:
   - /cash/shift-closing/checklist-shift-closing
+  - /cash/shift-closing/sop-cash-reconciliation-opening-closing
   - /cash/cash-discipline/sop-cash-discipline
   - /cash/cash-discipline/instruction-closing-shift-in-baf
   - /cash/cash-discipline/instruction-prro-offline-mode-in-baf
@@ -90,8 +91,11 @@ canonical_path: docs/cash/shift-closing/sop-shift-closing.md
 
 ## Крок 4 — Звірення
 
-1. Звірте фактичну суму готівки (Крок 2) із сумою за Z-звітом.
-2. Перевірте підсумок безготівкових оплат (термінал) — він повинен збігатися із системою.
+1. Виконайте повну звірку каси за процедурою:
+   → [SOP: Звірка каси на початку та в кінці зміни](/cash/shift-closing/sop-cash-reconciliation-opening-closing)
+2. Звірте фактичну суму готівки (Крок 2) із сумою за Z-звітом.
+3. Перевірте підсумок безготівкових оплат (термінал) — він повинен збігатися із системою.
+4. Перевірте початковий залишок, службові внесення, службові видачі / витрати та суму переміщення в касу.
 
 | Сценарій | Дія |
 |---|---|

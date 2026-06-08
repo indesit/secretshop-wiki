@@ -17,6 +17,7 @@ summary: >-
   дій.
 related_documents:
   - /stores/technical-issues/sop-technical-incident
+  - /stores/maintenance/sop-pest-rodent-response
   - /company/escalation-matrix
 source_of_truth: repo
 ai_generated: true
@@ -45,6 +46,7 @@ canonical_path: docs/stores/incidents/incident-non-standard-situations.md
 | Аварія / пожежа | 101/104 → директор → евакуація | — |
 | Помилка в чеку | Анулювати, переоформити, КЗ інформує | — |
 | Клієнт непритомний | 103 → КЗ → продовжувати роботу поруч | — |
+| Гризуни або шкідники в магазині | Адміністратор / КЗ → адміністрація ТРЦ → керівник | [SOP](/stores/maintenance/sop-pest-rodent-response) |
 
 ## Принцип дій у будь-якій нестандартній ситуації
 

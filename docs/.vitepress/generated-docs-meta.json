@@ -39,6 +39,11 @@
     "type": "regulation",
     "icon": "📘"
   },
+  "/company/wiki/policy-wiki-agent-team-operating-principles": {
+    "title": "Принципи роботи команди wiki-агентів",
+    "type": "policy",
+    "icon": "🛡️"
+  },
   "/company/wiki/sop-case-to-wiki-workflow": {
     "title": "Процес перетворення кейсу у Wiki",
     "type": "sop",
@@ -53,6 +58,11 @@
     "title": "Нестандартні ситуації в магазині",
     "type": "incident",
     "icon": "🚨"
+  },
+  "/stores/maintenance/sop-pest-rodent-response": {
+    "title": "Дії при виявленні гризунів або шкідників у магазині",
+    "type": "sop",
+    "icon": "🧭"
   },
   "/stores/opening-closing/sop-opening-closing": {
     "title": "Відкриття та закриття магазину",
@@ -293,6 +303,11 @@
     "title": "Закриття касової зміни",
     "type": "checklist",
     "icon": "✅"
+  },
+  "/cash/shift-closing/sop-cash-reconciliation-opening-closing": {
+    "title": "Звірка каси на початку та в кінці зміни",
+    "type": "sop",
+    "icon": "🧭"
   },
   "/cash/shift-closing/sop-shift-closing": {
     "title": "Закриття касової зміни",

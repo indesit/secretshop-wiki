@@ -22,6 +22,7 @@ related_documents:
   - /cash/payments/reg-payment-types
   - /cash/cash-discipline/reg-receipt-item-must-match-actual-goods
   - /cash/cash-discipline/instruction-prro-offline-mode-in-baf
+  - /cash/shift-closing/sop-cash-reconciliation-opening-closing
 source_of_truth: repo
 ai_generated: true
 approval_required: true
@@ -69,7 +70,11 @@ canonical_path: docs/cash/receipts/reg-receipt-types.md
 ### Службова видача
 - Оформлюється при кожному виїмканні готівки з каси.
 - Підстава для виїмки обов'язково фіксується.
+- Сума службової видачі повинна дорівнювати сумі готівки, яка фізично вилучається з каси.
+- Заборонено оформлювати службову видачу на суму, якої фізично немає в касі, або “для вирівнювання залишку”.
+- Якщо помилковий документ уже створено — виправлення погоджується з директором / бухгалтерією / BAF-підтримкою; другий фантомний документ не створюється.
 - → [SOP: Закриття касової зміни](/cash/shift-closing/sop-shift-closing)
+- → [SOP: Звірка каси на початку та в кінці зміни](/cash/shift-closing/sop-cash-reconciliation-opening-closing)
 
 ### Z-звіт
 - Формується одноразово на кінець кожного робочого дня.
@@ -92,3 +97,5 @@ canonical_path: docs/cash/receipts/reg-receipt-types.md
 - ❌ Оформлювати повернення без чеку повернення через ПРРО.
 - ❌ Закривати зміну більше одного разу на день.
 - ❌ Виймати готівку без оформлення службової видачі.
+- ❌ Оформлювати службову видачу, переміщення або інкасацію на суму, яка не відповідає фактично переданій / вилученій готівці.
+- ❌ Створювати фантомний касовий документ заднім числом для вирівнювання залишку.

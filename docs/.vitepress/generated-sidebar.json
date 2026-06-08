@@ -38,6 +38,10 @@
             {
               "text": "🧭 Процес перетворення кейсу у Wiki",
               "link": "/company/wiki/sop-case-to-wiki-workflow"
+            },
+            {
+              "text": "🛡️ Принципи роботи команди wiki-агентів",
+              "link": "/company/wiki/policy-wiki-agent-team-operating-principles"
             }
           ]
         },
@@ -120,7 +124,12 @@
         {
           "text": "📁 Технічне обслуговування",
           "collapsed": false,
-          "items": []
+          "items": [
+            {
+              "text": "🧭 Дії при виявленні гризунів або шкідників у магазині",
+              "link": "/stores/maintenance/sop-pest-rodent-response"
+            }
+          ]
         },
         {
           "text": "📁 Технічні несправності",
@@ -400,6 +409,10 @@
             {
               "text": "🧭 Закриття касової зміни",
               "link": "/cash/shift-closing/sop-shift-closing"
+            },
+            {
+              "text": "🧭 Звірка каси на початку та в кінці зміни",
+              "link": "/cash/shift-closing/sop-cash-reconciliation-opening-closing"
             }
           ]
         },
