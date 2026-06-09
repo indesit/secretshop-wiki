@@ -1,5 +1,9 @@
+import fs from "node:fs";
+import path from "node:path";
 import process from "node:process";
 import { COLLECTION_MAP } from "./cleaners.mjs";
+
+const DOCS_DIR = path.join(process.cwd(), "docs");
 
 /**
  * cleanup.mjs — find and (optionally) remove Outline cruft left by earlier
@@ -24,6 +28,29 @@ const OUTLINE_URL = process.env.OUTLINE_URL || "http://localhost:3000";
 const API_TOKEN = process.env.OUTLINE_API_TOKEN;
 
 const VALID_NAMES = new Set([...Object.values(COLLECTION_MAP), "Secret Shop Wiki"]);
+
+// Titles of every index.md in the repo (recursively) — these were published as
+// documents by the old pipeline and must be removed from Outline. Covers both
+// collection-level ("Магазини") and subdomain ("Технічні несправності") indexes.
+function repoIndexTitles(dir = DOCS_DIR, out = new Set()) {
+  for (const entry of fs.readdirSync(dir)) {
+    if (entry === ".vitepress" || entry === "public") continue;
+    const full = path.join(dir, entry);
+    if (fs.statSync(full).isDirectory()) {
+      repoIndexTitles(full, out);
+    } else if (entry === "index.md") {
+      const m = fs.readFileSync(full, "utf8").match(/^---\s*\n([\s\S]*?)\n---/);
+      const titleLine = m && m[1].split("\n").find((l) => l.startsWith("title:"));
+      if (titleLine) {
+        const t = titleLine.slice(titleLine.indexOf(":") + 1).trim().replace(/^['"]|['"]$/g, "");
+        if (t) out.add(t);
+      }
+    }
+  }
+  return out;
+}
+
+const INDEX_TITLES = repoIndexTitles();
 
 function parseArgs(argv) {
   const args = { apply: false, deleteStaleCollections: false };
@@ -97,12 +124,14 @@ async function main() {
   const stale = collections.filter((c) => !VALID_NAMES.has(c.name));
   const valid = collections.filter((c) => VALID_NAMES.has(c.name));
 
-  // Duplicate index docs: any document whose title is itself a collection name.
+  // Index docs: any document whose title matches a repo index.md title. These
+  // were published from index.md files (relative links break in Outline) and
+  // should not exist as documents.
   const indexDupes = [];
   for (const col of collections) {
     const docs = await listDocuments(col.id);
     for (const d of docs) {
-      if (VALID_NAMES.has(d.title)) {
+      if (INDEX_TITLES.has(d.title)) {
         indexDupes.push({ collection: col.name, collectionId: col.id, docId: d.id, title: d.title });
       }
     }
@@ -118,7 +147,7 @@ async function main() {
     console.log(`  • "${c.name}" (id ${c.id}) — ${count} document(s)`);
   }
 
-  console.log(`\nDuplicate index documents (title equals a collection name):`);
+  console.log(`\nIndex documents published from index.md (to be removed, ${INDEX_TITLES.size} index titles known):`);
   if (!indexDupes.length) console.log("  (none)");
   for (const d of indexDupes) {
     console.log(`  • "${d.title}" (doc ${d.docId}) in collection "${d.collection}"`);
