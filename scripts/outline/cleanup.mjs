@@ -70,7 +70,9 @@ function parseArgs(argv) {
   return args;
 }
 
-async function outlineRequest(endpoint, payload = {}) {
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+async function outlineRequest(endpoint, payload = {}, attempt = 0) {
   const res = await fetch(`${OUTLINE_URL}/api/${endpoint}`, {
     method: "POST",
     headers: {
@@ -80,6 +82,12 @@ async function outlineRequest(endpoint, payload = {}) {
     },
     body: JSON.stringify(payload),
   });
+  if (res.status === 429 && attempt < 6) {
+    const wait = Number(res.headers.get("Retry-After")) || Math.min(2 ** attempt, 30);
+    console.log(`  rate-limited on ${endpoint}; waiting ${wait}s…`);
+    await sleep(wait * 1000);
+    return outlineRequest(endpoint, payload, attempt + 1);
+  }
   const data = await res.json().catch(() => ({}));
   if (!res.ok) {
     throw new Error(`Outline API error ${res.status} for ${endpoint}: ${JSON.stringify(data)}`);
@@ -164,20 +172,45 @@ async function main() {
     return;
   }
 
-  for (const d of indexDupes) {
-    await outlineRequest("documents.delete", { id: d.docId });
-    console.log(`Trashed duplicate index doc: "${d.title}" (${d.docId})`);
+  // Index docs inside stale collections will vanish with the collection — only
+  // trash the ones living in collections we are keeping.
+  const staleIds = new Set(stale.map((c) => c.id));
+  const toTrash = args.deleteStaleCollections
+    ? indexDupes.filter((d) => !staleIds.has(d.collectionId))
+    : indexDupes;
+
+  const failures = [];
+  for (const d of toTrash) {
+    try {
+      await outlineRequest("documents.delete", { id: d.docId });
+      console.log(`Trashed index doc: "${d.title}" (${d.docId})`);
+    } catch (e) {
+      failures.push(`doc "${d.title}" in "${d.collection}": ${String(e.message || e)}`);
+      console.log(`  ✗ could not delete "${d.title}" in "${d.collection}" — skipped`);
+    }
+    await sleep(250);
   }
 
   if (args.deleteStaleCollections) {
     for (const c of stale) {
-      await outlineRequest("collections.delete", { id: c.id });
-      console.log(`Deleted stale collection: "${c.name}" (${c.id})`);
+      try {
+        await outlineRequest("collections.delete", { id: c.id });
+        console.log(`Deleted stale collection: "${c.name}" (${c.id})`);
+      } catch (e) {
+        failures.push(`collection "${c.name}": ${String(e.message || e)}`);
+        console.log(`  ✗ could not delete collection "${c.name}" — skipped`);
+      }
+      await sleep(250);
     }
   } else if (stale.length) {
     console.log(
       `\nLeft ${stale.length} stale collection(s) untouched. Add --delete-stale-collections to remove them.`
     );
+  }
+
+  if (failures.length) {
+    console.log(`\n⚠ ${failures.length} item(s) could not be removed (likely permissions — delete manually in Outline UI as admin):`);
+    for (const f of failures) console.log(`  • ${f}`);
   }
 }
 

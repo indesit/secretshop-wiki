@@ -37,7 +37,9 @@ function parseArgs(argv) {
   return args;
 }
 
-async function outlineRequest(endpoint, payload = {}) {
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+async function outlineRequest(endpoint, payload = {}, attempt = 0) {
   const res = await fetch(`${OUTLINE_URL}/api/${endpoint}`, {
     method: "POST",
     headers: {
@@ -47,6 +49,12 @@ async function outlineRequest(endpoint, payload = {}) {
     },
     body: JSON.stringify(payload),
   });
+  if (res.status === 429 && attempt < 6) {
+    const wait = Number(res.headers.get("Retry-After")) || Math.min(2 ** attempt, 30);
+    console.log(`  rate-limited on ${endpoint}; waiting ${wait}s…`);
+    await sleep(wait * 1000);
+    return outlineRequest(endpoint, payload, attempt + 1);
+  }
   const data = await res.json().catch(() => ({}));
   if (!res.ok) {
     throw new Error(`Outline API error ${res.status} for ${endpoint}: ${JSON.stringify(data)}`);
@@ -54,7 +62,11 @@ async function outlineRequest(endpoint, payload = {}) {
   return data;
 }
 
+// Collections rarely change during a run — fetch once and reuse to avoid
+// hammering the API (was a major source of 429s).
+let _collectionsCache = null;
 async function listCollections() {
+  if (_collectionsCache) return _collectionsCache;
   const out = [];
   let offset = 0;
   while (true) {
@@ -64,6 +76,7 @@ async function listCollections() {
     if (chunk.length < 100) break;
     offset += chunk.length;
   }
+  _collectionsCache = out;
   return out;
 }
 
@@ -72,6 +85,7 @@ async function ensureCollectionByName(name) {
   const existing = cols.find((c) => c.name === name);
   if (existing) return existing.id;
   const created = await outlineRequest("collections.create", { name });
+  _collectionsCache.push(created.data);
   return created.data.id;
 }
 
@@ -131,6 +145,7 @@ async function main() {
       findDocumentIdByCanonicalPath,
       defaultCollectionForCanonicalPath,
     });
+    if (!args.dryRun) await sleep(300); // stay under Outline's write rate limit
   }
 }
 
