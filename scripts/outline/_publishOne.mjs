@@ -33,6 +33,14 @@ export default async function publishOne({
     throw new Error(`File not found: ${absFile}`);
   }
 
+  // Section index.md files are not published as documents: their title equals
+  // the collection name, which creates a duplicate same-named child in Outline.
+  // (Section intros can later be mapped to the collection description instead.)
+  if (path.basename(absFile) === "index.md") {
+    console.log(`Skipped (section index, not published to Outline): ${filePath}`);
+    return;
+  }
+
   const raw = fs.readFileSync(absFile, "utf8");
   const fallbackTitle = path.parse(absFile).name;
   const title = readFrontmatterTitle(raw, fallbackTitle);

@@ -103,6 +103,8 @@ function changedFilesSince(ref) {
 }
 
 function isDocsMarkdown(p) {
+  // Skip section index.md — its title duplicates the collection name in Outline.
+  if (p === "docs/index.md" || p.endsWith("/index.md")) return false;
   return p.startsWith("docs/") && p.endsWith(".md");
 }
 

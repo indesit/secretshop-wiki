@@ -29,6 +29,7 @@
 | B-12 | P1 | todo | wiki-eng | AI-пошук: замінити keyword-retrieval на embeddings RAG (build-time індекс), кратний приріст релевантності на українській | [scripts/ai-api.mjs](../scripts/ai-api.mjs), [docs/.vitepress/theme/components/AISearch.vue](../docs/.vitepress/theme/components/AISearch.vue) |
 | B-13 | P2 | todo | wiki-eng | Уніфікувати LLM-провайдера за однією абстракцією (Claude основний; Gemini/Ollama опційні через конфіг) | `scripts/ai-api.mjs`, `scripts/ai-agent/bot.py` |
 | B-14 | P2 | todo | wiki-eng | Логувати запити AISearch без впевненої відповіді → авто-backlog тем для копірайтера (data-driven контент-план) | `scripts/ai-api.mjs` → цей файл |
+| B-16 | P1 | in-progress | wiki-eng | Outline: усунути дублі в меню. **Код-фікс done** — `index.md` більше не публікується як документ ([_publishOne.mjs](../scripts/outline/_publishOne.mjs), [sync.mjs](../scripts/outline/sync.mjs)); додано [cleanup.mjs](../scripts/outline/cleanup.mjs) (видалити застарілі рос. колекції «Магазины»/«Продажи» + index-дублі) і [reconcile.mjs](../scripts/outline/reconcile.mjs) (повне перенаповнення). **Лишилось:** запустити cleanup+reconcile на живому Outline з токеном | `scripts/outline/*` |
 
 ## EPIC-GOV — Governance та затвердження
 
