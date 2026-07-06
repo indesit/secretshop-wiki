@@ -30,7 +30,8 @@
 | B-13 | P2 | todo | wiki-eng | Уніфікувати LLM-провайдера за однією абстракцією (Claude основний; Gemini/Ollama опційні через конфіг) | `scripts/ai-api.mjs`, `scripts/ai-agent/bot.py` |
 | B-14 | P2 | todo | wiki-eng | Логувати запити AISearch без впевненої відповіді → авто-backlog тем для копірайтера (data-driven контент-план) | `scripts/ai-api.mjs` → цей файл |
 | B-16 | P1 | done | wiki-eng | Outline: усунено дублі в меню. `index.md` не публікується; reconcile перенаповнив 9 укр. колекцій (68 доків); cleanup видалив 54 index-доки + 9 застарілих рос. колекцій (+Welcome). Фінал: 10 валідних колекцій, 0 stale, 0 index-доків. Скрипти отримали rate-limit retry+throttle і стійкість до помилок | `scripts/outline/*` |
-| B-17 | P1 | todo | wiki-eng | Outline: інлайн-крос-лінки в справжніх доках биті. ~25 доків мають `[текст](/domain/.../slug)` у секціях «Суміжні документи»; cleaners їх не переписує → в Outline рендеряться як биті URL. Треба двопрохідний rewrite canonical-path → Outline doc URL (мапа будується під час reconcile) або деградація до тексту | [cleaners.mjs](../scripts/outline/cleaners.mjs), [reconcile.mjs](../scripts/outline/reconcile.mjs); приклади: `sop-technical-incident.md:110-111`, `reg-birthday-customer-communication.md:203-205` |
+| B-17 | P1 | todo | wiki-eng | Outline: інлайн-крос-лінки в справжніх доках биті. ~25 доків мають `[текст](/domain/.../slug)` у секціях «Суміжні документи»; cleaners їх не переписує → в Outline рендеряться як биті URL. Те саме стосується `[[slug]]`-блоку, який генерує `buildRelatedLinks` (Outline не підтримує wikilink-синтаксис). Треба двопрохідний rewrite canonical-path → Outline doc URL (мапа будується під час reconcile) або деградація до тексту | [cleaners.mjs](../scripts/outline/cleaners.mjs), [reconcile.mjs](../scripts/outline/reconcile.mjs); приклади: `sop-technical-incident.md:110-111`, `reg-birthday-customer-communication.md:203-205` |
+| B-18 | P1 | done | wiki-eng | Аудит 2026-07-07: sync.mjs мав стару 1-арг дедуплікацію (створював дублі) і не мав 429-retry/throttle → всі 4 Outline-скрипти переведено на єдиний клієнт `api.mjs`; видалено легасі (`migrate_to_outline.cjs`, `clean_outline.cjs`, `cleanup_docs.mjs` + deps glob/gray-matter); env-приклади злито в один `outline.env.example`; skill-шаблони приведено до frontmatter-схеми (`last_reviewed`, `source_of_truth: ai-draft`); валідатор перевіряє `domain`; README/AGENT_INSTRUCTIONS оновлено, skill оголошено каноном | [api.mjs](../scripts/outline/api.mjs), `scripts/outline/*`, `skills/company-wiki/*` |
 
 ## EPIC-GOV — Governance та затвердження
 
@@ -57,10 +58,14 @@
 
 | ID | P | Статус | Owner | Опис | Файли / acceptance |
 |----|---|--------|-------|------|--------------------|
-| B-30 | P1 | blocked | founders | Обрати єдиний prod-шлях: GitHub Pages **або** Caddy+systemd (зараз обидва ребілдять паралельно) | [.github/workflows/deploy.yml](../.github/workflows/deploy.yml), `scripts/deploy/` |
+| B-30 | P1 | blocked | founders | Обрати єдиний prod-шлях: GitHub Pages **або** Caddy+systemd (зараз обидва ребілдять паралельно). Факт 2026-07-07: systemd-timer з `PROD_DEPLOY_AUTOMATION.md` НЕ встановлено; активний cron-пул `scripts/update-wiki.sh` щохвилини (dev-режим) | [.github/workflows/deploy.yml](../.github/workflows/deploy.yml), `scripts/deploy/` |
 | B-31 | P1 | todo | wiki-eng | Винести секрети з `.env` (GEMINI/OUTLINE/TELEGRAM) у systemd-credentials або vault; усі ключі — в `.env.example` | `ops/outline/outline.env.example`, `.env.example` |
 | B-32 | P2 | todo | wiki-eng | Review-цикли: scheduled-нагадування про застарілі доки за `review_cycle_days` / `last_reviewed` | frontmatter усіх доків |
 | B-33 | P2 | todo | wiki-eng | Дашборд метрик wiki: % approved vs draft, доки без owner, TODO-debt, топ-запити без відповіді | new |
+| B-34 | P0 | todo | wiki-eng | Telegram-бот: додати whitelist `user_id` (зараз будь-хто може /create та /pr → пуш гілок у GitHub); після /pr повертатись на main (зараз лишається на feature-гілці); фікс втрати історії після 20 реплік (`history = history[-20:]` губить прив'язку); перед /pr ганяти повний `npm run check`, не лише frontmatter | [bot.py](../scripts/ai-agent/bot.py) |
+| B-35 | P1 | todo | wiki-eng | AI-search: mixed content на HTTPS-проді (`AISearch.vue` → `http://host:3001`) + endpoint відкритий назовні без auth/rate-limit (відкритий проксі до Gemini-ключа). Проксувати через Caddy шлях `/api/ai-search`, закрити порт 3001 зовні | [ai-api.mjs](../scripts/ai-api.mjs), [AISearch.vue](../docs/.vitepress/theme/components/AISearch.vue) |
+| B-36 | P1 | todo | wiki-eng | MinIO в проді, схоже, на дефолтних кредах (`minioadmin`), бакет анонімно читається (`mc anonymous set download`); плюс невиконана ротація `OUTLINE_API_TOKEN` / `TELEGRAM_BOT_TOKEN` з [TASK-outline-post-migration-audit](outline/TASK-outline-post-migration-audit.md). Змінити креди, переглянути анонімний доступ, ротувати токени | `ops/outline/outline.env`, `scripts/ai-agent/.env` |
+| B-37 | P2 | todo | wiki-eng | deploy.yml ганяє лише frontmatter-валідацію: прямий push у main деплоїться з битими лінками/TODO-перевитратою. Додати `npm run check` у deploy-джоб | [.github/workflows/deploy.yml](../.github/workflows/deploy.yml) |
 
 ---
 
@@ -69,3 +74,4 @@
 - 2026-06-08 — backlog створено на основі аудиту; open questions з HANDOFF перенесено сюди (B-20…B-25).
 - 2026-06-08 — **B-10 done**: знято 15 index-stub маркерів, згенеровано 2 таблиці, виправлено баг парсера `title: >-`.
 - 2026-06-08 — **B-11 done**: додано `check-links` + `check-todo-budget` у CI та `npm run check`; виправлено 1 биту `related_documents`. Усі перевірки зелені, `npm run build` ✅.
+- 2026-07-07 — техаудит: **B-18 done** (єдиний Outline-клієнт `api.mjs`, фікс дедуплікації sync, зачистка легасі та дублів); TODO-budget 89 → 91 (2 легітимні TODO в новому `reg-private-card-payments-forbidden`); заведено B-34…B-37 (безпека бота, AI-search, MinIO/токени, deploy-гейти); у B-30 зафіксовано факт: prod-timer не встановлено, активний cron dev-pull.
