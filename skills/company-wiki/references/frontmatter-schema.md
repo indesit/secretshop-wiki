@@ -115,7 +115,7 @@ Boolean. `true` коли початкова версія створена AI.
 Дата останнього перегляду у форматі `YYYY-MM-DD` або `TODO`.
 
 > **Notation**: у документації використовується `last_reviewed`, не `last_reviewed_at`.
-> Це історично прийнятий формат, узгоджений з `cleaners.mjs:223` та існуючими 90 файлами.
+> Це історично прийнятий формат, узгоджений з `buildFooter()` у `scripts/outline/cleaners.mjs` та існуючими файлами.
 
 ### canonical_path
 Repo-relative шлях до канонічного markdown-файлу під `docs/`.

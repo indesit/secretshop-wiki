@@ -13,8 +13,8 @@ related_documents:
   - "/cash/cash-discipline/instruction-prro-offline-mode-in-baf"
 approval_required: true
 ai_generated: true
-source_of_truth: "repo"
-last_reviewed_at: "TODO"
+source_of_truth: "ai-draft"
+last_reviewed: "TODO"
 canonical_path: "docs/stores/daily-operations/reg-store-daily-operations.md"
 ---
 

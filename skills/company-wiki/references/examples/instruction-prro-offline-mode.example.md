@@ -12,8 +12,8 @@ related_documents:
   - "/stores/daily-operations/reg-store-daily-operations"
 approval_required: true
 ai_generated: true
-source_of_truth: "repo"
-last_reviewed_at: "TODO"
+source_of_truth: "ai-draft"
+last_reviewed: "TODO"
 canonical_path: "docs/cash/prro/instruction-prro-offline-mode.md"
 ---
 

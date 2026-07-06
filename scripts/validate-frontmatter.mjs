@@ -20,6 +20,12 @@ const ALLOWED_TYPES = new Set([
   'incident', 'decision-log', 'brand'
 ])
 const ALLOWED_STATUSES = new Set(['draft', 'review', 'approved', 'deprecated', 'archived'])
+// Content domains from scripts/new-doc.mjs ALLOWED_DOMAINS, plus the two
+// structural sections (templates/glossary) that hold non-process docs.
+const ALLOWED_DOMAINS = new Set([
+  'company', 'stores', 'product', 'returns-and-warranty', 'sales', 'cash', 'hr',
+  'templates', 'glossary'
+])
 const REQUIRED_FIELDS = ['title', 'type', 'status', 'owner', 'domain']
 
 // Parse YAML frontmatter manually (without external dependency at CI time)
@@ -97,6 +103,11 @@ for (const filePath of files) {
   // Validate status
   if (fm.status && !ALLOWED_STATUSES.has(fm.status)) {
     fileErrors.push(`Invalid status: "${fm.status}". Allowed: ${[...ALLOWED_STATUSES].join(', ')}`)
+  }
+
+  // Validate domain (frontmatter-schema.md declares this check)
+  if (fm.domain && !ALLOWED_DOMAINS.has(fm.domain)) {
+    fileErrors.push(`Invalid domain: "${fm.domain}". Allowed: ${[...ALLOWED_DOMAINS].join(', ')}`)
   }
 
   if (fileErrors.length > 0) {

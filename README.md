@@ -32,11 +32,19 @@ company-wiki/
 │  ├─ glossary/            # Глосарій термінів
 │  └─ .vitepress/          # Конфігурація VitePress
 ├─ scripts/
-│  ├─ validate-frontmatter.mjs   # Валідація frontmatter
+│  ├─ validate-frontmatter.mjs   # Валідація frontmatter (type/status/domain)
+│  ├─ check-links.mjs            # Перевірка related_documents
+│  ├─ check-todo-budget.mjs      # Ratchet на content-TODO
 │  ├─ generate-sidebar.mjs       # Генерація sidebar зі структури
-│  └─ new-doc.mjs               # Scaffold нового документа
+│  ├─ generate-indexes.mjs       # Генерація index-таблиць секцій
+│  ├─ new-doc.mjs                # Scaffold нового документа
+│  ├─ outline/                   # Публікація в Outline (publish/sync/reconcile/cleanup)
+│  ├─ ai-api.mjs                 # AI-пошук (endpoint для AISearch.vue)
+│  └─ ai-agent/                  # Telegram-бот-редактор
+├─ skills/company-wiki/     # Канонічні правила для AI-агентів (governance-skill)
+├─ ops/                     # Backlog, деплой, Outline-інфраструктура
 └─ .github/workflows/
-   ├─ validate.yml          # CI: перевірка frontmatter + build
+   ├─ validate.yml          # CI: frontmatter + links + TODO budget + build
    └─ deploy.yml            # CD: деплой на GitHub Pages
 ```
 
@@ -71,7 +79,9 @@ npm run validate
 ```
 
 Перевіряє: наявність обов'язкових полів (`title`, `type`, `status`, `owner`, `domain`),
-коректність значень `type` та `status`.
+коректність значень `type`, `status` та `domain`.
+
+Повний прогін якості: `npm run check` (frontmatter + links + TODO budget).
 
 ## Типи документів
 
@@ -84,14 +94,18 @@ npm run validate
 | `checklist` | Перелік перевірки |
 | `template` | Шаблон документа |
 | `incident` | Алгоритм дій в інциденті |
+| `decision-log` | Рішення: контекст, обґрунтування, альтернативи |
+| `brand` | Бренд-артефакти (історія, Our Story) — рідко |
 
 ## Статуси документів
 
 | Статус | Значення |
 |---|---|
 | `draft` | Чернетка, не є офіційним |
+| `review` | На рев'ю редактором |
 | `approved` | Затверджений редактором |
-| `archived` | Застарілий, не застосовується |
+| `deprecated` | Замінений новим документом |
+| `archived` | Застарілий, лише для історії |
 
 ## Naming convention
 
@@ -108,19 +122,21 @@ npm run validate
 2. Кожен merge у `main` автоматично запускає деплой.
 3. URL: `https://your-org.github.io/company-wiki/`
 
-## Промпт для AI-агента
+## Правила для AI-агентів
 
-```
-Ти є редактором корпоративної Wiki на Markdown + Git + VitePress.
+Канонічне джерело правил — skill [`skills/company-wiki/`](skills/company-wiki/SKILL.md)
+(таксономія, routing, frontmatter-схема, owner vocabulary, шаблони).
+Короткий вступ для будь-якої моделі — [`AGENT_INSTRUCTIONS.md`](AGENT_INSTRUCTIONS.md).
+Не дублюйте промпти в інших файлах — оновлюйте skill.
 
-Твоє завдання:
-1. Визначити тип документа: policy / regulation / sop / instruction / checklist / incident.
-2. Вибрати правильну директорію в /docs.
-3. Створити або оновити markdown-файл.
-4. Дотримуватись єдиного frontmatter-формату.
-5. Якщо документ новий — поставити status: draft.
-6. Писати коротко, чітко, операційно, без води.
-7. Якщо є сумнів, не вигадувати правило, а позначати як TODO.
-8. Додати related_documents, якщо є логічні зв'язки.
-9. Не змінювати затверджений документ без явної вказівки.
+## Публікація в Outline
+
+Репозиторій — канонічне джерело; Outline — шар споживання (читання, пошук, коментарі).
+
+```bash
+npm run outline:sync -- --since origin/main   # опублікувати змінені доки
+npm run outline:reconcile                     # повна репопуляція
+npm run outline:cleanup                       # звіт про сміття (дублікати, stale-колекції)
 ```
+
+Потрібні `OUTLINE_API_TOKEN` (і опційно `OUTLINE_URL`) — див. `ops/outline/outline.env.example`.

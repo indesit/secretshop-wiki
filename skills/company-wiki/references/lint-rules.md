@@ -23,7 +23,7 @@ Examples:
 - weak summary
 - missing related docs
 - inconsistent heading structure
-- missing last_reviewed_at
+- missing last_reviewed
 
 ### hygiene
 Use for formatting and low-risk cleanup.
