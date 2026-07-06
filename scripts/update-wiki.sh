@@ -1,4 +1,9 @@
 #!/bin/bash
+# LEGACY dev-mode updater: git pull для vitepress dev. Викликається з crontab
+# щохвилини (див. `crontab -l`, лог: update.log). Цільовий prod-шлях —
+# scripts/deploy/update-wiki-prod.sh + systemd timer (ops/PROD_DEPLOY_AUTOMATION.md,
+# backlog B-30). Не видаляти, поки cron не переведено на prod-скрипт.
+
 # Переходимо в папку проекту
 cd /root/company-wiki || exit
 
