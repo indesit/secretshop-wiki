@@ -2,6 +2,13 @@ import fs from "node:fs";
 import path from "node:path";
 import process from "node:process";
 import { COLLECTION_MAP } from "./cleaners.mjs";
+import {
+  outlineRequest,
+  listCollections,
+  listDocuments,
+  requireToken,
+  sleep,
+} from "./api.mjs";
 
 const DOCS_DIR = path.join(process.cwd(), "docs");
 
@@ -23,9 +30,6 @@ const DOCS_DIR = path.join(process.cwd(), "docs");
  *
  * Env: OUTLINE_URL (default http://localhost:3000), OUTLINE_API_TOKEN (required)
  */
-
-const OUTLINE_URL = process.env.OUTLINE_URL || "http://localhost:3000";
-const API_TOKEN = process.env.OUTLINE_API_TOKEN;
 
 const VALID_NAMES = new Set([...Object.values(COLLECTION_MAP), "Secret Shop Wiki"]);
 
@@ -70,63 +74,9 @@ function parseArgs(argv) {
   return args;
 }
 
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-
-async function outlineRequest(endpoint, payload = {}, attempt = 0) {
-  const res = await fetch(`${OUTLINE_URL}/api/${endpoint}`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${API_TOKEN}`,
-      Accept: "application/json",
-    },
-    body: JSON.stringify(payload),
-  });
-  if (res.status === 429 && attempt < 6) {
-    const wait = Number(res.headers.get("Retry-After")) || Math.min(2 ** attempt, 30);
-    console.log(`  rate-limited on ${endpoint}; waiting ${wait}s…`);
-    await sleep(wait * 1000);
-    return outlineRequest(endpoint, payload, attempt + 1);
-  }
-  const data = await res.json().catch(() => ({}));
-  if (!res.ok) {
-    throw new Error(`Outline API error ${res.status} for ${endpoint}: ${JSON.stringify(data)}`);
-  }
-  return data;
-}
-
-async function listCollections() {
-  const out = [];
-  let offset = 0;
-  while (true) {
-    const res = await outlineRequest("collections.list", { limit: 100, offset });
-    const chunk = res?.data || [];
-    out.push(...chunk);
-    if (chunk.length < 100) break;
-    offset += chunk.length;
-  }
-  return out;
-}
-
-async function listDocuments(collectionId) {
-  const out = [];
-  let offset = 0;
-  while (true) {
-    const res = await outlineRequest("documents.list", { collectionId, limit: 100, offset });
-    const chunk = res?.data || [];
-    out.push(...chunk);
-    if (chunk.length < 100) break;
-    offset += chunk.length;
-  }
-  return out;
-}
-
 async function main() {
   const args = parseArgs(process.argv);
-  if (!API_TOKEN) {
-    console.error('ERROR: Set OUTLINE_API_TOKEN (export OUTLINE_API_TOKEN="ol_api_...").');
-    process.exit(1);
-  }
+  requireToken();
 
   const collections = await listCollections();
   const stale = collections.filter((c) => !VALID_NAMES.has(c.name));

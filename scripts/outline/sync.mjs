@@ -1,7 +1,16 @@
 import { execSync } from "node:child_process";
 import path from "node:path";
 import process from "node:process";
+
+import publishOne from "./_publishOne.mjs";
 import { defaultCollectionForCanonicalPath } from "./cleaners.mjs";
+import {
+  outlineRequest,
+  ensureCollectionByName,
+  findDocumentIdByCanonicalPath,
+  requireToken,
+  sleep,
+} from "./api.mjs";
 
 // Simple git-based sync: publish only markdown files changed since a ref.
 // Usage:
@@ -9,9 +18,6 @@ import { defaultCollectionForCanonicalPath } from "./cleaners.mjs";
 //   node scripts/outline/sync.mjs --since HEAD~1
 //   node scripts/outline/sync.mjs --since origin/main --only docs/company/
 //   node scripts/outline/sync.mjs --since origin/main --dry-run
-
-const OUTLINE_URL = process.env.OUTLINE_URL || "http://localhost:3000";
-const API_TOKEN = process.env.OUTLINE_API_TOKEN;
 
 function usage() {
   console.log(`\nSync changed docs to Outline (git diff)\n\n`);
@@ -34,60 +40,6 @@ function parseArgs(argv) {
     }
   }
   return args;
-}
-
-async function outlineRequest(endpoint, payload = {}) {
-  const res = await fetch(`${OUTLINE_URL}/api/${endpoint}`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${API_TOKEN}`,
-      Accept: "application/json",
-    },
-    body: JSON.stringify(payload),
-  });
-  const data = await res.json().catch(() => ({}));
-  if (!res.ok) {
-    throw new Error(
-      `Outline API error ${res.status} for ${endpoint}: ${JSON.stringify(data)}`
-    );
-  }
-  return data;
-}
-
-async function listCollections() {
-  const out = [];
-  let offset = 0;
-  while (true) {
-    const res = await outlineRequest("collections.list", { limit: 100, offset });
-    const chunk = res?.data || [];
-    out.push(...chunk);
-    if (chunk.length < 100) break;
-    offset += chunk.length;
-  }
-  return out;
-}
-
-async function ensureCollectionByName(name) {
-  const cols = await listCollections();
-  const existing = cols.find((c) => c.name === name);
-  if (existing) return existing.id;
-  const created = await outlineRequest("collections.create", { name });
-  return created.data.id;
-}
-
-
-async function findDocumentIdByCanonicalPath(canonicalPath) {
-  const query = `canonical_path: ${canonicalPath}`;
-  const res = await outlineRequest("documents.search", {
-    query,
-    includeArchived: true,
-    limit: 25,
-    offset: 0,
-  });
-  const docs = res?.data || [];
-  const hit = docs.find((d) => d?.title);
-  return hit?.id || "";
 }
 
 function resolveRepoRoot() {
@@ -114,36 +66,14 @@ function filterOnlyPrefix(p, onlyPrefix) {
   return p.startsWith(norm);
 }
 
-async function publishFile(fileRelPath, { dryRun }) {
-  const repoRoot = resolveRepoRoot();
-  const filePath = path.join(repoRoot, fileRelPath);
-
-  // Import publishOne lazily to avoid duplication of cleaning logic.
-  const { default: publishOne } = await import("./_publishOne.mjs");
-  await publishOne({
-    filePath,
-    collection: "",
-    dryRun,
-    outlineRequest,
-    ensureCollectionByName,
-    findDocumentIdByCanonicalPath,
-    defaultCollectionForCanonicalPath,
-  });
-}
-
-// The publish logic is split into _publishOne.mjs to keep this file small.
-
 const args = parseArgs(process.argv);
 if (!args.since) {
   usage();
   process.exit(1);
 }
-if (!API_TOKEN) {
-  console.error("ERROR: Set OUTLINE_API_TOKEN environment variable.");
-  console.error('  export OUTLINE_API_TOKEN="ol_api_..."');
-  process.exit(1);
-}
+requireToken();
 
+const repoRoot = resolveRepoRoot();
 const files = changedFilesSince(args.since)
   .filter(isDocsMarkdown)
   .filter((p) => filterOnlyPrefix(p, args.only));
@@ -158,5 +88,14 @@ for (const f of files) console.log(`- ${f}`);
 
 for (const f of files) {
   // eslint-disable-next-line no-await-in-loop
-  await publishFile(f, { dryRun: args.dryRun });
+  await publishOne({
+    filePath: path.join(repoRoot, f),
+    collection: "",
+    dryRun: args.dryRun,
+    outlineRequest,
+    ensureCollectionByName,
+    findDocumentIdByCanonicalPath,
+    defaultCollectionForCanonicalPath,
+  });
+  if (!args.dryRun) await sleep(300); // stay under Outline's write rate limit
 }

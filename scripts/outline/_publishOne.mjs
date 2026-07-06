@@ -12,10 +12,10 @@ import {
 /**
  * Shared publish logic used by publish.mjs and sync.mjs.
  *
- * Required deps:
+ * Required deps (see api.mjs for the canonical implementations):
  * - outlineRequest(endpoint, payload)
  * - ensureCollectionByName(name) -> collectionId
- * - findDocumentIdByCanonicalPath(canonicalPath) -> docId|""
+ * - findDocumentIdByCanonicalPath(canonicalPath, title, colName) -> docId|""
  * - defaultCollectionForCanonicalPath(canonicalPath) -> name
  */
 export default async function publishOne({
