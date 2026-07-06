@@ -472,6 +472,10 @@
           "collapsed": false,
           "items": [
             {
+              "text": "📘 Правило приймання оплат: заборона оплат на приватні картки",
+              "link": "/cash/payments/reg-private-card-payments-forbidden"
+            },
+            {
               "text": "📘 Типи оплат і порядок їх проведення",
               "link": "/cash/payments/reg-payment-types"
             }

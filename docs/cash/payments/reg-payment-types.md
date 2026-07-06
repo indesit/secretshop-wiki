@@ -19,6 +19,7 @@ summary: >-
   оплати та заборонені схеми.
 related_documents:
   - /cash/receipts/reg-receipt-types
+  - /cash/payments/reg-private-card-payments-forbidden
   - /cash/cash-discipline/sop-cash-discipline
   - /cash/cash-discipline/reg-forbidden-actions-at-cashdesk
   - /cash/shift-closing/sop-shift-closing
@@ -86,6 +87,7 @@ TODO: деталі оформлення оплати бонусами після
 ## Заборонені схеми
 
 - ❌ Приймати оплату «мимо каси» — без чеку.
+- ❌ Приймати оплату за товар на приватну картку менеджера, власника або іншої фізичної особи. Детально: [Правило приймання оплат: заборона оплат на приватні картки](/cash/payments/reg-private-card-payments-forbidden).
 - ❌ Ділити одну покупку на два чеки для обходу ліміту.
 - ❌ Проводити готівкою суму, яку клієнт фактично заплатив карткою.
 - ❌ Видавати здачу «на очі», без перерахунку.
