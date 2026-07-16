@@ -12,6 +12,11 @@
  * 2026-07-07: 89 → 91 — reg-private-card-payments-forbidden.md adds 2 TODOs
  * (official payment methods list; escalation contact per channel) pending
  * owner confirmation.
+ * 2026-07-17: 91 → 94 — sop-receipt-correction.md rework adds placeholders
+ * pending owner/system input: 4 BAF screenshots (create/edit sale receipt,
+ * find primary receipt, post-return-receipt, data to relay to КЗ) + 1
+ * discrepancy threshold amount. Cannot be resolved without the real screens
+ * and the finance-control figure.
  */
 
 import { readFileSync, readdirSync, statSync } from 'fs'
@@ -22,7 +27,7 @@ const __dirname = fileURLToPath(new URL('.', import.meta.url))
 const DOCS_DIR = join(__dirname, '..', 'docs')
 const SKIP_DIRS = new Set(['.vitepress', 'public', 'node_modules', 'templates'])
 
-const BUDGET = 91
+const BUDGET = 94
 
 function collectMarkdownFiles(dir, files = []) {
   for (const entry of readdirSync(dir)) {
