@@ -35,6 +35,7 @@ approval_required: false
 | [Checklist](./checklist-template.md) | `checklist` | Короткий перелік перевірки |
 | [Incident](./incident-template.md) | `incident` | Алгоритм дій у проблемній ситуації |
 | [Decision Log](./decision-log-template.md) | `template` | Реєстр управлінських рішень |
+| [BAF-інструкція зі скріншотами](./instruction-baf-screen-template.md) | `template` | Практична інструкція, прив'язана до екранів, кнопок і дій у BAF / Ops |
 
 ## Типи документів
 

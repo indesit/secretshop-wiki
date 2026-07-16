@@ -200,7 +200,7 @@
     "icon": "📘"
   },
   "/sales/customer-communication/reg-birthday-customer-communication": {
-    "title": "Комунікація з клієнтами у день народження",
+    "title": "Обробка черги привітань з днем народження",
     "type": "regulation",
     "icon": "📘"
   },
@@ -363,6 +363,11 @@
     "title": "Назва інциденту",
     "type": "incident",
     "icon": "🚨"
+  },
+  "/templates/instruction-baf-screen-template": {
+    "title": "BAF-інструкція зі скріншотами",
+    "type": "template",
+    "icon": "📄"
   },
   "/templates/policy-template": {
     "title": "Назва Policy",

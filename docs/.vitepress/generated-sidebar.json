@@ -351,16 +351,16 @@
           "collapsed": false,
           "items": [
             {
-              "text": "📘 Комунікація з клієнтами у день народження",
-              "link": "/sales/customer-communication/reg-birthday-customer-communication"
-            },
-            {
               "text": "📘 М'яка реактивація ризикових клієнтів",
               "link": "/sales/customer-communication/reg-risk-customer-reactivation"
             },
             {
               "text": "📘 Нагадування клієнтам про згоряння бонусів",
               "link": "/sales/customer-communication/reg-bonus-expiration-customer-communication"
+            },
+            {
+              "text": "📘 Обробка черги привітань з днем народження",
+              "link": "/sales/customer-communication/reg-birthday-customer-communication"
             },
             {
               "text": "📘 Рамкове правило: Сегментована комунікація з клієнтами",
@@ -582,6 +582,10 @@
         {
           "text": "📄 Реєстр управлінських рішень",
           "link": "/templates/decision-log-template"
+        },
+        {
+          "text": "📄 BAF-інструкція зі скріншотами",
+          "link": "/templates/instruction-baf-screen-template"
         }
       ]
     }
