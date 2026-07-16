@@ -3,6 +3,11 @@ dist/
 .vitepress/cache/
 docs/.vitepress/cache/
 docs/.vitepress/dist/
+
+# Generated build artifacts — produced by `npm run generate-sidebar`
+# (runs automatically via predev/prebuild). Never commit; not a source of truth.
+docs/.vitepress/generated-sidebar.json
+docs/.vitepress/generated-docs-meta.json
 *.log
 .DS_Store
 

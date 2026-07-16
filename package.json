@@ -4,7 +4,9 @@
   "description": "Corporate Wiki built with VitePress + Markdown + Git",
   "type": "module",
   "scripts": {
+    "predev": "npm run generate-sidebar",
     "dev": "./node_modules/.bin/vitepress dev docs",
+    "prebuild": "npm run generate-sidebar",
     "build": "./node_modules/.bin/vitepress build docs",
     "preview": "./node_modules/.bin/vitepress preview docs",
     "validate": "node scripts/validate-frontmatter.mjs",
