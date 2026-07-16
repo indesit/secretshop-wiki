@@ -80,7 +80,7 @@ Relative links (`./foo.md`, `/stores/bar`) у Markdown після публіка
 | MinIO storage | ✅ Credentials з env_file |
 | Reverse proxy (Caddy) | ✅ Налаштований, wiki.secretshop.ua |
 | Auth (Authelia OIDC) | ⚠️ Конфіг є, але активація не підтверджена |
-| Role-based access | ⚠️ Authelia — окрема гілка робіт (HANDOFF.md) |
+| Role-based access | ⚠️ Authelia — окрема гілка робіт (archive/HANDOFF.md) |
 | API token ротація | ❗ Потребує ручної дії |
 
 ---
@@ -89,5 +89,5 @@ Relative links (`./foo.md`, `/stores/bar`) у Markdown після публіка
 
 1. **Ротувати токени**: `OUTLINE_API_TOKEN` у `outline.env`, `TELEGRAM_BOT_TOKEN` у `scripts/ai-agent/.env`.
 2. **Перейменувати колекції в Outline UI**: привести у відповідність до нового `COLLECTION_MAP` перед наступним повним синком.
-3. **Активувати Authelia**: окрема задача, описана в `ops/HANDOFF.md`.
+3. **Активувати Authelia**: окрема задача, описана в `archive/HANDOFF.md`.
 4. **Inline-link mapper**: після повного синку побудувати UUID-маппінг для конвертації VitePress-посилань → Outline wiki-links (P3, не блокує поточну роботу).
