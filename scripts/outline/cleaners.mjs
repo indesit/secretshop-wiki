@@ -173,6 +173,17 @@ export function readFrontmatterCanonicalPath(rawContent) {
   return m[1].trim();
 }
 
+/**
+ * `outline_locked: true` in frontmatter means an editor is actively polishing
+ * this document directly in Outline (screenshots, embeds — things git/markdown
+ * can't represent). Publish must never overwrite it until the flag is removed.
+ */
+export function readFrontmatterOutlineLocked(rawContent) {
+  const m = rawContent.match(/^---\n[\s\S]*?outline_locked:\s*([^\n]+)[\s\S]*?\n---/m);
+  if (!m) return false;
+  return /^true$/i.test(m[1].trim());
+}
+
 export function canonicalMarker(canonicalPath) {
   const p = canonicalPath?.trim();
   if (!p) return "";

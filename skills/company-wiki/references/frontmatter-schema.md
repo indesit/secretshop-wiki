@@ -29,6 +29,7 @@ effective_from: "YYYY-MM-DD"
 review_cycle_days: 180
 tags: []
 canonical_path: "docs/<domain>/<subdomain>/<slug>.md"
+outline_locked: false
 ```
 
 ## Field rules
@@ -123,6 +124,16 @@ Repo-relative шлях до канонічного markdown-файлу під `d
 
 Не required, але всі скрипти Outline-публікації покладаються на нього (інакше шлях
 інферується з реального розташування файлу).
+
+### outline_locked
+Boolean, default `false`. Редактор ставить `true`, коли доопрацьовує документ
+**напряму в Outline** (скріншоти, embed-фрейми — те, що markdown не передає).
+
+**AI-агент (і будь-який sync/reconcile-скрипт) НІКОЛИ не редагує і не
+перезаписує файл з `outline_locked: true`.** `scripts/outline/_publishOne.mjs`
+пропускає такі файли при публікації — інакше git-версія тихо затре Outline-версію
+при наступному `sync`/`reconcile`. Якщо треба внести правку через git у locked-документ —
+спершу запитай власника, чи прапорець ще актуальний.
 
 ## Missing data policy
 

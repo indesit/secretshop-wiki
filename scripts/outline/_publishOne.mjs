@@ -8,6 +8,7 @@ import {
   readFrontmatterCanonicalPath,
   inferCanonicalPathFromFile,
   isTopLevelIndexPath,
+  readFrontmatterOutlineLocked,
 } from "./cleaners.mjs";
 import { rewriteInternalLinks, invalidateLinkCache } from "./links.mjs";
 
@@ -46,6 +47,17 @@ export default async function publishOne({
   }
 
   const raw = fs.readFileSync(absFile, "utf8");
+
+  // outline_locked: true — an editor is polishing this doc directly in
+  // Outline (screenshots, embeds markdown can't represent). Never overwrite
+  // it from git until the flag is removed. This is the single choke point
+  // for create/update, so it protects sync.mjs, reconcile.mjs and publish.mjs
+  // alike.
+  if (readFrontmatterOutlineLocked(raw)) {
+    console.log(`Skipped (outline_locked: true — edited directly in Outline): ${filePath}`);
+    return;
+  }
+
   const fallbackTitle = path.parse(absFile).name;
   const title = readFrontmatterTitle(raw, fallbackTitle);
 
