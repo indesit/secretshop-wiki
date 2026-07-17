@@ -132,6 +132,9 @@ npm run validate
 ## Публікація в Outline
 
 Репозиторій — канонічне джерело; Outline — шар споживання (читання, пошук, коментарі).
+Синхронізація однонапрямна: git → Outline. Правки прямо в Outline **втрачаються**
+при наступному sync/reconcile, якщо документ не позначено `outline_locked: true`
+(див. нижче).
 
 ```bash
 npm run outline:sync -- --since origin/main   # опублікувати змінені доки
@@ -140,3 +143,20 @@ npm run outline:cleanup                       # звіт про сміття (д
 ```
 
 Потрібні `OUTLINE_API_TOKEN` (і опційно `OUTLINE_URL`) — див. `ops/outline/outline.env.example`.
+
+### Доопрацювання статті напряму в Outline (скріншоти, embed)
+
+Коли зручніше редагувати в Outline (вставити скріншот, embed-фрейм), ніж у markdown:
+
+```bash
+# 1. у frontmatter документа виставити outline_locked: true, закомітити
+# 2. відредагувати статтю в Outline
+npm run outline:pull -- --file docs/<path>.md --dry-run   # перевірити, що потягне
+npm run outline:pull -- --file docs/<path>.md             # застосувати
+# 3. переглянути git diff, зняти outline_locked, закомітити
+```
+
+`outline:pull` відрізає авто-згенеровані блоки (бейджі/зміст/пов'язані-документи/футер —
+вони перегенеруються на публікації), качає нові зображення в
+`docs/public/outline-imports/<slug>/` і конвертує Outline-URL назад у канонічні
+git-шляхи. Деталі, обмеження і формат маркерів — `skills/company-wiki/references/frontmatter-schema.md#outline_locked`.

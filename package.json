@@ -16,6 +16,7 @@
     "outline:sync": "node scripts/outline/sync.mjs",
     "outline:reconcile": "node scripts/outline/reconcile.mjs",
     "outline:cleanup": "node scripts/outline/cleanup.mjs",
+    "outline:pull": "node scripts/outline/pull.mjs",
     "generate-sidebar": "node scripts/generate-sidebar.mjs",
     "generate-indexes": "node scripts/generate-indexes.mjs",
     "new-doc": "node scripts/new-doc.mjs",

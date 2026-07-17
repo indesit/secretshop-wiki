@@ -290,6 +290,19 @@ function buildFooter(raw, canonicalPath) {
 }
 
 /**
+ * Wrap a generated (non-authored) block in HTML-comment markers so
+ * pull.mjs can strip it deterministically when pulling an Outline-edited
+ * document back into git. Verified against a live Outline round-trip:
+ * comments survive, though Outline's markdown serializer may collapse
+ * internal newlines into a single line — pull.mjs's stripper tolerates that
+ * (matches start..end across any whitespace, not by exact line structure).
+ */
+function wrapMarker(name, str) {
+  if (!str || !str.trim()) return "";
+  return `\n\n<!-- outline:${name}:start -->\n${str.trim()}\n<!-- outline:${name}:end -->\n`;
+}
+
+/**
  * Add decorative header, TOC, related links, and footer.
  * Works only when frontmatter data is available — never invents.
  */
@@ -321,5 +334,13 @@ export function enhanceForOutline(rawContent, canonicalPath = "") {
   const related = buildRelatedLinks(rawContent);
   const footer = buildFooter(rawContent, canonicalPath);
 
-  return `${header}${toc}${content}${related}${footer}\n`;
+  const headerBlock = wrapMarker("header", header);
+  const tocBlock = wrapMarker("toc", toc);
+  const relatedBlock = wrapMarker("related", related);
+  const footerBlock = wrapMarker("footer", footer);
+
+  // Only the middle section (between toc and related) is the author's actual
+  // body — everything else is regenerated on every publish. pull.mjs strips
+  // the four marked blocks and keeps whatever remains as the editable body.
+  return `${headerBlock}${tocBlock}${content}${relatedBlock}${footerBlock}\n`;
 }

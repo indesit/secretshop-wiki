@@ -7,6 +7,7 @@ import {
   defaultCollectionForCanonicalPath,
   readFrontmatterTitle,
   isTopLevelIndexPath,
+  COLLECTION_MAP,
 } from "./cleaners.mjs";
 
 /**
@@ -164,4 +165,107 @@ export async function rewriteInternalLinks(text, repoRoot = process.cwd(), canon
     return `[${label}](${url})`;
   });
   return out;
+}
+
+// ============================================================
+// Reverse direction: Outline URL -> canonical git path (used by pull.mjs)
+// ============================================================
+
+// repo-relative docs path ("docs/x/y.md") -> frontmatter title, built once by
+// walking the whole tree. Titles are assumed unique across the repo (the
+// existing publish pipeline already relies on this for dedup-by-title).
+let _titleByCanonicalPath = null;
+function repoTitleIndex(repoRoot) {
+  if (_titleByCanonicalPath) return _titleByCanonicalPath;
+  const map = new Map(); // title -> "docs/x/y.md"
+  (function walk(dir, rel) {
+    for (const entry of fs.readdirSync(dir)) {
+      if (entry === ".vitepress" || entry === "public") continue;
+      const full = path.join(dir, entry);
+      const relPath = `${rel}/${entry}`;
+      if (fs.statSync(full).isDirectory()) {
+        walk(full, relPath);
+      } else if (entry.endsWith(".md") && !isTopLevelIndexPath(relPath)) {
+        const title = readFrontmatterTitle(fs.readFileSync(full, "utf8"), "");
+        if (title) map.set(title, relPath);
+      }
+    }
+  })(path.join(repoRoot, "docs"), "docs");
+  _titleByCanonicalPath = map;
+  return map;
+}
+
+// Outline document url -> title, across ALL collections (a /doc/ link can
+// point at a document outside the linking doc's own collection).
+let _titleByUrl = null;
+async function urlTitleIndex() {
+  if (_titleByUrl) return _titleByUrl;
+  const map = new Map();
+  const cols = await listCollections();
+  for (const c of cols) {
+    const docs = await listDocuments(c.id);
+    for (const d of docs) if (d.url && d.title) map.set(d.url, d.title);
+  }
+  _titleByUrl = map;
+  return map;
+}
+
+// Collection url -> top-level domain (for /collection/... links, which are
+// what a top-level index.md link resolves to on publish — see
+// resolvePathToUrl above).
+let _domainByCollectionUrl = null;
+async function collectionUrlIndex() {
+  if (_domainByCollectionUrl) return _domainByCollectionUrl;
+  const map = new Map();
+  const cols = await listCollections();
+  for (const [domain, name] of Object.entries(COLLECTION_MAP)) {
+    const col = cols.find((c) => c.name === name);
+    if (col?.url) map.set(col.url, domain);
+  }
+  _domainByCollectionUrl = map;
+  return map;
+}
+
+/** "docs/x/y/index.md" -> "/x/y/" ; "docs/x/y/z.md" -> "/x/y/z" */
+function canonicalPathToAuthoredLink(relPath) {
+  let p = relPath.replace(/^docs\//, "").replace(/\.md$/, "");
+  if (p.endsWith("/index")) return `/${p.slice(0, -"index".length)}`;
+  return `/${p}`;
+}
+
+/**
+ * Reverse of rewriteInternalLinks: convert Outline's own `/doc/…` and
+ * `/collection/…` URLs back to canonical git-relative paths, for pull.mjs.
+ * Necessary because publish already rewrote authored links to Outline URLs
+ * (see rewriteInternalLinks) — pulling that text back verbatim would leave
+ * Outline-only URLs baked into the git-canonical file, breaking navigation
+ * on the VitePress site (a different domain that knows nothing about
+ * Outline's /doc/ routes).
+ *
+ * Returns { text, unresolved } — unresolved lists URLs that could not be
+ * mapped back (e.g. the target was renamed/removed in Outline); those are
+ * left as-is in the text and must be fixed manually, since leaving a
+ * dangling Outline URL in git is worse than a visible warning.
+ */
+export async function rewriteOutlineLinksToCanonical(text, repoRoot = process.cwd()) {
+  const titleIndex = repoTitleIndex(repoRoot);
+  const urlToTitle = await urlTitleIndex();
+  const urlToDomain = await collectionUrlIndex();
+  const unresolved = [];
+
+  const re = /\]\((\/(?:doc|collection)\/[^)#\s]+)(#[^)\s]*)?\)/g;
+  const out = text.replace(re, (whole, url, anchor = "") => {
+    if (url.startsWith("/doc/")) {
+      const title = urlToTitle.get(url);
+      const relPath = title && titleIndex.get(title);
+      if (relPath) return `](${canonicalPathToAuthoredLink(relPath)}${anchor || ""})`;
+    } else if (url.startsWith("/collection/")) {
+      const domain = urlToDomain.get(url);
+      if (domain) return `](/${domain}/${anchor || ""})`;
+    }
+    unresolved.push(url);
+    return whole;
+  });
+
+  return { text: out, unresolved };
 }
