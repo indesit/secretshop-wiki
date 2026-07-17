@@ -8,6 +8,7 @@ import {
   readFrontmatterCanonicalPath,
   inferCanonicalPathFromFile,
 } from "./cleaners.mjs";
+import { rewriteInternalLinks } from "./links.mjs";
 
 /**
  * Shared publish logic used by publish.mjs and sync.mjs.
@@ -50,7 +51,9 @@ export default async function publishOne({
   const colName = collection || defaultCollectionForCanonicalPath(canonicalPath);
 
   const cleaned = enhanceForOutline(raw, canonicalPath);
-  const text = `${cleaned}`.trim() + "\n";
+  // Rewrite canonical cross-links to their live Outline /doc/ URLs (read-only
+  // resolution against the API); unresolvable links are left as-is.
+  const text = (await rewriteInternalLinks(`${cleaned}`.trim(), repoRoot)) + "\n";
 
   const existingId = await findDocumentIdByCanonicalPath(canonicalPath, title, colName);
   const collectionId = await ensureCollectionByName(colName);
