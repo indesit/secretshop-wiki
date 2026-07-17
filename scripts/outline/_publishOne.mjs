@@ -7,7 +7,9 @@ import {
   readFrontmatterTitle,
   readFrontmatterCanonicalPath,
   inferCanonicalPathFromFile,
+  isTopLevelIndexPath,
 } from "./cleaners.mjs";
+import { rewriteInternalLinks, invalidateLinkCache } from "./links.mjs";
 
 /**
  * Shared publish logic used by publish.mjs and sync.mjs.
@@ -33,11 +35,13 @@ export default async function publishOne({
     throw new Error(`File not found: ${absFile}`);
   }
 
-  // Section index.md files are not published as documents: their title equals
-  // the collection name, which creates a duplicate same-named child in Outline.
-  // (Section intros can later be mapped to the collection description instead.)
-  if (path.basename(absFile) === "index.md") {
-    console.log(`Skipped (section index, not published to Outline): ${filePath}`);
+  // Top-level index.md files (docs/index.md, docs/<domain>/index.md) are not
+  // published: their title equals the collection name, which creates a
+  // duplicate same-named child in Outline. Subsection indexes (unique titles
+  // like "Чеки") ARE published so section cross-links resolve.
+  const relFile = path.relative(repoRoot, absFile);
+  if (isTopLevelIndexPath(relFile)) {
+    console.log(`Skipped (top-level index, not published to Outline): ${filePath}`);
     return;
   }
 
@@ -45,12 +49,22 @@ export default async function publishOne({
   const fallbackTitle = path.parse(absFile).name;
   const title = readFrontmatterTitle(raw, fallbackTitle);
 
+  // Defensive: never publish an index page under the useless title "index" —
+  // a subsection index without a frontmatter title is a content bug to fix.
+  if (path.basename(absFile) === "index.md" && title === fallbackTitle) {
+    console.log(`Skipped (subsection index without frontmatter title): ${filePath}`);
+    return;
+  }
+
   const canonicalPathFromFm = readFrontmatterCanonicalPath(raw);
   const canonicalPath = canonicalPathFromFm || inferCanonicalPathFromFile(absFile, repoRoot);
   const colName = collection || defaultCollectionForCanonicalPath(canonicalPath);
 
   const cleaned = enhanceForOutline(raw, canonicalPath);
-  const text = `${cleaned}`.trim() + "\n";
+  // Rewrite canonical cross-links to their live Outline /doc/ URLs (read-only
+  // resolution against the API); unresolvable links are left as-is.
+  const text =
+    (await rewriteInternalLinks(`${cleaned}`.trim(), repoRoot, canonicalPath)) + "\n";
 
   const existingId = await findDocumentIdByCanonicalPath(canonicalPath, title, colName);
   const collectionId = await ensureCollectionByName(colName);
@@ -80,6 +94,7 @@ export default async function publishOne({
     text,
     publish: true,
   });
+  invalidateLinkCache(); // docs published later this run can now link to this one
   console.log(`Created: ${title}`);
   console.log(`Canonical: ${canonicalPath}`);
   console.log(`Outline doc id: ${created.data.id}`);

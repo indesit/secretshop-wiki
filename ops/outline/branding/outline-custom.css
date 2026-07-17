@@ -1,0 +1,173 @@
+/* Outline branding PoC — injected via ops/outline/branding/inject-proxy.mjs.
+ *
+ * Look goal (from reference screenshot): dark purple sidebar, colourful
+ * callout blocks, gradient-underlined headings.
+ *
+ * IMPORTANT — how this file was written:
+ *  Outline colours its UI with styled-components (compiled, hashed class
+ *  names) — it does NOT expose CSS custom properties for theming, so we can't
+ *  just set `--accent`. Instead we override REAL, verified-stable selectors
+ *  with `!important`. The selectors below were confirmed against the running
+ *  Outline bundle:
+ *    #sidebar                          (id on the left navigation container)
+ *    .notice-block.info|tip|warning|success + .icon   (:::info / :::tip / …)
+ *    .ProseMirror h1 / h2              (document headings)
+ *  Anything relying on hashed classes would break on upgrade, so we avoid it.
+ *
+ * Served same-origin ⇒ satisfies Outline CSP (style-src 'self' 'unsafe-inline').
+ *
+ * Brand palette — replace these three with the real secretshop values:
+ */
+:root {
+  --brand: #b3005e;            /* primary magenta */
+  --brand-2: #7a2da3;          /* violet          */
+  --sidebar-top: #2d0b45;      /* sidebar gradient start (dark) */
+  --sidebar-bottom: #4a1a6b;   /* sidebar gradient end          */
+}
+
+/* ------------------------------------------------------------------ *
+ * 1. Sidebar — dark purple gradient, light text                       *
+ * ------------------------------------------------------------------ */
+#sidebar {
+  background: linear-gradient(180deg, var(--sidebar-top) 0%, var(--sidebar-bottom) 100%) !important;
+  box-shadow: inset -1px 0 0 rgba(255, 255, 255, 0.06) !important;
+}
+
+/* Links, section labels and icons inside the sidebar → readable on dark. */
+#sidebar a,
+#sidebar button,
+#sidebar span,
+#sidebar div,
+#sidebar h1,
+#sidebar h3 {
+  color: #ece3f7 !important;
+}
+#sidebar svg {
+  fill: #d9c7ef !important;
+  color: #d9c7ef !important;
+}
+/* Section headers ("Особистий кабінет", "Інтеграції", …) — muted. */
+#sidebar h3 {
+  color: rgba(236, 227, 247, 0.55) !important;
+  letter-spacing: 0.03em;
+}
+/* Hover / active row highlight in brand magenta. */
+#sidebar a:hover,
+#sidebar [aria-current="page"],
+#sidebar a[aria-selected="true"] {
+  background: rgba(179, 0, 94, 0.28) !important;
+  border-radius: 6px;
+}
+
+/* Row action buttons (+ new doc, ⋯ menu): Outline gives them a light neutral
+ * background meant for a light sidebar — on our dark gradient that made the
+ * light icons invisible. Keep them transparent, brighten on their own hover. */
+#sidebar button {
+  background: transparent !important;
+  color: #ece3f7 !important;
+}
+#sidebar button:hover {
+  background: rgba(255, 255, 255, 0.18) !important;
+  border-radius: 6px;
+}
+#sidebar button svg {
+  fill: #ece3f7 !important;
+  color: #ece3f7 !important;
+}
+
+/* The active-row pill and the +/⋯ action cluster get their LIGHT background
+ * via an INLINE style (React: background: theme.sidebarActiveBackground), not
+ * a class — element selectors above never touched it. Repaint any inline
+ * background inside the sidebar as a translucent white highlight: !important
+ * in a stylesheet beats inline styles, and light icons stay readable on it. */
+#sidebar [style*="background"] {
+  background: rgba(255, 255, 255, 0.16) !important;
+}
+
+/* The +/⋯ action cluster (revealed on row hover; DOM: a > span:last-child
+ * with a nested wrapper span) paints a light sidebarBackground "mask" over
+ * the row text — those were the grey squares. Make it blend with our dark
+ * sidebar instead. Structural selector on purpose: hashed sc-* class names
+ * change between Outline builds and must not be referenced. */
+#sidebar a > span:last-child:has(button),
+#sidebar a > span:last-child:has(button) > span {
+  background: var(--sidebar-bottom) !important;
+  border-radius: 6px;
+}
+#sidebar a > span:last-child:has(button) button {
+  background: transparent !important;
+}
+#sidebar a > span:last-child:has(button) button:hover {
+  background: rgba(255, 255, 255, 0.22) !important;
+}
+
+/* ------------------------------------------------------------------ *
+ * 2. Callout / notice blocks — colourful, translucent tints           *
+ *    Translucent (not solid light) so they read in light AND dark.    *
+ * ------------------------------------------------------------------ */
+.notice-block {
+  border: none !important;
+  border-left: 4px solid !important;
+  border-radius: 8px !important;
+  padding: 12px 14px !important;
+  margin: 14px 0 !important;
+}
+.notice-block .icon {
+  opacity: 1 !important;
+}
+
+/* info → blue */
+.notice-block.info {
+  background: rgba(47, 107, 255, 0.12) !important;
+  border-left-color: #2f6bff !important;
+}
+.notice-block.info .icon svg,
+.notice-block.info .icon { fill: #2f6bff !important; color: #2f6bff !important; }
+
+/* tip → violet (brand secondary) */
+.notice-block.tip {
+  background: rgba(122, 45, 163, 0.14) !important;
+  border-left-color: var(--brand-2) !important;
+}
+.notice-block.tip .icon svg,
+.notice-block.tip .icon { fill: var(--brand-2) !important; color: var(--brand-2) !important; }
+
+/* success → green */
+.notice-block.success {
+  background: rgba(22, 163, 74, 0.13) !important;
+  border-left-color: #16a34a !important;
+}
+.notice-block.success .icon svg,
+.notice-block.success .icon { fill: #16a34a !important; color: #16a34a !important; }
+
+/* warning → amber */
+.notice-block.warning {
+  background: rgba(245, 158, 11, 0.15) !important;
+  border-left-color: #f59e0b !important;
+}
+.notice-block.warning .icon svg,
+.notice-block.warning .icon { fill: #d97706 !important; color: #d97706 !important; }
+
+/* ------------------------------------------------------------------ *
+ * 3. Document headings — magenta→violet gradient underline             *
+ * ------------------------------------------------------------------ */
+.ProseMirror h1,
+.ProseMirror h2 {
+  padding-bottom: 6px !important;
+  border-bottom: 3px solid transparent !important;
+  border-image: linear-gradient(90deg, var(--brand), var(--brand-2)) 1 !important;
+  letter-spacing: -0.01em;
+}
+.ProseMirror h3 {
+  color: var(--brand-2) !important;
+}
+
+/* Links in document body → brand magenta. */
+.ProseMirror a {
+  color: var(--brand) !important;
+  text-decoration-color: rgba(179, 0, 94, 0.4) !important;
+}
+
+/* Note on emoji: the reference screenshot shows emoji NEXT TO headings.
+ * Those are authored content (typed into the doc / doc icon), not CSS —
+ * add them in the documents themselves; CSS cannot invent them. */
