@@ -18,6 +18,20 @@ export function defaultCollectionForCanonicalPath(canonicalPath) {
   return COLLECTION_MAP[domain] || "Secret Shop Wiki";
 }
 
+/**
+ * Top-level index files (docs/index.md, docs/<domain>/index.md) are NOT
+ * published to Outline: their title equals the collection name ("Каса",
+ * "Продажі"…), which would create a same-named duplicate child. Subsection
+ * indexes (docs/<domain>/<sub>/index.md, e.g. "Чеки") have unique titles and
+ * ARE published, so section cross-links resolve inside Outline.
+ * Accepts a repo-relative or docs-relative path.
+ */
+export function isTopLevelIndexPath(relPath) {
+  const p = relPath.replace(/\\/g, "/").replace(/^\.?\//, "").replace(/^docs\//, "");
+  if (!p.endsWith("index.md")) return false;
+  return p.split("/").length <= 2; // "index.md" or "<domain>/index.md"
+}
+
 /** Strip YAML frontmatter block */
 export function stripFrontmatter(content) {
   return content.replace(/^---\n[\s\S]*?\n---\n/, "");

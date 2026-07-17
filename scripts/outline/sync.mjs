@@ -3,7 +3,7 @@ import path from "node:path";
 import process from "node:process";
 
 import publishOne from "./_publishOne.mjs";
-import { defaultCollectionForCanonicalPath } from "./cleaners.mjs";
+import { defaultCollectionForCanonicalPath, isTopLevelIndexPath } from "./cleaners.mjs";
 import {
   outlineRequest,
   ensureCollectionByName,
@@ -55,8 +55,9 @@ function changedFilesSince(ref) {
 }
 
 function isDocsMarkdown(p) {
-  // Skip section index.md — its title duplicates the collection name in Outline.
-  if (p === "docs/index.md" || p.endsWith("/index.md")) return false;
+  // Skip only TOP-LEVEL index.md (title duplicates the collection name).
+  // Subsection indexes are published — see cleaners.isTopLevelIndexPath.
+  if (isTopLevelIndexPath(p)) return false;
   return p.startsWith("docs/") && p.endsWith(".md");
 }
 

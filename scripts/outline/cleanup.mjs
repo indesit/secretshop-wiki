@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import process from "node:process";
-import { COLLECTION_MAP } from "./cleaners.mjs";
+import { COLLECTION_MAP, isTopLevelIndexPath } from "./cleaners.mjs";
 import {
   outlineRequest,
   listCollections,
@@ -33,16 +33,17 @@ const DOCS_DIR = path.join(process.cwd(), "docs");
 
 const VALID_NAMES = new Set([...Object.values(COLLECTION_MAP), "Secret Shop Wiki"]);
 
-// Titles of every index.md in the repo (recursively) — these were published as
-// documents by the old pipeline and must be removed from Outline. Covers both
-// collection-level ("Магазини") and subdomain ("Технічні несправності") indexes.
+// Titles of TOP-LEVEL index.md files (docs/index.md, docs/<domain>/index.md) —
+// these must not exist as documents (title duplicates the collection name).
+// Subsection indexes ("Чеки", "Закриття зміни"…) are now legitimately
+// published by _publishOne and must NOT be flagged as cruft here.
 function repoIndexTitles(dir = DOCS_DIR, out = new Set()) {
   for (const entry of fs.readdirSync(dir)) {
     if (entry === ".vitepress" || entry === "public") continue;
     const full = path.join(dir, entry);
     if (fs.statSync(full).isDirectory()) {
       repoIndexTitles(full, out);
-    } else if (entry === "index.md") {
+    } else if (entry === "index.md" && isTopLevelIndexPath(path.relative(process.cwd(), full))) {
       const m = fs.readFileSync(full, "utf8").match(/^---\s*\n([\s\S]*?)\n---/);
       const titleLine = m && m[1].split("\n").find((l) => l.startsWith("title:"));
       if (titleLine) {

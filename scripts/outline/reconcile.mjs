@@ -3,7 +3,7 @@ import path from "node:path";
 import process from "node:process";
 
 import publishOne from "./_publishOne.mjs";
-import { defaultCollectionForCanonicalPath } from "./cleaners.mjs";
+import { defaultCollectionForCanonicalPath, isTopLevelIndexPath } from "./cleaners.mjs";
 import {
   outlineRequest,
   ensureCollectionByName,
@@ -49,7 +49,9 @@ function collectMarkdown(dir, rel = "docs", out = []) {
     const relPath = `${rel}/${entry}`;
     if (fs.statSync(full).isDirectory()) {
       collectMarkdown(full, relPath, out);
-    } else if (entry.endsWith(".md") && entry !== "index.md") {
+    } else if (entry.endsWith(".md") && !isTopLevelIndexPath(relPath)) {
+      // Subsection index.md files are published (unique titles like "Чеки");
+      // only top-level indexes are skipped — see cleaners.isTopLevelIndexPath.
       out.push(relPath);
     }
   }
@@ -65,7 +67,14 @@ async function main() {
     const norm = args.only.replace(/\\/g, "/");
     files = files.filter((p) => p.startsWith(norm));
   }
-  files.sort();
+  // Publish index.md files first: regular docs link to sections, so their
+  // Outline documents must exist before those links are resolved (links.mjs
+  // cache is invalidated on every create — see invalidateLinkCache).
+  files.sort((a, b) => {
+    const ai = a.endsWith("/index.md") ? 0 : 1;
+    const bi = b.endsWith("/index.md") ? 0 : 1;
+    return ai - bi || a.localeCompare(b);
+  });
 
   console.log(`Will publish ${files.length} document(s) to Outline${args.dryRun ? " (dry-run)" : ""}:`);
   for (const f of files) {
