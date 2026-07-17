@@ -53,11 +53,52 @@
 }
 /* Hover / active row highlight in brand magenta. */
 #sidebar a:hover,
-#sidebar button:hover,
 #sidebar [aria-current="page"],
 #sidebar a[aria-selected="true"] {
   background: rgba(179, 0, 94, 0.28) !important;
   border-radius: 6px;
+}
+
+/* Row action buttons (+ new doc, ⋯ menu): Outline gives them a light neutral
+ * background meant for a light sidebar — on our dark gradient that made the
+ * light icons invisible. Keep them transparent, brighten on their own hover. */
+#sidebar button {
+  background: transparent !important;
+  color: #ece3f7 !important;
+}
+#sidebar button:hover {
+  background: rgba(255, 255, 255, 0.18) !important;
+  border-radius: 6px;
+}
+#sidebar button svg {
+  fill: #ece3f7 !important;
+  color: #ece3f7 !important;
+}
+
+/* The active-row pill and the +/⋯ action cluster get their LIGHT background
+ * via an INLINE style (React: background: theme.sidebarActiveBackground), not
+ * a class — element selectors above never touched it. Repaint any inline
+ * background inside the sidebar as a translucent white highlight: !important
+ * in a stylesheet beats inline styles, and light icons stay readable on it. */
+#sidebar [style*="background"] {
+  background: rgba(255, 255, 255, 0.16) !important;
+}
+
+/* The +/⋯ action cluster (revealed on row hover; DOM: a > span:last-child
+ * with a nested wrapper span) paints a light sidebarBackground "mask" over
+ * the row text — those were the grey squares. Make it blend with our dark
+ * sidebar instead. Structural selector on purpose: hashed sc-* class names
+ * change between Outline builds and must not be referenced. */
+#sidebar a > span:last-child:has(button),
+#sidebar a > span:last-child:has(button) > span {
+  background: var(--sidebar-bottom) !important;
+  border-radius: 6px;
+}
+#sidebar a > span:last-child:has(button) button {
+  background: transparent !important;
+}
+#sidebar a > span:last-child:has(button) button:hover {
+  background: rgba(255, 255, 255, 0.22) !important;
 }
 
 /* ------------------------------------------------------------------ *

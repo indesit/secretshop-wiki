@@ -19,7 +19,7 @@
 
 import http from 'node:http';
 import net from 'node:net';
-import { readFileSync } from 'node:fs';
+import { readFileSync, appendFileSync, existsSync } from 'node:fs';
 
 const LISTEN_HOST = process.env.INJECT_HOST || '127.0.0.1';
 const LISTEN_PORT = Number(process.env.INJECT_PORT || 3100);
@@ -28,11 +28,52 @@ const UP_PORT = Number(process.env.UPSTREAM_PORT || 3000);
 
 const CSS_ROUTE = '/__brand/outline-custom.css';
 const cssFileUrl = new URL('./outline-custom.css', import.meta.url);
+// Optional debug helper: when debug.js exists next to this file, it is
+// injected too (CSP allows same-origin scripts) and may POST DOM diagnostics
+// to /__brand/report, appended to debug-reports.ndjson. Delete debug.js to
+// disable. Used to inspect Outline's rendered DOM without browser devtools.
+const DEBUG_JS_ROUTE = '/__brand/debug.js';
+const debugJsUrl = new URL('./debug.js', import.meta.url);
+const REPORT_ROUTE = '/__brand/report';
+const reportFileUrl = new URL('./debug-reports.ndjson', import.meta.url);
 const LINK_TAG = `<link rel="stylesheet" href="${CSS_ROUTE}" data-brand-inject>`;
 
 const server = http.createServer((req, res) => {
+  const routePath = req.url.split('?')[0];
+
+  // Debug helper script (only when the file exists).
+  if (routePath === DEBUG_JS_ROUTE) {
+    let js;
+    try {
+      js = readFileSync(debugJsUrl);
+    } catch {
+      res.writeHead(404, { 'Content-Type': 'text/plain' });
+      return res.end('no debug helper');
+    }
+    res.writeHead(200, {
+      'Content-Type': 'text/javascript; charset=utf-8',
+      'Cache-Control': 'no-store',
+      'Content-Length': Buffer.byteLength(js),
+    });
+    return res.end(js);
+  }
+
+  // Collect DOM diagnostics POSTed by debug.js.
+  if (routePath === REPORT_ROUTE && req.method === 'POST') {
+    const chunks = [];
+    req.on('data', (c) => chunks.push(c));
+    req.on('end', () => {
+      try {
+        appendFileSync(reportFileUrl, Buffer.concat(chunks).toString('utf8') + '\n');
+      } catch {}
+      res.writeHead(204);
+      res.end();
+    });
+    return;
+  }
+
   // Serve our stylesheet ourselves — never hits upstream.
-  if (req.url.split('?')[0] === CSS_ROUTE) {
+  if (routePath === CSS_ROUTE) {
     let css;
     try {
       css = readFileSync(cssFileUrl);
@@ -62,7 +103,10 @@ const server = http.createServer((req, res) => {
       upRes.on('end', () => {
         let body = Buffer.concat(chunks).toString('utf8');
         if (body.includes('</head>') && !body.includes('data-brand-inject')) {
-          body = body.replace('</head>', `${LINK_TAG}</head>`);
+          const scriptTag = existsSync(debugJsUrl)
+            ? `<script src="${DEBUG_JS_ROUTE}" defer data-brand-debug></script>`
+            : '';
+          body = body.replace('</head>', `${LINK_TAG}${scriptTag}</head>`);
         }
         const out = Buffer.from(body, 'utf8');
         const h = { ...upRes.headers };
