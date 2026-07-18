@@ -2,6 +2,7 @@
 title: 'Регламент: Типи чеків і правила їх застосування'
 type: regulation
 status: draft
+outline_locked: true
 owner: cash
 review_cycle_days: 365
 last_reviewed: 2026-07-11T00:00:00.000Z
