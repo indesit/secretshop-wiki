@@ -9,7 +9,7 @@ effective_from: 2026-04-27T00:00:00.000Z
 domain: cash
 subdomain: receipts
 scope: all-stores
-outline_locked: true
+outline_locked: false
 tags:
   - cash
   - receipts
