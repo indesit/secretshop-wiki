@@ -88,10 +88,29 @@ const EXT_BY_CONTENT_TYPE = {
 
 async function downloadAttachment(id, destDir, index) {
   const url = `${OUTLINE_URL}/api/attachments.redirect?id=${id}`;
-  const res = await fetch(url, {
+
+  // Manual redirect handling: attachments.redirect 302s to a presigned S3/
+  // MinIO URL that carries its own auth in the query string (X-Amz-Signature).
+  // When that redirect target is same-origin as OUTLINE_URL (true for the
+  // public https://wiki.secretshop.ua deployment — only same-origin because
+  // AWS_S3_UPLOAD_BUCKET_URL is configured to that domain, see
+  // ops/outline/outline.env), fetch's `redirect: "follow"` forwards the
+  // Authorization header to it by default, and MinIO then sees two
+  // authentication methods at once and rejects with 400 "InvalidRequest:
+  // request has multiple authentication types, please use one". Fetching the
+  // redirect target WITHOUT our Bearer token avoids that; the presigned URL
+  // is self-authenticating. (Not reproducible against OUTLINE_URL=localhost
+  // in local testing — that redirect crosses origins, so fetch already drops
+  // the header there. Same-origin in CI is what exposes it.)
+  const first = await fetch(url, {
     headers: { Authorization: `Bearer ${API_TOKEN}` },
-    redirect: "follow",
+    redirect: "manual",
   });
+  const location = first.headers.get("location");
+  if (!(first.status >= 300 && first.status < 400) || !location) {
+    throw new Error(`attachment ${id}: expected a redirect, got HTTP ${first.status}`);
+  }
+  const res = await fetch(location);
   if (!res.ok) throw new Error(`attachment ${id}: HTTP ${res.status}`);
   const contentType = (res.headers.get("content-type") || "").split(";")[0].trim();
   const ext = EXT_BY_CONTENT_TYPE[contentType] || "bin";
