@@ -42,6 +42,11 @@ import { rewriteOutlineLinksToCanonical } from "./links.mjs";
  * cannot be safely split into "generated" vs "authored" — pull refuses
  * rather than guess and risk corrupting content; re-publish once first.
  *
+ * `pullDocument()` is also used by pull-locked.mjs, the batch orchestrator
+ * run on a schedule by .github/workflows/outline-pull.yml — that's the other
+ * half of the round-trip (auto-opens a PR per changed doc instead of
+ * requiring a manual CLI run for every edit).
+ *
  * Usage:
  *   node scripts/outline/pull.mjs --file docs/<path>.md [--dry-run]
  *
@@ -53,32 +58,6 @@ import { rewriteOutlineLinksToCanonical } from "./links.mjs";
  *
  * Env: OUTLINE_URL (default http://localhost:3000), OUTLINE_API_TOKEN (required)
  */
-
-function usage() {
-  console.log(
-    `\nPull a document's live Outline content back into its git markdown file\n\n` +
-      `Usage:\n  node scripts/outline/pull.mjs --file docs/<path>.md [--dry-run]\n\n` +
-      `Env:\n  OUTLINE_URL (default: http://localhost:3000)\n  OUTLINE_API_TOKEN (required)\n`
-  );
-}
-
-function parseArgs(argv) {
-  const args = { file: "", dryRun: false };
-  for (let i = 2; i < argv.length; i++) {
-    const a = argv[i];
-    if (a === "--file") args.file = argv[++i];
-    else if (a === "--dry-run") args.dryRun = true;
-    else if (a === "-h" || a === "--help") {
-      usage();
-      process.exit(0);
-    }
-  }
-  if (!args.file) {
-    usage();
-    process.exit(1);
-  }
-  return args;
-}
 
 const MARKER_NAMES = ["header", "toc", "related", "footer"];
 
@@ -143,12 +122,21 @@ async function rewriteAttachments(text, slug, repoRoot, dryRun) {
   return { text: out, count: matches.length };
 }
 
-async function main() {
-  const args = parseArgs(process.argv);
-  requireToken();
+function slugFor(absFile) {
+  return path.parse(absFile).name === "index"
+    ? path.basename(path.dirname(absFile))
+    : path.parse(absFile).name;
+}
 
-  const repoRoot = process.cwd();
-  const absFile = path.isAbsolute(args.file) ? args.file : path.join(repoRoot, args.file);
+/**
+ * Pull one document. Returns:
+ *   { title, slug, relFile, wrote, body, count, unresolved }
+ * `wrote` is false in dry-run mode (nothing touched on disk).
+ * Throws on: file not found, no frontmatter, doc not found in Outline, or
+ * doc predates marker support (see module docstring).
+ */
+export async function pullDocument({ file, repoRoot = process.cwd(), dryRun = false }) {
+  const absFile = path.isAbsolute(file) ? file : path.join(repoRoot, file);
   if (!fs.existsSync(absFile)) {
     throw new Error(`File not found: ${absFile}`);
   }
@@ -156,7 +144,7 @@ async function main() {
   const raw = fs.readFileSync(absFile, "utf8");
   const fmMatch = raw.match(/^(---\n[\s\S]*?\n---\n)/);
   if (!fmMatch) {
-    throw new Error(`No frontmatter block in ${args.file} — refusing to overwrite a non-standard file.`);
+    throw new Error(`No frontmatter block in ${file} — refusing to overwrite a non-standard file.`);
   }
   const frontmatter = fmMatch[1];
 
@@ -184,7 +172,7 @@ async function main() {
   }
 
   let body = stripMarkedBlocks(liveText).trim();
-  const slug = path.parse(absFile).name === "index" ? path.basename(path.dirname(absFile)) : path.parse(absFile).name;
+  const slug = slugFor(absFile);
 
   // Publish already rewrote authored links to Outline /doc/ and /collection/
   // URLs (links.mjs). Convert them back to canonical git-relative paths —
@@ -200,11 +188,53 @@ async function main() {
     body = `# ${title}\n\n${body}`;
   }
 
-  const { text: rewritten, count } = await rewriteAttachments(body, slug, repoRoot, args.dryRun);
+  const { text: rewritten, count } = await rewriteAttachments(body, slug, repoRoot, dryRun);
   body = rewritten;
 
-  if (args.dryRun) {
-    console.log(`DRY RUN — would write ${args.file}`);
+  const relFile = path.relative(repoRoot, absFile);
+  if (dryRun) {
+    return { title, slug, relFile, wrote: false, body, count, unresolved };
+  }
+
+  fs.writeFileSync(absFile, `${frontmatter}\n${body}\n`);
+  return { title, slug, relFile, wrote: true, body, count, unresolved };
+}
+
+function usage() {
+  console.log(
+    `\nPull a document's live Outline content back into its git markdown file\n\n` +
+      `Usage:\n  node scripts/outline/pull.mjs --file docs/<path>.md [--dry-run]\n\n` +
+      `Env:\n  OUTLINE_URL (default: http://localhost:3000)\n  OUTLINE_API_TOKEN (required)\n`
+  );
+}
+
+function parseArgs(argv) {
+  const args = { file: "", dryRun: false };
+  for (let i = 2; i < argv.length; i++) {
+    const a = argv[i];
+    if (a === "--file") args.file = argv[++i];
+    else if (a === "--dry-run") args.dryRun = true;
+    else if (a === "-h" || a === "--help") {
+      usage();
+      process.exit(0);
+    }
+  }
+  if (!args.file) {
+    usage();
+    process.exit(1);
+  }
+  return args;
+}
+
+async function main() {
+  const args = parseArgs(process.argv);
+  requireToken();
+
+  const result = await pullDocument({ file: args.file, dryRun: args.dryRun });
+  const { title, slug, relFile, wrote, body, count, unresolved } = result;
+
+  if (!wrote) {
+    console.log(`DRY RUN — would write ${relFile}`);
     console.log(`Image attachments that would be downloaded: ${count}`);
     if (unresolved.length) {
       console.log(`\nWARNING: ${unresolved.length} internal link(s) could not be mapped back to git paths:`);
@@ -214,9 +244,8 @@ async function main() {
     return;
   }
 
-  fs.writeFileSync(absFile, `${frontmatter}\n${body}\n`);
   console.log(`Pulled: ${title}`);
-  console.log(`File: ${path.relative(repoRoot, absFile)}`);
+  console.log(`File: ${relFile}`);
   console.log(`Images downloaded: ${count}${count ? ` (docs/public/outline-imports/${slug}/)` : ""}`);
   if (unresolved.length) {
     console.log(`\nWARNING: ${unresolved.length} internal link(s) could NOT be mapped back to git paths`);
@@ -226,7 +255,10 @@ async function main() {
   console.log(`\nNext: review \`git diff\`, unset outline_locked when satisfied, then commit.`);
 }
 
-main().catch((e) => {
-  console.error(String(e?.stack || e));
-  process.exit(1);
-});
+// Only run the CLI when invoked directly (not when imported by pull-locked.mjs).
+if (import.meta.url === `file://${process.argv[1]}`) {
+  main().catch((e) => {
+    console.error(String(e?.stack || e));
+    process.exit(1);
+  });
+}

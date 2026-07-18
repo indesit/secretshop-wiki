@@ -132,9 +132,9 @@ npm run validate
 ## Публікація в Outline
 
 Репозиторій — канонічне джерело; Outline — шар споживання (читання, пошук, коментарі).
-Синхронізація однонапрямна: git → Outline. Правки прямо в Outline **втрачаються**
-при наступному sync/reconcile, якщо документ не позначено `outline_locked: true`
-(див. нижче).
+git → Outline синхронізується скриптами нижче. Зворотний напрям (Outline → git)
+теж є, але лише для документів із `outline_locked: true` — див. розділ нижче.
+Правки прямо в Outline без цього прапорця **втрачаються** при наступному sync/reconcile.
 
 ```bash
 npm run outline:sync -- --since origin/main   # опублікувати змінені доки
@@ -151,12 +151,21 @@ npm run outline:cleanup                       # звіт про сміття (д
 ```bash
 # 1. у frontmatter документа виставити outline_locked: true, закомітити
 # 2. відредагувати статтю в Outline
+# 3. далі — автоматично (GH Actions, раз на 15 хв) АБО вручну:
 npm run outline:pull -- --file docs/<path>.md --dry-run   # перевірити, що потягне
 npm run outline:pull -- --file docs/<path>.md             # застосувати
-# 3. переглянути git diff, зняти outline_locked, закомітити
 ```
 
-`outline:pull` відрізає авто-згенеровані блоки (бейджі/зміст/пов'язані-документи/футер —
+**Автоматичний pull:** `.github/workflows/outline-pull.yml` кожні 15 хв знаходить усі
+`outline_locked`-документи, для кожного зі змінами в Outline відкриває/оновлює **PR**
+(ніколи не пушить у `main` напряму — злиття завжди ручне рев'ю). Одноразове налаштування
+(не можна зробити з коду, потрібен доступ адміна репо):
+1. Secret `OUTLINE_API_TOKEN` у Settings → Secrets and variables → Actions.
+2. (опційно) variable `OUTLINE_URL`, якщо відрізняється від `https://wiki.secretshop.ua`.
+3. Settings → Actions → General → Workflow permissions → увімкнути
+   *"Allow GitHub Actions to create and approve pull requests"* (типово вимкнено).
+
+`pull` (в обох режимах) відрізає авто-згенеровані блоки (бейджі/зміст/пов'язані-документи/футер —
 вони перегенеруються на публікації), качає нові зображення в
 `docs/public/outline-imports/<slug>/` і конвертує Outline-URL назад у канонічні
 git-шляхи. Деталі, обмеження і формат маркерів — `skills/company-wiki/references/frontmatter-schema.md#outline_locked`.
