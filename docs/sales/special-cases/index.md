@@ -27,4 +27,4 @@ canonical_path: docs/sales/special-cases/index.md
 ## Документи розділу
 
 - [SOP: Дублікати контактів клієнта](/sales/special-cases/sop-seller-duplicate-contact)
-- [Інструкція: звіт про дублікат клієнта через Telegram-бота](/sales/special-cases/instruction-bot-duplicate-report)
+- [Інструкція: дублі клієнта в боті — дії продавця](/sales/special-cases/instruction-bot-duplicate-report)
