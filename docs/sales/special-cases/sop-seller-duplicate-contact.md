@@ -22,6 +22,7 @@ summary: >-
   через бота і не обирати "правильного" клієнта самостійно.
 related_documents:
   - /sales/special-cases/
+  - /sales/special-cases/instruction-bot-duplicate-report
   - /sales/customer-communication/reg-segmented-customer-communication
 source_of_truth: ai-draft
 ai_generated: true
@@ -142,4 +143,5 @@ approval_required: true
 ## Пов'язані документи
 
 - [Нестандартні кейси продажу](/sales/special-cases/)
+- [Інструкція: звіт про дублікат клієнта через Telegram-бота](/sales/special-cases/instruction-bot-duplicate-report)
 - [Рамкове правило: Сегментована комунікація з клієнтами](/sales/customer-communication/reg-segmented-customer-communication)
