@@ -23,3 +23,7 @@ canonical_path: docs/sales/special-cases/index.md
 
 > [!NOTE]
 > Цей розділ знаходиться в стадії наповнення. Документи будуть додані за пріоритетом.
+
+## Документи розділу
+
+- [SOP: Дублікати контактів клієнта](/sales/special-cases/sop-seller-duplicate-contact)
