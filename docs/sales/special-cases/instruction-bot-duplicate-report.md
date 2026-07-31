@@ -24,6 +24,7 @@ related_documents:
 source_of_truth: ai-draft
 ai_generated: true
 approval_required: true
+canonical_path: docs/sales/special-cases/instruction-bot-duplicate-report.md
 ---
 
 # Інструкція: дублі клієнта в боті — дії продавця

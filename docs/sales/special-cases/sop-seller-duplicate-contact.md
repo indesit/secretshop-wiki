@@ -27,6 +27,7 @@ related_documents:
 source_of_truth: ai-draft
 ai_generated: true
 approval_required: true
+canonical_path: docs/sales/special-cases/sop-seller-duplicate-contact.md
 ---
 
 # SOP: Дублікати контактів клієнта
