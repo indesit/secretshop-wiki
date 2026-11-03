@@ -104,6 +104,7 @@ flowchart TD
 ### Зміна (відкриття/закриття)
 
 - [Інструкція: Закриття зміни в BAF](/cash/cash-discipline/instruction-closing-shift-in-baf)
+- [Інструкція: де дивитися дані в BAF для звірки каси](/cash/cash-discipline/instruction-baf-screens-for-reconciliation)
 
 ### Прикасова зона
 

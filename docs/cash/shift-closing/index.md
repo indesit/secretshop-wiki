@@ -29,7 +29,7 @@ canonical_path: docs/cash/shift-closing/index.md
 |---|---|---|
 | [SOP: Закриття касової зміни](./sop-shift-closing.md) | SOP | Покроковий порядок від кінця обслуговування до фіксації результату |
 | [SOP: Звірка каси на початку та в кінці зміни](./sop-cash-reconciliation-opening-closing.md) | SOP | Детальна звірка початкового залишку, готівкової виручки, витрат, кінцевого залишку та розбіжностей |
-| [Чекліст закриття зміни](./checklist-shift-closing.md) | Чекліст | Щоденний інструмент контролю для касира та КЗ |
+| [Чекліст закриття зміни](./checklist-shift-closing.md) | Чекліст | Щоденний інструмент контролю для касира та адміністратора |
 
 ## Суміжні документи в cash-discipline
 
@@ -37,3 +37,10 @@ canonical_path: docs/cash/shift-closing/index.md
 |---|---|
 | [Інструкція: Закриття зміни в BAF](../cash-discipline/instruction-closing-shift-in-baf.md) | Технічний порядок закриття в системі BAF |
 | [Інструкція: ПРРО офлайн-режим](../cash-discipline/instruction-prro-offline-mode-in-baf.md) | Дії при офлайн-операціях ПРРО перед закриттям |
+| [Інструкція: де дивитися дані в BAF для звірки каси](../cash-discipline/instruction-baf-screens-for-reconciliation.md) | Екрани BAF для внесення/видачі готівки та скріншотів для ескалації |
+
+## Суміжні документи в cash-incidents
+
+| Документ | Опис |
+|---|---|
+| [Акт розбіжності каси](../cash-incidents/act-cash-discrepancy.md) | Форма фіксації надлишку/нестачі, окремо від щоденного чекліста |
