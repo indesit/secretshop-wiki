@@ -255,7 +255,7 @@ canonical_path: docs/sales/special-cases/instruction-bot-duplicate-report.md
 
 ### Картка заявки — картки
 
-![Картка заявки: картки](/outline-imports/instruction-bot-duplicate-report/img-12-case-cards.png)
+![Картка заявки: картки](/outline-imports/instruction-bot-duplicate-report/photo_2026-07-31_17-16-10.jpg)
 
 ::: danger Найважливіше на цьому екрані
 `Загальний баланс` — це **реальні бонуси покупця по всіх його активних картках разом**.
