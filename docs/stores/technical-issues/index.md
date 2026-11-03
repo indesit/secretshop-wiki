@@ -27,5 +27,5 @@ canonical_path: docs/stores/technical-issues/index.md
 
 | Документ | Тип | Опис |
 |---|---|---|
-| [Як повідомляти про проблему](./instruction-incident-notice.md) | Інструкція | Три запитання, шаблон notice, куди надсилати |
+| [Як повідомляти про проблему](./instruction-incident-notice.md) | Інструкція | Три запитання, шаблон notice; для ранкового відкриття — фіксація через Google Form чекліста |
 | [SOP: Технічна несправність](./sop-technical-incident.md) | SOP | Повний алгоритм від фіксації до усунення |
