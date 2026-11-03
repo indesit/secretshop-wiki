@@ -17,6 +17,10 @@
  * find primary receipt, post-return-receipt, data to relay to КЗ) + 1
  * discrepancy threshold amount. Cannot be resolved without the real screens
  * and the finance-control figure.
+ * 2026-11-03: 94 → 118 — sop-online-order-confirmation.md (draft) adds 25
+ * TODOs: unknown owner function, effective date, exceptions to confirmed
+ * payment/delivery/bonus terms, source-page route discrepancies and QA
+ * criteria. Cannot be resolved without owner decisions.
  */
 
 import { readFileSync, readdirSync, statSync } from 'fs'
@@ -27,7 +31,7 @@ const __dirname = fileURLToPath(new URL('.', import.meta.url))
 const DOCS_DIR = join(__dirname, '..', 'docs')
 const SKIP_DIRS = new Set(['.vitepress', 'public', 'node_modules', 'templates'])
 
-const BUDGET = 94
+const BUDGET = 118
 
 function collectMarkdownFiles(dir, files = []) {
   for (const entry of readdirSync(dir)) {
