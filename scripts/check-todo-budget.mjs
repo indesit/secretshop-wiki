@@ -21,6 +21,8 @@
  * TODOs: unknown owner function, effective date, exceptions to confirmed
  * payment/delivery/bonus terms, source-page route discrepancies and QA
  * criteria. Cannot be resolved without owner decisions.
+ * 2026-11-04: 118 → 119 — recovered July drafts (cash, stores, duplicate-contact)
+ * add 1 TODO net. Cannot be resolved without owner review.
  */
 
 import { readFileSync, readdirSync, statSync } from 'fs'
@@ -31,7 +33,7 @@ const __dirname = fileURLToPath(new URL('.', import.meta.url))
 const DOCS_DIR = join(__dirname, '..', 'docs')
 const SKIP_DIRS = new Set(['.vitepress', 'public', 'node_modules', 'templates'])
 
-const BUDGET = 118
+const BUDGET = 119
 
 function collectMarkdownFiles(dir, files = []) {
   for (const entry of readdirSync(dir)) {
